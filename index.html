@@ -89,20 +89,28 @@
         }
         ::placeholder {
             color: #202020;
-            opacity: 1; /* Firefox */
+            opacity: 1;
         }
-        ::-ms-input-placeholder { /* Edge 12 -18 */
+        ::-ms-input-placeholder {
             color: #202020;
+            opacity: 1;
         }
         ::-webkit-input-placeholder{
             color: #202020;
+            opacity: 1;
+        }
+        #trukmesDiv{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
         }
         #minText{
             margin: 0;
             position: absolute;
             color: #202020;
             font-size: 20px;
-            margin-top: 2px;
+            margin-top: -11px;
             margin-left: -200px;
             display: none;
         }
@@ -134,6 +142,38 @@
             user-select: none;
             cursor: default;
         }
+        #simbolSkMax{
+            color: red;
+            width: 165px;
+            text-align: left;
+            display: none;
+            margin-left: -125px;
+            margin-top: -18.5px;
+            -webkit-tap-highlight-color: transparent;
+            -webkit-user-select: none;
+            -khtml-user-select: none;
+            -moz-user-select: none;
+            -o-user-select: none;
+            user-select: none;
+            cursor: default;
+        }
+        @keyframes mirkseti {
+            0%{
+                opacity: 1;
+            }
+            49.99%{
+                opacity: 1;
+            }
+            50%{
+                opacity: 0;
+            }
+            99.99%{
+                opacity: 0;
+            }
+            100%{
+                opacity: 1;
+            }
+        }
     </style>
 
     <!-- <div id="start">
@@ -148,12 +188,15 @@
             <input type="time" placeholder="įveskite..." style="width: 147.5px; border-radius: 3px 15px 15px 3px;">
         </div>
         <p>Konsultacijos trukmė</p>
-        <input id="trukme" type="number" min="1" max="100" placeholder="įveskite...">
-        <p id="minText">min</p>
-        <div id="trukmeMax">max.: 60 min</div>
+        <div id="trukmesDiv">
+            <input id="trukme" type="number" min="1" max="100" maxlength="2" placeholder="įveskite...">
+            <p id="minText">min</p>
+            <div id="trukmeMax">max.: 60 min</div>
+        </div>
         <p>Konsultacijos priežastis</p>
         <input id="priezastis" type="text" maxlength="30" placeholder="įveskite...">
         <div id="simbolSk">simbolių <span id="simboliuSk">0</span> / 30</div>
+        <div id="simbolSkMax">pasiektas simbolių limitas</div>
         <button>Toliau</button>
     </div>
     
@@ -170,7 +213,7 @@
                 inputTrukme.value = 60;
 
             }
-            else if(inputTrukme.value === ''){
+            else if(inputTrukme.value == ''){
                 document.getElementById('minText').style.display = 'none';
             }
             else{
@@ -181,6 +224,14 @@
         inputSimboliai.oninput = () => {
             let simboliai = inputSimboliai.value;
             simboliuSkaicius.textContent = simboliai.length;
+            if (simboliuSkaicius.textContent == 30){
+                document.getElementById('simbolSkMax').style.display = 'block';
+                document.getElementById('simbolSkMax').style.animation = 'mirkseti 1s linear infinite';
+            }
+            else{
+                document.getElementById('simbolSkMax').style.display = 'none';
+                document.getElementById('simbolSkMax').style.animation = 'none';
+            }
         }
     </script>
 </body>
