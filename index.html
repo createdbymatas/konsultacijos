@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="lt">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FINBONK | Konsultacijos</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Ancizar+Sans:ital,wght@0,100..1000;1,100..1000&display=swap" rel="stylesheet">
+</head>
+<body>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: "Ancizar Sans", sans-serif;
+        }
+        body{
+            background-color: #202020;
+            height: 100vh;
+        }
+        #start{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100%;
+            width: 100%;
+            flex-direction: column;
+        }
+        #registration{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100%;
+            width: 100%;
+            flex-direction: column;
+        }
+        h1{
+            font-size: 50px;
+            color: #F5F5DC;
+            -webkit-tap-highlight-color: transparent;
+            -webkit-user-select: none;
+            -khtml-user-select: none;
+            -moz-user-select: none;
+            -o-user-select: none;
+            user-select: none;
+            cursor: default;
+        }
+        p{
+            font-size: 20px;
+            color: #F5F5DC;
+            margin-top: 50px;
+            -webkit-tap-highlight-color: transparent;
+            -webkit-user-select: none;
+            -khtml-user-select: none;
+            -moz-user-select: none;
+            -o-user-select: none;
+            user-select: none;
+            cursor: default;
+        }
+        button{
+            width: 200px;
+            height: 50px;
+            background-color: #F5F5DC;
+            border: none;
+            border-radius: 25px;
+            font-size: 20px;
+            color: #202020;
+            margin-top: 50px;
+            cursor: pointer;
+            transition: 0.2s;
+        }
+        button:hover{
+            opacity: 0.8;
+        }
+        button:active{
+            transform: scale(0.95);
+        }
+        input{
+            width: 300px;
+            height: 50px;
+            font-size: 20px;
+            padding: 10px;
+            border-radius: 15px;
+            border: none;
+            margin-top: 10px;
+        }
+        ::placeholder {
+            color: #202020;
+            opacity: 1; /* Firefox */
+        }
+        ::-ms-input-placeholder { /* Edge 12 -18 */
+            color: #202020;
+        }
+        ::-webkit-input-placeholder{
+            color: #202020;
+        }
+        #trukmeMax{
+            color: #F5F5DC;
+            width: 105px;
+            text-align: right;
+            margin-left: 190px;
+            margin-top: 2px;
+            -webkit-tap-highlight-color: transparent;
+            -webkit-user-select: none;
+            -khtml-user-select: none;
+            -moz-user-select: none;
+            -o-user-select: none;
+            user-select: none;
+            cursor: default;
+        }
+        #simbolSk{
+            color: #F5F5DC;
+            width: 105px;
+            text-align: right;
+            margin-left: 190px;
+            margin-top: 2px;
+            -webkit-tap-highlight-color: transparent;
+            -webkit-user-select: none;
+            -khtml-user-select: none;
+            -moz-user-select: none;
+            -o-user-select: none;
+            user-select: none;
+            cursor: default;
+        }
+    </style>
+
+    <!-- <div id="start">
+        <h1>FINBONK | Konsultacijos</h1>
+        <button>Registruotis</button>
+    </div> -->
+    <div id="registration">
+        <h1>FINBONK | Konsultacijos</h1>
+        <p>Konsultacijos laikas</p>
+        <div>
+            <input type="date" placeholder="įveskite..." style="width: 147.5px; border-radius: 15px 5px 5px 15px;">
+            <input type="time" placeholder="įveskite..." style="width: 147.5px; border-radius: 5px 15px 15px 5px;">
+        </div>
+        <p>Konsultacijos trukmė</p>
+        <input id="trukme" type="number" min="0" max="100" placeholder="įveskite...">
+        <div id="trukmeMax">max.: 60 min</div>
+        <p>Konsultacijos priežastis</p>
+        <input id="priezastis" type="text" maxlength="30" placeholder="įveskite...">
+        <div id="simbolSk">simbolių <span id="simboliuSk">0</span> / 30</div>
+        <button>Toliau</button>
+    </div>
+    
+    <script src="https://kit.fontawesome.com/a11707644f.js" crossorigin="anonymous"></script>
+    <script>
+        const inputTrukme = document.getElementById('trukme');
+
+        const inputSimboliai = document.getElementById('priezastis');
+        const simboliuSkaicius = document.getElementById('simboliuSk');
+
+        inputTrukme.oninput = () => {
+            if (inputTrukme.value > 60){
+                inputTrukme.value = 60;
+            }
+            else{
+                
+            }
+        }
+
+        inputSimboliai.oninput = () => {
+            let simboliai = inputSimboliai.value;
+            simboliuSkaicius.textContent = simboliai.length;
+        }
+    </script>
+</body>
+</html>
