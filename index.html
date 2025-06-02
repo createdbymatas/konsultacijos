@@ -85,6 +85,7 @@
             border-radius: 15px;
             border: none;
             margin-top: 10px;
+            color: #202020;
         }
         ::placeholder {
             color: #202020;
@@ -95,6 +96,15 @@
         }
         ::-webkit-input-placeholder{
             color: #202020;
+        }
+        #minText{
+            margin: 0;
+            position: absolute;
+            color: #202020;
+            font-size: 20px;
+            margin-top: 2px;
+            margin-left: -200px;
+            display: none;
         }
         #trukmeMax{
             color: #F5F5DC;
@@ -134,11 +144,12 @@
         <h1>FINBONK | Konsultacijos</h1>
         <p>Konsultacijos laikas</p>
         <div>
-            <input type="date" placeholder="įveskite..." style="width: 147.5px; border-radius: 15px 5px 5px 15px;">
-            <input type="time" placeholder="įveskite..." style="width: 147.5px; border-radius: 5px 15px 15px 5px;">
+            <input type="date" placeholder="įveskite..." style="width: 147.5px; border-radius: 15px 3px 3px 15px;">
+            <input type="time" placeholder="įveskite..." style="width: 147.5px; border-radius: 3px 15px 15px 3px;">
         </div>
         <p>Konsultacijos trukmė</p>
-        <input id="trukme" type="number" min="0" max="100" placeholder="įveskite...">
+        <input id="trukme" type="number" min="1" max="100" placeholder="įveskite...">
+        <p id="minText">min</p>
         <div id="trukmeMax">max.: 60 min</div>
         <p>Konsultacijos priežastis</p>
         <input id="priezastis" type="text" maxlength="30" placeholder="įveskite...">
@@ -155,10 +166,15 @@
 
         inputTrukme.oninput = () => {
             if (inputTrukme.value > 60){
+                document.getElementById('minText').style.display = 'block';
                 inputTrukme.value = 60;
+
+            }
+            else if(inputTrukme.value === ''){
+                document.getElementById('minText').style.display = 'none';
             }
             else{
-                
+                document.getElementById('minText').style.display = 'block';
             }
         }
 
