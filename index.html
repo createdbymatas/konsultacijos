@@ -180,6 +180,11 @@
                 opacity: 1;
             }
         }
+        @media only screen and (max-width: 485px){
+             #h1skirsnis{
+                display: none;
+             }
+        }
     </style>
 
     <!-- <div id="start">
@@ -187,7 +192,7 @@
         <button>Registruotis</button>
     </div> -->
     <div id="registration">
-        <h1>FINBONK | Konsultacijos</h1>
+        <h1>FINBONK <span id="h1skirsnis">|</span> Konsultacijos</h1>
         <p>Konsultacijos laikas</p>
         <div>
             <input type="datetime-local" placeholder="įveskite...">
