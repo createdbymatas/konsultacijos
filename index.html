@@ -163,23 +163,6 @@
             user-select: none;
             cursor: default;
         }
-        @keyframes mirkseti {
-            0%{
-                opacity: 1;
-            }
-            49.99%{
-                opacity: 1;
-            }
-            50%{
-                opacity: 0;
-            }
-            99.99%{
-                opacity: 0;
-            }
-            100%{
-                opacity: 1;
-            }
-        }
         @media only screen and (max-width: 485px){
              #h1skirsnis{
                 display: none;
@@ -250,11 +233,12 @@
             simboliuSkaicius.textContent = simboliai.length;
             if (simboliuSkaicius.textContent == 30){
                 document.getElementById('simbolSkMax').style.display = 'block';
-                document.getElementById('simbolSkMax').style.animation = 'mirkseti 1s linear infinite';
+                setTimeout(() => {
+                    document.getElementById('simbolSkMax').style.display = 'none';
+                }, 500);
             }
             else{
                 document.getElementById('simbolSkMax').style.display = 'none';
-                document.getElementById('simbolSkMax').style.animation = 'none';
             }
         }
     </script>
