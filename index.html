@@ -31,15 +31,40 @@
             width: 100%;
             flex-direction: column;
             padding-top: 50px;
+            transition: 0.3s;
         }
-        #registration{
-            display: flex;
+        #loading{
+            display: none;
             justify-content: center;
             align-items: center;
             height: 100%;
             width: 100%;
             flex-direction: column;
-             padding-top: 50px;
+            padding-top: 50px;
+            opacity: 0;
+            transition: 0.3s;
+        }
+        #registration{
+            display: none;
+            justify-content: center;
+            align-items: center;
+            height: 100%;
+            width: 100%;
+            flex-direction: column;
+            padding-top: 50px;
+            opacity: 0;
+            transition: 0.3s;
+        }
+        #requestSent{
+            display: none;
+            justify-content: center;
+            align-items: center;
+            height: 100%;
+            width: 100%;
+            flex-direction: column;
+            padding-top: 50px;
+            opacity: 0;
+            transition: 0.3s;
         }
         h1{
             font-size: 50px;
@@ -52,6 +77,8 @@
             user-select: none;
             cursor: default;
             text-align: center;
+            padding-left: 10px;
+            padding-right: 10px;
         }
         p{
             font-size: 20px;
@@ -65,6 +92,8 @@
             user-select: none;
             cursor: default;
             text-align: center;
+            padding-left: 10px;
+            padding-right: 10px;
         }
         button{
             width: 200px;
@@ -77,6 +106,12 @@
             margin-top: 50px;
             cursor: pointer;
             transition: 0.2s;
+            -webkit-tap-highlight-color: transparent;
+            -webkit-user-select: none;
+            -khtml-user-select: none;
+            -moz-user-select: none;
+            -o-user-select: none;
+            user-select: none;
         }
         button:hover{
             opacity: 0.8;
@@ -94,6 +129,10 @@
             margin-top: 10px;
             color: #202020;
             text-align: left;
+            background-color: #F5F5DC;
+            border: 2px solid #F5F5DC;
+            transition: 0.2s;
+            cursor: default;
         }
         ::placeholder {
             color: #202020;
@@ -107,11 +146,19 @@
             color: #202020;
             opacity: 1;
         }
+        #laikoDiv{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            position: relative;
+        }
         #trukmesDiv{
             display: flex;
             justify-content: center;
             align-items: center;
             flex-direction: column;
+            position: relative;
         }
         #priezastiesDiv{
             display: flex;
@@ -119,6 +166,48 @@
             align-items: center;
             flex-direction: column;
             position: relative;
+        }
+        #requiredField1{
+            margin: 0;
+            color: red;
+            position: absolute;
+            font-size: 13px;
+            top: -6px;
+            opacity: 0;
+            transition: 0.2s;
+        }
+        #requiredField2{
+            margin: 0;
+            color: red;
+            position: absolute;
+            font-size: 13px;
+            top: -6px;
+            opacity: 0;
+            transition: 0.2s;
+        }
+        #requiredField3{
+            margin: 0;
+            color: red;
+            position: absolute;
+            font-size: 13px;
+            top: -6px;
+            opacity: 0;
+            transition: 0.2s;
+        }
+        #laikasDummy{
+            color: #F5F5DC;
+            width: 105px;
+            text-align: right;
+            margin-left: 190px;
+            margin-top: 2px;
+            -webkit-tap-highlight-color: transparent;
+            -webkit-user-select: none;
+            -khtml-user-select: none;
+            -moz-user-select: none;
+            -o-user-select: none;
+            user-select: none;
+            cursor: default;
+            opacity: 0;
         }
         #minText{
             margin: 0;
@@ -174,36 +263,108 @@
             cursor: default;
             bottom: 0px;
         }
+        @keyframes opacity1 {
+            0%{
+                opacity: 0;
+            }
+            25%{
+                opacity: 1;
+            }
+            75%{
+                opacity: 1;
+            }
+            90%{
+                opacity: 0;
+            }
+            100%{
+                opacity: 0;
+            }
+        }
+        @keyframes opacity2 {
+            0%{
+                opacity: 0;
+            }
+            25%{
+                opacity: 0;
+            }
+            50%{
+                opacity: 1;
+            }
+            75%{
+                opacity: 1;
+            }
+            90%{
+                opacity: 0;
+            }
+            100%{
+                opacity: 0;
+            }
+        }
+        @keyframes opacity3 {
+            0%{
+                opacity: 0;
+            }
+            50%{
+                opacity: 0;
+            }
+            75%{
+                opacity: 1;
+            }
+            90%{
+                opacity: 0;
+            }
+            100%{
+                opacity: 0;
+            }
+        }
         @media only screen and (max-width: 485px){
-             #h1skirsnis{
+            #h1skirsnis{
                 display: none;
-             }
+            }
+            button:hover{
+                opacity: 1;
+            }
+            button:active{
+                transform: scale(0.95);
+                opacity: 0.8;
+            }
         }
     </style>
 
-    <!-- <div id="start">
+    <div id="start">
         <h1>FINBONK | Konsultacijos</h1>
-        <button>Registruotis</button>
-    </div> -->
+        <button onclick="registration()" ontouchstart>Pradėti registraciją</button>
+    </div>
+    <div id="loading">
+        <h1>Kraunasi<span style="animation: opacity1 1.5s linear infinite;">.</span><span style="animation: opacity2 1.5s linear infinite;">.</span><span style="animation: opacity3 1.5s linear infinite;">.</span></h1>
+    </div>
     <div id="registration">
         <h1>FINBONK <span id="h1skirsnis">|</span> Konsultacijos</h1>
         <p>Konsultacijos laikas</p>
-        <div>
-            <input type="datetime-local" placeholder="įveskite...">
+        <div id="laikoDiv">
+            <p id="requiredField1">privaloma įvesti</p>
+            <input id="laikas" type="datetime-local" placeholder="įveskite...">
+            <div id="laikasDummy">-</div>
         </div>
         <p>Konsultacijos trukmė</p>
         <div id="trukmesDiv">
+            <p id="requiredField2">privaloma įvesti</p>
             <input id="trukme" type="number" inputmode="numeric" min="1" max="100" pattern="[0-9\.]+" maxlength="2" placeholder="įveskite...">
             <p id="minText">min</p>
             <div id="trukmeMax">max.: 60 min</div>
         </div>
         <p>Konsultacijos priežastis</p>
         <div id="priezastiesDiv">
+            <p id="requiredField3">privaloma įvesti</p>
             <input id="priezastis" type="text" maxlength="30" placeholder="įveskite...">
             <div id="simbolSk">simbolių <span id="simboliuSk">0</span> / 30</div>
             <div id="simbolSkMax">pasiektas simbolių limitas</div>
         </div>
-        <button>Toliau</button>
+        <button ontouchstart onclick="registruotis()" id="registerBtn">Registruotis</button>
+    </div>
+    <div id="requestSent">
+        <h1><i class="fa-regular fa-circle-check"></i> Užklausa išsiųsta</h1>
+        <p>Jei suplanuotu laiku mokytojas (-a) gali vesti pamoką, jūs būsite informuoti WhatsApp žinute.</p>
     </div>
     
     <script src="https://kit.fontawesome.com/a11707644f.js" crossorigin="anonymous"></script>
@@ -253,6 +414,155 @@
             else{
                 document.getElementById('simbolSkMax').style.display = 'none';
             }
+        }
+
+        function registration(){
+            document.getElementById('start').style.opacity = '0';
+            setTimeout(() => {
+                document.getElementById('start').style.display = 'none';
+                document.getElementById('loading').style.display = 'flex';
+            }, 300);
+            setTimeout(() => {
+                document.getElementById('loading').style.opacity = '1';
+            }, 310);
+            setTimeout(() => {
+                document.getElementById('loading').style.opacity = '1';
+            }, 310);
+            setTimeout(() => {
+                document.getElementById('loading').style.opacity = '0';
+            }, 4000);
+            setTimeout(() => {
+                document.getElementById('loading').style.display = 'none';
+                document.getElementById('registration').style.display = 'flex';
+            }, 4300);
+            setTimeout(() => {
+                document.getElementById('registration').style.opacity = '1';
+            }, 4310);
+        }
+        function registruotis(){
+            document.getElementById('laikas').style.borderColor = '#F5F5DC';
+            document.getElementById('requiredField1').style.opacity = '0';
+            document.getElementById('trukme').style.borderColor = '#F5F5DC';
+            document.getElementById('requiredField2').style.opacity = '0';
+            document.getElementById('priezastis').style.borderColor = '#F5F5DC';
+            document.getElementById('requiredField3').style.opacity = '0';
+
+            document.getElementById('registerBtn').style.pointerEvents = 'none';
+            document.getElementById('laikas').style.pointerEvents = 'none';
+            document.getElementById('trukme').style.pointerEvents = 'none';
+            document.getElementById('priezastis').style.pointerEvents = 'none';
+            setTimeout(() => {
+                document.getElementById('registerBtn').innerHTML = 'Validuojama';
+            }, 400);
+            setTimeout(() => {
+                document.getElementById('registerBtn').innerHTML = 'Validuojama.';
+            }, 800);
+            setTimeout(() => {
+                document.getElementById('registerBtn').innerHTML = 'Validuojama..';
+            }, 1200);
+            setTimeout(() => {
+                document.getElementById('registerBtn').innerHTML = 'Validuojama...';
+            }, 1600);
+            setTimeout(() => {
+                document.getElementById('registerBtn').innerHTML = 'Validuojama';
+            }, 2000);
+            setTimeout(() => {
+                document.getElementById('registerBtn').innerHTML = 'Validuojama.';
+            }, 2400);
+            setTimeout(() => {
+                document.getElementById('registerBtn').innerHTML = 'Validuojama..';
+            }, 2800);
+            setTimeout(() => {
+                document.getElementById('registerBtn').innerHTML = 'Validuojama...';
+            }, 3200);
+            setTimeout(() => {
+                document.getElementById('registerBtn').innerHTML = 'Validuojama';
+            }, 3600);
+            setTimeout(() => {
+                document.getElementById('registerBtn').innerHTML = 'Validuojama.';
+            }, 4000);
+            setTimeout(() => {
+                document.getElementById('registerBtn').innerHTML = 'Validuojama..';
+            }, 4400);
+            setTimeout(() => {
+                document.getElementById('registerBtn').innerHTML = 'Validuojama...';
+            }, 4800);
+            setTimeout(() => {
+                if (document.getElementById('laikas').value == '') {
+                    document.getElementById('registerBtn').innerHTML = 'Registruotis';
+                    document.getElementById('laikas').style.borderColor = 'red';
+                    document.getElementById('requiredField1').style.opacity = '1';
+
+                    document.getElementById('registerBtn').style.pointerEvents = 'all';
+                    document.getElementById('laikas').style.pointerEvents = 'all';
+                    document.getElementById('trukme').style.pointerEvents = 'all';
+                    document.getElementById('priezastis').style.pointerEvents = 'all';
+                }
+                else if (document.getElementById('trukme').value == '') {
+                    document.getElementById('registerBtn').innerHTML = 'Registruotis';
+                    document.getElementById('trukme').style.borderColor = 'red';
+                    document.getElementById('requiredField2').style.opacity = '1';
+
+                    document.getElementById('registerBtn').style.pointerEvents = 'all';
+                    document.getElementById('laikas').style.pointerEvents = 'all';
+                    document.getElementById('trukme').style.pointerEvents = 'all';
+                    document.getElementById('priezastis').style.pointerEvents = 'all';
+                }
+                else if (document.getElementById('priezastis').value == '') {
+                    document.getElementById('registerBtn').innerHTML = 'Registruotis';
+                    document.getElementById('priezastis').style.borderColor = 'red';
+                    document.getElementById('requiredField3').style.opacity = '1';
+
+                    document.getElementById('registerBtn').style.pointerEvents = 'all';
+                    document.getElementById('laikas').style.pointerEvents = 'all';
+                    document.getElementById('trukme').style.pointerEvents = 'all';
+                    document.getElementById('priezastis').style.pointerEvents = 'all';
+                }
+                else {
+                    document.getElementById('registerBtn').innerHTML = 'Registruojama';
+                    setTimeout(() => {
+                        document.getElementById('registerBtn').innerHTML = 'Registruojama.';
+                    }, 400);
+                    setTimeout(() => {
+                        document.getElementById('registerBtn').innerHTML = 'Registruojama..';
+                    }, 800);
+                    setTimeout(() => {
+                        document.getElementById('registerBtn').innerHTML = 'Registruojama...';
+                    }, 1200);
+                    setTimeout(() => {
+                        document.getElementById('registerBtn').innerHTML = 'Registruojama';
+                    }, 1600);
+                    setTimeout(() => {
+                        document.getElementById('registerBtn').innerHTML = 'Registruojama.';
+                    }, 2000);
+                    setTimeout(() => {
+                        document.getElementById('registerBtn').innerHTML = 'Registruojama..';
+                    }, 2400);
+                    setTimeout(() => {
+                        document.getElementById('registerBtn').innerHTML = 'Registruojama...';
+                    }, 2800);
+                    setTimeout(() => {
+                        document.getElementById('registerBtn').innerHTML = 'Registruojama';
+                    }, 3200);
+                    setTimeout(() => {
+                        document.getElementById('registerBtn').innerHTML = 'Registruojama.';
+                    }, 3600);
+                    setTimeout(() => {
+                        document.getElementById('registerBtn').innerHTML = 'Registruojama..';
+                    }, 4000);
+                    setTimeout(() => {
+                        document.getElementById('registerBtn').innerHTML = 'Registruojama...';
+                        document.getElementById('registration').style.opacity = '0';
+                    }, 4400);
+                    setTimeout(() => {
+                        document.getElementById('registration').style.display = 'none';
+                        document.getElementById('requestSent').style.display = 'flex';
+                    }, 4700);
+                    setTimeout(() => {
+                        document.getElementById('requestSent').style.opacity = '1';
+                    }, 4710);
+                }
+            }, 5200);
         }
     </script>
 </body>
