@@ -111,6 +111,13 @@
             align-items: center;
             flex-direction: column;
         }
+        #priezastiesDiv{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            position: relative;
+        }
         #minText{
             margin: 0;
             position: absolute;
@@ -152,6 +159,7 @@
             color: red;
             width: 165px;
             text-align: left;
+            position: absolute;
             display: none;
             margin-left: -125px;
             margin-top: -18.5px;
@@ -162,6 +170,7 @@
             -o-user-select: none;
             user-select: none;
             cursor: default;
+            bottom: 0px;
         }
         @media only screen and (max-width: 485px){
              #h1skirsnis{
@@ -187,9 +196,11 @@
             <div id="trukmeMax">max.: 60 min</div>
         </div>
         <p>Konsultacijos priežastis</p>
-        <input id="priezastis" type="text" maxlength="30" placeholder="įveskite...">
-        <div id="simbolSk">simbolių <span id="simboliuSk">0</span> / 30</div>
-        <div id="simbolSkMax">pasiektas simbolių limitas</div>
+        <div id="priezastiesDiv">
+            <input id="priezastis" type="text" maxlength="30" placeholder="įveskite...">
+            <div id="simbolSk">simbolių <span id="simboliuSk">0</span> / 30</div>
+            <div id="simbolSkMax">pasiektas simbolių limitas</div>
+        </div>
         <button>Toliau</button>
     </div>
     
