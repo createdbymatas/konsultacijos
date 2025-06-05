@@ -9,7 +9,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Ancizar+Sans:ital,wght@0,100..1000;1,100..1000&display=swap" rel="stylesheet">
      <link rel="shortcut icon" type="image/png" href="favicon.ico">
 </head>
-<body>
+<body onload="loadFunction()">
     <style>
         *{
             margin: 0;
@@ -19,21 +19,88 @@
         }
         body{
             background-color: #202020;
+            height: 100vh;
         }
         textarea:focus, input:focus{
             outline: none;
         }
-        #start{
+        #loading{
             display: flex;
             justify-content: center;
             align-items: center;
             height: 100%;
             width: 100%;
             flex-direction: column;
-            padding-top: 50px;
-            transition: 0.3s;
+            transition: 0.5s;
         }
-        #loading{
+        #loadDiv{
+            width: 100px;
+            height: 100px;
+            display: none;
+            justify-content: space-around;
+            align-items: center;
+            flex-direction: column;
+            opacity: 0;
+            transition: 0.5s;
+        }
+        #loadDiv p{
+            margin: 0;
+            font-size: 20px;
+            font-weight: 100;
+        }
+        .spin-loader{
+            border-radius: 80%;
+            display: block;
+            height: 50px;
+            width: 50px;
+            position: relative;
+            animation: spin 0.65s linear 0s infinite normal;
+            background: #202020;
+        }
+        .spin-loader:before, .spin-loader:after{
+            content: "";
+            display: block;
+            position: absolute;
+        }
+        .spin-loader:before{
+            border-radius: 0 90px 90px 0;
+            height: 50px;
+            width: 50%;
+            top: 0;
+            right: 0;
+            z-index: 1;
+            background: black;
+            background-image: linear-gradient(#202020, #F5F5DC);
+        }
+        .spin-loader:after{     
+            border-radius: 80%;
+            height: 40px;
+            width: 40px;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            z-index: 1;
+            background: #202020;
+        }
+        @keyframes spin {       
+            0%{
+                transform: rotate(0);
+            }
+            100%{
+                transform: rotate(360deg);
+            }
+        }
+        @keyframes moveIn {
+            0%{
+                margin-top: 20%;
+                opacity: 0;
+            }
+            100%{
+                margin-top: 0;
+                opacity: 1;
+            }
+        }
+        #start{
             display: none;
             justify-content: center;
             align-items: center;
@@ -41,8 +108,9 @@
             width: 100%;
             flex-direction: column;
             padding-top: 50px;
+            padding-bottom: 50px;
+            transition: 0.5s;
             opacity: 0;
-            transition: 0.3s;
         }
         #registration{
             display: none;
@@ -53,8 +121,10 @@
             flex-direction: column;
             padding-top: 50px;
             opacity: 0;
-            transition: 0.3s;
-            padding-bottom: 15px;
+            transition: 0.5s;
+            padding-bottom: 50px;
+            overflow-x: hidden;
+            overflow-y: scroll;
         }
         #requestSent{
             display: none;
@@ -65,7 +135,21 @@
             flex-direction: column;
             padding-top: 50px;
             opacity: 0;
-            transition: 0.3s;
+            transition: 0.5s;
+        }
+        #requestNotSent{
+            display: none;
+            justify-content: center;
+            align-items: center;
+            height: 100%;
+            width: 100%;
+            flex-direction: column;
+            padding-top: 50px;
+            opacity: 0;
+            transition: 0.5s;
+        }
+        b{
+            font-weight: 600;
         }
         h1{
             font-size: 50px;
@@ -113,6 +197,7 @@
             -moz-user-select: none;
             -o-user-select: none;
             user-select: none;
+            padding: 13px;
         }
         button:hover{
             opacity: 0.8;
@@ -264,64 +349,7 @@
             cursor: default;
             bottom: 0px;
         }
-        @keyframes opacity1 {
-            0%{
-                opacity: 0;
-            }
-            25%{
-                opacity: 1;
-            }
-            75%{
-                opacity: 1;
-            }
-            90%{
-                opacity: 0;
-            }
-            100%{
-                opacity: 0;
-            }
-        }
-        @keyframes opacity2 {
-            0%{
-                opacity: 0;
-            }
-            25%{
-                opacity: 0;
-            }
-            50%{
-                opacity: 1;
-            }
-            75%{
-                opacity: 1;
-            }
-            90%{
-                opacity: 0;
-            }
-            100%{
-                opacity: 0;
-            }
-        }
-        @keyframes opacity3 {
-            0%{
-                opacity: 0;
-            }
-            50%{
-                opacity: 0;
-            }
-            75%{
-                opacity: 1;
-            }
-            90%{
-                opacity: 0;
-            }
-            100%{
-                opacity: 0;
-            }
-        }
-        @media only screen and (max-width: 485px){
-            #h1skirsnis{
-                display: none;
-            }
+        @media only screen and (max-width: 750px){
             button:hover{
                 opacity: 1;
             }
@@ -332,15 +360,21 @@
         }
     </style>
 
+    <div id="loading">
+        <h1 id="finbonkFirst" style="transition: 0.5s;">Jūsų FINBONK</h1>
+        <i class="fa-regular fa-circle-check" style="position: absolute; opacity: 0; user-select: none; cursor: default; top: 0;"></i>
+        <i class="fa-solid fa-rectangle-xmark" style="position: absolute; opacity: 0; user-select: none; cursor: default; top: 0;"></i>
+        <div id="loadDiv">
+            <div class="spin-loader" aria-hidden="true"></div>
+            <p>Įkeliama...</p>
+        </div>
+    </div>
     <div id="start">
-        <h1>FINBONK | Konsultacijos</h1>
+        <h1>FINBONK<br>Konsultacijos</h1>
         <button onclick="registration()" ontouchstart>Pradėti registraciją</button>
     </div>
-    <div id="loading">
-        <h1>Kraunasi<span style="animation: opacity1 1.5s linear infinite;">.</span><span style="animation: opacity2 1.5s linear infinite;">.</span><span style="animation: opacity3 1.5s linear infinite;">.</span></h1>
-    </div>
     <div id="registration">
-        <h1>FINBONK <span id="h1skirsnis">|</span> Konsultacijos</h1>
+        <h1 style="margin-top: 50px;">FINBONK<br>Konsultacijos</h1>
         <p>Konsultacijos laikas</p>
         <div id="laikoDiv">
             <p id="requiredField1">privaloma įvesti</p>
@@ -365,7 +399,13 @@
     </div>
     <div id="requestSent">
         <h1><i class="fa-regular fa-circle-check"></i> Užklausa išsiųsta</h1>
-        <p>Jei suplanuotu laiku mokytojas (-a) gali vesti pamoką, jūs būsite informuoti WhatsApp žinute.</p>
+        <p>Jei suplanuotu laiku bent vienas (-a) iš mokytojų gali vesti pamoką, jūs <b>būsite informuoti WhatsApp žinute</b>.</p>
+        <button ontouchstart onclick="registruotisNaujai()" id="registerNewBtn">Registruotis iš naujo</button>
+    </div>
+    <div id="requestNotSent">
+        <h1><i class="fa-solid fa-rectangle-xmark"></i> Nepavyko išsiųsti užklausos</h1>
+        <p>Įvyko netikėta klaida. Bandykite registruotis <b>dar kartą</b>.<br>Kilus nesklandumams <b>susisiekite su mumis</b> per WhatsApp.</p>
+        <button ontouchstart onclick="registruotisNaujai()" id="registerNewBtn">Registruotis iš naujo</button>
     </div>
     
     <script src="https://kit.fontawesome.com/a11707644f.js" crossorigin="anonymous"></script>
@@ -417,28 +457,50 @@
             }
         }
 
+        function loadFunction(){
+            setTimeout(() => {
+                document.getElementById('finbonkFirst').style.opacity = '0';
+            }, 1000);
+            setTimeout(() => {
+                document.getElementById('finbonkFirst').style.display = 'none';
+                document.getElementById('loadDiv').style.display = 'flex';
+            }, 1500);
+            setTimeout(() => {
+                document.getElementById('loadDiv').style.opacity = '1';
+            }, 1510);
+            setTimeout(() => {
+                document.getElementById('loading').style.opacity = '0';
+            }, 4000);
+            setTimeout(() => {
+                document.getElementById('loading').style.display = 'none';
+                document.getElementById('start').style.display = 'flex';
+                document.getElementById('start').style.animation = 'moveIn 1s ease-out';
+            }, 4500);
+            setTimeout(() => {
+                document.getElementById('start').style.opacity = '1';
+            }, 5500);
+        }
+
         function registration(){
             document.getElementById('start').style.opacity = '0';
             setTimeout(() => {
                 document.getElementById('start').style.display = 'none';
                 document.getElementById('loading').style.display = 'flex';
-            }, 300);
+            }, 500);
             setTimeout(() => {
                 document.getElementById('loading').style.opacity = '1';
-            }, 310);
-            setTimeout(() => {
-                document.getElementById('loading').style.opacity = '1';
-            }, 310);
+            }, 510);
             setTimeout(() => {
                 document.getElementById('loading').style.opacity = '0';
             }, 4000);
             setTimeout(() => {
                 document.getElementById('loading').style.display = 'none';
                 document.getElementById('registration').style.display = 'flex';
-            }, 4300);
+                document.getElementById('registration').style.animation = 'moveIn 1s ease-out';
+            }, 4500);
             setTimeout(() => {
                 document.getElementById('registration').style.opacity = '1';
-            }, 4310);
+            }, 5500);
         }
         function registruotis(){
             document.getElementById('laikas').style.borderColor = '#F5F5DC';
@@ -557,13 +619,29 @@
                     }, 4400);
                     setTimeout(() => {
                         document.getElementById('registration').style.display = 'none';
-                        document.getElementById('requestSent').style.display = 'flex';
-                    }, 4700);
+                        document.getElementById('requestNotSent').style.display = 'flex';
+                        document.getElementById('requestNotSent').style.animation = 'moveIn 1s ease-out';
+                    }, 4900);
                     setTimeout(() => {
-                        document.getElementById('requestSent').style.opacity = '1';
-                    }, 4710);
+                        document.getElementById('requestNotSent').style.opacity = '1';
+                    }, 5900);
                 }
             }, 5200);
+        }
+        function registruotisNaujai(){
+            document.getElementById('requestSent').style.opacity = '0';
+            document.getElementById('requestNotSent').style.opacity = '0';
+            setTimeout(() => {
+                document.getElementById('requestSent').style.display = 'none';
+                document.getElementById('requestNotSent').style.display = 'none';
+                document.getElementById('loading').style.display = 'flex';
+            }, 500);
+            setTimeout(() => {
+                document.getElementById('loading').style.opacity = '1';
+            }, 510);
+            setTimeout(() => {
+                location.replace('index.html');
+            }, 2000);
         }
     </script>
 </body>
