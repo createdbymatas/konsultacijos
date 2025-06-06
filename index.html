@@ -378,6 +378,7 @@
             position: absolute;
             top: 0;
             left: 0;
+            display: none;
         }
         @media only screen and (max-width: 750px){
             button:hover{
@@ -441,7 +442,7 @@
         <input type="hidden" name="_captcha" value="false">
         <input type="hidden" name="_template" value="box">
         <input type="hidden" name="_next" value="https://createdbymatas.github.io/konsultacijos/success.html">
-        <input type="hidden" name="_subject" value="Nauja užklausa konsultacijai">
+        <input type="hidden" name="_subject" value="FINBONK | Nauja užklausa konsultacijai">
         <input type="hidden" name="_cc" value="matas.kaspar@gmail.com">
 
         <input required type="datetime-local" id="laikas2" name="Konsultacijos&nbsp;laikas">
@@ -661,15 +662,14 @@
                     setTimeout(() => {
                         document.getElementById('registerBtn').innerHTML = 'Registruojama...';
                         document.getElementById('registration').style.opacity = '0';
-                        submitFormBtn.click();
                     }, 4400);
                     setTimeout(() => {
                         document.getElementById('registration').style.display = 'none';
-                        document.getElementById('requestSent').style.display = 'flex';
-                        document.getElementById('requestSent').style.animation = 'moveIn 1s ease-out';
+                        document.getElementById('loading').style.display = 'flex';
+                        document.getElementById('loading').style.animation = 'moveIn 1s ease-out';
                     }, 4900);
                     setTimeout(() => {
-                        document.getElementById('requestSent').style.opacity = '1';
+                        submitFormBtn.click();
                     }, 5900);
                 }
             }, 5200);
