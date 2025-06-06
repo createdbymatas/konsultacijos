@@ -32,7 +32,7 @@
             width: 100%;
             flex-direction: column;
             transition: 0.5s;
-            position: absolute;
+            position: fixed;
             top: 0;
             left: 0;
             right: 0;
@@ -115,7 +115,7 @@
             padding-top: 50px;
             opacity: 0;
             transition: 0.5s;
-            position: absolute;
+            position: fixed;
             top: 0;
             left: 0;
             right: 0;
@@ -131,7 +131,7 @@
             padding-top: 50px;
             opacity: 0;
             transition: 0.5s;
-            position: absolute;
+            position: fixed;
             top: 0;
             left: 0;
             right: 0;
@@ -240,7 +240,7 @@
                 document.getElementById('requestSent').style.opacity = '1';
             }, 3500);
         }
-        
+
         function registruotisNaujai(){
             document.getElementById('requestSent').style.opacity = '0';
             document.getElementById('requestNotSent').style.opacity = '0';

@@ -32,7 +32,7 @@
             width: 100%;
             flex-direction: column;
             transition: 0.5s;
-            position: absolute;
+            position: fixed;
             top: 0;
             left: 0;
             right: 0;
@@ -116,7 +116,7 @@
             padding-bottom: 50px;
             transition: 0.5s;
             opacity: 0;
-            position: absolute;
+            position: fixed;
             top: 0;
             left: 0;
             right: 0;
@@ -135,39 +135,7 @@
             padding-bottom: 50px;
             overflow-x: hidden;
             overflow-y: scroll;
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-        }
-        #requestSent{
-            display: none;
-            justify-content: center;
-            align-items: center;
-            height: 100%;
-            width: 100%;
-            flex-direction: column;
-            padding-top: 50px;
-            opacity: 0;
-            transition: 0.5s;
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-        }
-        #requestNotSent{
-            display: none;
-            justify-content: center;
-            align-items: center;
-            height: 100%;
-            width: 100%;
-            flex-direction: column;
-            padding-top: 50px;
-            opacity: 0;
-            transition: 0.5s;
-            position: absolute;
+            position: fixed;
             top: 0;
             left: 0;
             right: 0;
@@ -427,16 +395,6 @@
             <div id="simbolSkMax">pasiektas simbolių limitas</div>
         </div>
         <button ontouchstart onclick="registruotis()" id="registerBtn">Registruotis</button>
-    </div>
-    <div id="requestSent">
-        <h1><i class="fa-regular fa-circle-check"></i> Užklausa išsiųsta</h1>
-        <p>Jei suplanuotu laiku bent vienas (-a) iš mokytojų gali vesti pamoką, jūs <b>būsite informuoti WhatsApp žinute</b>.</p>
-        <button ontouchstart onclick="registruotisNaujai()" id="registerNewBtn">Registruotis iš naujo</button>
-    </div>
-    <div id="requestNotSent">
-        <h1><i class="fa-solid fa-rectangle-xmark"></i> Nepavyko išsiųsti užklausos</h1>
-        <p>Įvyko netikėta klaida. Bandykite registruotis <b>dar kartą</b>.<br>Kilus nesklandumams <b>susisiekite su mumis</b> per WhatsApp.</p>
-        <button ontouchstart onclick="registruotisNaujai()" id="registerNewBtn">Registruotis iš naujo</button>
     </div>
     <form id="forma" action="https://formsubmit.co/f7370d36588cb635656aaa80bfb4d912" method="POST">
         <input type="hidden" name="_captcha" value="false">
