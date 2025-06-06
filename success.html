@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="lt">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FINBONK | Konsultacijos</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Ancizar+Sans:ital,wght@0,100..1000;1,100..1000&display=swap" rel="stylesheet">
+     <link rel="shortcut icon" type="image/png" href="favicon.ico">
+</head>
+<body onload="loadFunction()">
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: "Ancizar Sans", sans-serif;
+        }
+        body{
+            background-color: #202020;
+            overflow: hidden;
+        }
+        textarea:focus, input:focus{
+            outline: none;
+        }
+        #loading{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100%;
+            width: 100%;
+            flex-direction: column;
+            transition: 0.5s;
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+        }
+        #loadDiv{
+            width: 100px;
+            height: 100px;
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+            flex-direction: column;
+            opacity: 1;
+            transition: 0.5s;
+        }
+        #loadDiv p{
+            margin: 0;
+            font-size: 20px;
+            font-weight: 100;
+        }
+        .spin-loader{
+            border-radius: 80%;
+            display: block;
+            height: 50px;
+            width: 50px;
+            position: relative;
+            animation: spin 0.65s linear 0s infinite normal;
+            background: #202020;
+        }
+        .spin-loader:before, .spin-loader:after{
+            content: "";
+            display: block;
+            position: absolute;
+        }
+        .spin-loader:before{
+            border-radius: 0 90px 90px 0;
+            height: 50px;
+            width: 50%;
+            top: 0;
+            right: 0;
+            z-index: 1;
+            background: black;
+            background-image: linear-gradient(#202020, #F5F5DC);
+        }
+        .spin-loader:after{     
+            border-radius: 80%;
+            height: 40px;
+            width: 40px;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            z-index: 1;
+            background: #202020;
+        }
+        @keyframes spin {       
+            0%{
+                transform: rotate(0);
+            }
+            100%{
+                transform: rotate(360deg);
+            }
+        }
+        @keyframes moveIn {
+            0%{
+                margin-top: 20%;
+                opacity: 0;
+            }
+            100%{
+                margin-top: 0;
+                opacity: 1;
+            }
+        }
+        #requestSent{
+            display: none;
+            justify-content: center;
+            align-items: center;
+            height: 100%;
+            width: 100%;
+            flex-direction: column;
+            padding-top: 50px;
+            opacity: 0;
+            transition: 0.5s;
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+        }
+        #requestNotSent{
+            display: none;
+            justify-content: center;
+            align-items: center;
+            height: 100%;
+            width: 100%;
+            flex-direction: column;
+            padding-top: 50px;
+            opacity: 0;
+            transition: 0.5s;
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+        }
+        b{
+            font-weight: 600;
+        }
+        h1{
+            font-size: 50px;
+            color: #F5F5DC;
+            -webkit-tap-highlight-color: transparent;
+            -webkit-user-select: none;
+            -khtml-user-select: none;
+            -moz-user-select: none;
+            -o-user-select: none;
+            user-select: none;
+            cursor: default;
+            text-align: center;
+            padding-left: 10px;
+            padding-right: 10px;
+        }
+        p{
+            font-size: 20px;
+            color: #F5F5DC;
+            margin-top: 50px;
+            -webkit-tap-highlight-color: transparent;
+            -webkit-user-select: none;
+            -khtml-user-select: none;
+            -moz-user-select: none;
+            -o-user-select: none;
+            user-select: none;
+            cursor: default;
+            text-align: center;
+            padding-left: 10px;
+            padding-right: 10px;
+        }
+        button{
+            width: 200px;
+            height: 50px;
+            background-color: #F5F5DC;
+            border: none;
+            border-radius: 25px;
+            font-size: 20px;
+            color: #202020;
+            margin-top: 50px;
+            cursor: pointer;
+            transition: 0.2s;
+            -webkit-tap-highlight-color: transparent;
+            -webkit-user-select: none;
+            -khtml-user-select: none;
+            -moz-user-select: none;
+            -o-user-select: none;
+            user-select: none;
+            padding: 13px;
+        }
+        button:hover{
+            opacity: 0.8;
+        }
+        button:active{
+            transform: scale(0.95);
+        }
+        @media only screen and (max-width: 750px){
+            button:hover{
+                opacity: 1;
+            }
+            button:active{
+                transform: scale(0.95);
+                opacity: 0.8;
+            }
+        }
+    </style>
+    <div style="width: 1px; height: 1000px;"></div>
+    <div id="loading">
+        <i class="fa-regular fa-circle-check" style="position: absolute; opacity: 0; user-select: none; cursor: default; top: 0;"></i>
+        <i class="fa-solid fa-rectangle-xmark" style="position: absolute; opacity: 0; user-select: none; cursor: default; top: 0;"></i>
+        <div id="loadDiv">
+            <div class="spin-loader" aria-hidden="true"></div>
+            <p>Įkeliama...</p>
+        </div>
+    </div>
+    <div id="requestSent">
+        <h1><i class="fa-regular fa-circle-check"></i> Užklausa išsiųsta</h1>
+        <p>Jei suplanuotu laiku bent vienas (-a) iš mokytojų gali vesti pamoką, jūs <b>būsite informuoti WhatsApp žinute</b>.</p>
+        <button ontouchstart onclick="registruotisNaujai()" id="registerNewBtn">Registruotis iš naujo</button>
+    </div>
+    <div id="requestNotSent">
+        <h1><i class="fa-solid fa-rectangle-xmark"></i> Nepavyko išsiųsti užklausos</h1>
+        <p>Įvyko netikėta klaida. Bandykite registruotis <b>dar kartą</b>.<br>Kilus nesklandumams <b>susisiekite su mumis</b> per WhatsApp.</p>
+        <button ontouchstart onclick="registruotisNaujai()" id="registerNewBtn">Registruotis iš naujo</button>
+    </div>
+    
+    <script src="https://kit.fontawesome.com/a11707644f.js" crossorigin="anonymous"></script>
+    <script>
+
+        function loadFunction(){
+            setTimeout(() => {
+                document.getElementById('loading').style.opacity = '0';
+            }, 2000);
+            setTimeout(() => {
+                document.getElementById('loading').style.display = 'none';
+                document.getElementById('requestSent').style.display = 'flex';
+                document.getElementById('requestSent').style.animation = 'moveIn 1s ease-out';
+            }, 2500);
+            setTimeout(() => {
+                document.getElementById('requestSent').style.opacity = '1';
+            }, 3500);
+        }
+        
+        function registruotisNaujai(){
+            document.getElementById('requestSent').style.opacity = '0';
+            document.getElementById('requestNotSent').style.opacity = '0';
+            setTimeout(() => {
+                document.getElementById('requestSent').style.display = 'none';
+                document.getElementById('requestNotSent').style.display = 'none';
+                document.getElementById('loading').style.display = 'flex';
+            }, 500);
+            setTimeout(() => {
+                document.getElementById('loading').style.opacity = '1';
+            }, 510);
+            setTimeout(() => {
+                location.replace('index.html');
+            }, 2000);
+        }
+    </script>
+</body>
+</html>
