@@ -624,8 +624,10 @@
                     setTimeout(() => {
                         document.getElementById('registration').style.display = 'none';
                         document.getElementById('loading').style.display = 'flex';
-                        document.getElementById('loading').style.animation = 'moveIn 1s ease-out';
                     }, 4900);
+                    setTimeout(() => {
+                        document.getElementById('loading').style.opacity = '1';
+                    }, 4910);
                     setTimeout(() => {
                         submitFormBtn.click();
                     }, 5900);
