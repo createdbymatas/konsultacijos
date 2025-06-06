@@ -457,8 +457,9 @@
                 document.getElementById('simbolSkMax').style.display = 'none';
             }
         }
-
+        document.getElementById('loading').style.display = 'none';
         function loadFunction(){
+            document.getElementById('loading').style.display = 'flex';
             setTimeout(() => {
                 document.getElementById('finbonkFirst').style.opacity = '0';
             }, 1000);
