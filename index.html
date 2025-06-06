@@ -459,7 +459,9 @@
         }
         document.getElementById('loading').style.display = 'none';
         function loadFunction(){
-            document.getElementById('loading').style.display = 'flex';
+            setTimeout(() => {
+                document.getElementById('loading').style.display = 'flex';
+            }, 10);
             setTimeout(() => {
                 document.getElementById('finbonkFirst').style.opacity = '0';
             }, 1000);
