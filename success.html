@@ -233,11 +233,11 @@
             }, 2000);
             setTimeout(() => {
                 document.getElementById('loading').style.display = 'none';
-                document.getElementById('requestSent').style.display = 'flex';
-                document.getElementById('requestSent').style.animation = 'moveIn 1s ease-out';
+                document.getElementById('requestNotSent').style.display = 'flex';
+                document.getElementById('requestNotSent').style.animation = 'moveIn 1s ease-out';
             }, 2500);
             setTimeout(() => {
-                document.getElementById('requestSent').style.opacity = '1';
+                document.getElementById('requestNotSent').style.opacity = '1';
             }, 3500);
         }
 
