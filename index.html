@@ -396,11 +396,11 @@
         </div>
         <button ontouchstart onclick="registruotis()" id="registerBtn">Registruotis</button>
     </div>
-    <form id="forma" action="https://formsubmit.co/matkspr@gmail.com" method="POST">
+    <form id="forma" action="https://formsubmit.co/a62b43c00bf0241936f4ccc5f1f3a2fe" method="POST">
         <input type="hidden" name="_captcha" value="false">
         <input type="hidden" name="_template" value="box">
         <input type="hidden" name="_next" value="https://createdbymatas.github.io/konsultacijos/success">
-        <input type="hidden" name="_subject" value="FINBONK | Nauja užklausa konsultacijai">
+        <input type="hidden" name="_subject" value="FINBONK Konsultacijos | Nauja užklausa">
 
         <input required type="datetime-local" id="laikas2" name="Konsultacijos&nbsp;laikas">
         <input required type="text" id="trukme2" name="Konsultacijos&nbsp;trukmė">
@@ -410,6 +410,14 @@
     
     <script src="https://kit.fontawesome.com/a11707644f.js" crossorigin="anonymous"></script>
     <script>
+        // išjungti right-click
+        document.addEventListener('contextmenu', (e) => e.preventDefault());
+
+        // išjungti f12, ctrl+shift+i, ctrl+shift+j, ctrl+u (inspect tool)
+        function ctrlShiftKey(e, keyCode) {
+            return e.ctrlKey && e.shiftKey && e.keyCode === keyCode.charCodeAt(0);
+        }
+
         const $input = document.querySelector("#trukme");
         const leidziamiSimboliai = /[0-9]+/;
         $input.addEventListener("keypress", e => {
