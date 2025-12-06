@@ -80,6 +80,29 @@
                 opacity: 1;
             }
         }
+        #error{
+            display: none;
+            justify-content: center;
+            align-items: center;
+            height: 100%;
+            width: 100%;
+            flex-direction: column;
+            padding-top: 50px;
+            opacity: 0;
+            transition: 0.3s;
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: #202020;
+            z-index: 10;
+            padding-left: 15px;
+            padding-right: 15px;
+        }
+        #error span{
+            font-family: 'Times New Roman', Times, serif;
+        }
         #start{
             display: none;
             justify-content: center;
@@ -323,6 +346,9 @@
             left: 0;
             display: none;
         }
+        #registerNewBtn{
+            width: 250px;
+        }
         @media only screen and (max-width: 750px){
             button:hover{
                 opacity: 1;
@@ -342,6 +368,11 @@
             <div id="loader"></div>
             <p>Įkeliama...</p>
         </div>
+    </div>
+    <div id="error">
+        <h1><i class="fa-solid fa-rectangle-xmark"></i> Nepavyko išsiųsti užklausos</h1>
+        <p>Atrodo, jog mūsų sistema <b>neapdorojo jūsų užklausos</b>, nes: '<span>Server Error (500)</span>'. Tai mūsų kaltė, o ne jūsų.<br><i>Atsiprašome už nesklandumus</i>. Prašome dėl užklausos <b>susisiekti su mumis</b> per WhatsApp.</p>
+        <button ontouchstart onclick="registerAgain()" id="registerNewBtn">Bandyti registruotis iš naujo</button>
     </div>
     <div id="start">
         <h1>FINBONK<br>Konsultacijos</h1>
@@ -478,15 +509,15 @@
             }, 510);
             setTimeout(() => {
                 document.getElementById('loading').style.opacity = '0';
-            }, 4000);
+            }, 3000);
             setTimeout(() => {
                 document.getElementById('loading').style.display = 'none';
                 document.getElementById('registration').style.display = 'flex';
                 document.getElementById('registration').style.animation = 'moveIn 1s ease-out';
-            }, 4500);
+            }, 3500);
             setTimeout(() => {
                 document.getElementById('registration').style.opacity = '1';
-            }, 5500);
+            }, 4500);
         }
         function registruotis(){
             document.getElementById('laikas').style.borderColor = '#F5F5DC';
@@ -580,6 +611,12 @@
                     setTimeout(() => {
                         submitFormBtn.click();
                     }, 4300);
+                    setTimeout(() => {
+                        document.getElementById('error').style.display = 'flex';
+                    }, 14490);
+                    setTimeout(() => {
+                        document.getElementById('error').style.opacity = '1';
+                    }, 15000);
                 }
             }, 2000);
         }
@@ -589,6 +626,20 @@
             setTimeout(() => {
                 document.getElementById('requestSent').style.display = 'none';
                 document.getElementById('requestNotSent').style.display = 'none';
+                document.getElementById('loading').style.display = 'flex';
+            }, 500);
+            setTimeout(() => {
+                document.getElementById('loading').style.opacity = '1';
+            }, 510);
+            setTimeout(() => {
+                location.replace('https://createdbymatas.github.io/konsultacijos/index');
+            }, 2000);
+        }
+
+        function registerAgain(){
+            document.getElementById('error').style.opacity = '0';
+            setTimeout(() => {
+                document.getElementById('error').style.display = 'none';
                 document.getElementById('loading').style.display = 'flex';
             }, 500);
             setTimeout(() => {
