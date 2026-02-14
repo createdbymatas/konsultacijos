@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="lt">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>© FINBONK testavimo aplinka</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Ancizar+Sans:ital,wght@0,100..1000;1,100..1000&display=swap" rel="stylesheet">
+    <meta property="og:image" content="https://raw.githubusercontent.com/createdbymatas/finbonk/refs/heads/main/thumbnail.jpg">
+    <meta property="og:image:type" content="image/jpg">
+    <meta property="og:image:width" content="500">
+    <meta property="og:image:height" content="500">
+    <meta property="og:title" content="© FINBONK">
+    <meta property="og:description" content="Created by Matas">
+    <link rel="apple-touch-icon" href="thumbnail.jpg">
+    <link rel="shortcut icon" type="image/png" href="favicon.ico">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body onload="loaded()">
+    <div id="loading">
+        <div id="loader"></div>
+        <p id="ikeliama">Įkeliama</p>
+    </div>
+
+    <nav>
+        <h1>© FINBONK testavimo aplinka</h1>
+        <h1 id="user"><i class="fa-regular fa-circle-user"></i> Ieva Kasparavičiūtė</h1>
+    </nav>
+
+    <p id="chooseTest">Pasirinkite testą, kurį norite atlikti:</p>
+    <div class="testOption" ontouchstart onclick="test1()">
+        <h2>English practise</h2>
+        <p>Bandymas - anglų k. (testas nr. 1)</p>
+    </div>
+
+    <script src="https://kit.fontawesome.com/a11707644f.js" crossorigin="anonymous"></script>
+    <script src="script.js"></script>
+</body>
+</html>

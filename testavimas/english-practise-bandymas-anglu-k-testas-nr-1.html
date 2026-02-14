@@ -1,0 +1,470 @@
+<!DOCTYPE html>
+<html lang="lt">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>© FINBONK testavimo aplinka | PUPP 10 kl. | Bandymas - matematika (testas nr. 1)</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Ancizar+Sans:ital,wght@0,100..1000;1,100..1000&display=swap" rel="stylesheet">
+    <meta property="og:image" content="https://raw.githubusercontent.com/createdbymatas/finbonk/refs/heads/main/thumbnail.jpg">
+    <meta property="og:image:type" content="image/jpg">
+    <meta property="og:image:width" content="500">
+    <meta property="og:image:height" content="500">
+    <meta property="og:title" content="© FINBONK">
+    <meta property="og:description" content="Created by Matas">
+    <link rel="apple-touch-icon" href="thumbnail.jpg">
+    <link rel="shortcut icon" type="image/png" href="favicon.ico">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body onload="loaded()">
+    <div id="loading">
+        <div id="loader"></div>
+        <p id="ikeliama">Įkeliama</p>
+    </div>
+    <div id="loading2">
+        <div id="loader2"></div>
+        <p id="ikeliama2">Įkeliama</p>
+    </div>
+
+    <div id="fullScreenWarning">
+            <i class="fa-solid fa-ban ban"></i>
+            <h2>Sistemos pažeidimas</h2>
+            <p><i>Išjungtas pilno ekrano režimas.</i></p>
+            <p>Negrįžus į pilno ekrano režimą, patikrinimas bus nutrauktas po <b id="warningTime">10 sekundžių</b>.</p>
+            <button onclick="backToFullscreen()">Grįžti į pilno ekrano režimą <i class="fa-solid fa-chevron-right"></i></button>
+        </div>
+
+    <nav>
+        <h1>© FINBONK testavimo aplinka | English practise | Bandymas - anglų k. (testas nr. 1)</h1>
+        <p id="timeListening"><i class="fa-regular fa-clock"></i> <span style="font-weight: 800;" id="timeRemainingListening">00:00</span></p>
+        <p id="timeSpeaking"><i class="fa-regular fa-clock"></i> <span style="font-weight: 800;" id="timeRemainingSpeaking">00:00</span></p>
+        <p id="timeSpeech"><i class="fa-regular fa-clock"></i> <span style="font-weight: 800;" id="timeRemainingSpeech">00:00</span></p>
+        <h1 id="user"><i class="fa-regular fa-circle-user"></i> Ieva Kasparavičiūtė</h1>
+    </nav>
+    <section>
+        <button id="dummyBtn" style="opacity: 0; pointer-events: none;" ontouchstart></button>
+        <button id="continue1" onclick="start()" ontouchstart>Tęsti <i class="fa-solid fa-arrow-right-long"></i></button>
+        <button style="display: none;" id="continue2" onclick="toImportantInfo()" ontouchstart>Continue <i class="fa-solid fa-arrow-right-long"></i></button>
+        <button style="display: none;" id="continue3" onclick="begin()" ontouchstart>Begin <i class="fa-solid fa-arrow-right-long"></i></button>
+        <button style="display: none;" id="continue4" onclick="startListening()" ontouchstart>Continue <i class="fa-solid fa-arrow-right-long"></i></button>
+        <button style="display: none;" id="continue5" onclick="startSpeaking()" ontouchstart>Continue <i class="fa-solid fa-arrow-right-long"></i></button>
+        <button style="display: none;" id="continue6" onclick="toOverview()" ontouchstart>Continue <i class="fa-solid fa-arrow-right-long"></i></button>
+
+        <button style="display: none;" id="planBtn" onclick="openClosePlan()" ontouchstart>Speech plan <i id="planI" class="fa-solid fa-clipboard-list"></i></button>
+        <button style="display: none;" id="gradingBtn" onclick="openCloseGrading()" ontouchstart>Grading criteria <i id="gradingI" class="fa-solid fa-graduation-cap"></i></button>
+    </section>
+
+    <div id="start">
+        <h1>© FINBONK testavimo aplinka</h1>
+        <p>Sveiki atvykę !</p>
+        <p>Norėdami pradėti testą <i>„English practise | Bandymas - anglų k. (testas nr. 1)“</i>, spauskite <span class="continueSpan">Tęsti <i class="fa-solid fa-arrow-right-long"></i></span></p>
+    </div>
+    <div id="infoWindow">
+        <h1>English practise | Bandymas - anglų k. (testas nr. 1)</h1>
+        <p style="margin-bottom: 5px;">The test consists of two parts:</p>
+        <p style="margin-bottom: 5px;">• listening task (25 minutes)</p>
+        <p>• speaking task (30 minutes)</p>
+        <p>The total duration of the test is <b>55 minutes</b>. After the time expires, you will no longer be able to complete the tasks.</p>
+        <p>The total number of points for the test tasks is <b>40</b>.</p>
+        <p class="clickContinueToContinue">To continue, click <span class="continueSpan">Continue <i class="fa-solid fa-arrow-right-long"></i></span></p>
+    </div>
+    <div id="infoWindow2">
+        <h1>IMPORTANT INFORMATION</h1>
+        <p style="font-weight: 800;">Please read all the information provided here carefully, as you will not be allowed to return to this window.</p>
+        <p style="font-weight: 800;">You will be automatically moved to next tasks and submission after time expires and you will not be able to return to the previous task.</p>
+        <p>Some tasks may not fit in the computer window, so review the task using the vertical scroll bar or your computer mouse.</p>
+        <p>The remaining test time will always be displayed in the upper right corner of the screen, next to your name.</p>
+        <p>The following tools may be used during the test: a draft (provided by the teacher), a pen, a pencil, an eraser.</p>
+        <p>During the test, the use of smart devices (including mobile phones) and other external devices is <b>prohibited</b>.</p>
+        <p>During the test, if necessary, you may go to the toilet for no more than 5 minutes, but the remaining time is not interrupted. The teacher must be informed about the exit, and will note this information in the execution protocol.</p>
+        <p>The test will be performed in full screen mode. Disabling full screen mode during the test is <b>prohibited</b>.</p>
+        <p>The system records violations. If the number of possible violations exceeds the limit, the <b>test may be terminated</b>.</p>
+        <p style="font-weight: 800;">GOOD LUCK !</p>
+        <p class="clickContinueToContinue">To begin, click <span class="continueSpan">Begin <i class="fa-solid fa-arrow-right-long"></i></span></p>
+    </div>
+    <div id="listeningInfo">
+        <h1>LISTENING COMPREHENSION TEST</h1>
+        <p style="font-weight: 800;">Duration: 25 minutes, 20 points</p>
+        <p style="font-weight: 800;">After submitting your answers, you will not be able to go back to correct or change them.</p>
+        <p>You will hear all the recordings twice. Each recording will start automatically.</p>
+        <p>You will not be able to stop or pause the recording.</p>
+        <p style="font-weight: 800;">Once the task is completed, you will be immediately moved on to the next one.</p>
+        <p class="clickContinueToContinue">To continue, click <span class="continueSpan">Continue <i class="fa-solid fa-arrow-right-long"></i></span></p>
+    </div>
+    <div id="listeningPart1">
+        <h1>Part 1</h1>
+        <p style="font-weight: 800;">6 points, 1 per item.</p>
+        <p>You will hear a text about some strange driving rules around the world. For questions <b>1-6</b>, choose the correct option. You will hear the recording twice. You now have <b>one minute</b> to read the task.</p>
+        <div class="audioPlayback">
+            <span id="timePlayed1">0:00</span>
+                <div id="progressBg1">
+                    <div id="playProgress1"></div>
+                </div>
+            <span id="soundDuration1">9:09</span>
+        </div>
+        <audio id="audio1" src="listening/listening1.mp3"></audio>
+        <div class="listeningOptionWindow">
+            <p><b>1.</b> When is running out of fuel on a German motorway allowed?</p>
+            <div id="p1q1a1" ontouchstart onclick="p1q1a1()" class="listeningOption"><p class="letter">A.</p><p>Never.</p></div>
+            <div id="p1q1a2" ontouchstart onclick="p1q1a2()" class="listeningOption"><p class="letter">B.</p><p>Only when it's an emergency.</p></div>
+            <div id="p1q1a3" ontouchstart onclick="p1q1a3()" class="listeningOption"><p class="letter">C.</p><p>Only when you can prevent traffic congestion or an accident.</p></div>
+            <input type="text" style="display: none;" id="p1q1">
+        </div>
+        <div class="listeningOptionWindow">
+            <p><b>2.</b> What must you do before taking your car in Denmark?</p>
+            <div id="p1q2a1" ontouchstart onclick="p1q2a1()" class="listeningOption"><p class="letter">A.</p><p>Check that the children are sitting safely.</p></div>
+            <div id="p1q2a2" ontouchstart onclick="p1q2a2()" class="listeningOption"><p class="letter">B.</p><p>Check that your children are using their seats.</p></div>
+            <div id="p1q2a3" ontouchstart onclick="p1q2a3()" class="listeningOption"><p class="letter">C.</p><p>Check that there are no kids near your car.</p></div>
+            <input type="text" style="display: none;" id="p1q2">
+        </div>
+        <div class="listeningOptionWindow">
+            <p><b>3.</b> What is true in Spain?</p>
+            <div id="p1q3a1" ontouchstart onclick="p1q3a1()" class="listeningOption"><p class="letter">A.</p><p>You can't wear sandals unless coming from the beach.</p></div>
+            <div id="p1q3a2" ontouchstart onclick="p1q3a2()" class="listeningOption"><p class="letter">B.</p><p>You must always wear safe footwear.</p></div>
+            <div id="p1q3a3" ontouchstart onclick="p1q3a3()" class="listeningOption"><p class="letter">C.</p><p>You can wear comfortable shoes or no shoes at all.</p></div>
+            <input type="text" style="display: none;" id="p1q3">
+        </div>
+        <div class="listeningOptionWindow">
+            <p><b>4.</b> What does the video imply about the law in Alaska?</p>
+            <div id="p1q4a1" ontouchstart onclick="p1q4a1()" class="listeningOption"><p class="letter">A.</p><p>You cannot carry a pet unless it's tied.</p></div>
+            <div id="p1q4a2" ontouchstart onclick="p1q4a2()" class="listeningOption"><p class="letter">B.</p><p>You can't let your dog climb onto the roof of your car.</p></div>
+            <div id="p1q4a3" ontouchstart onclick="p1q4a3()" class="listeningOption"><p class="letter">C.</p><p>You mustn't carry your pet on the roof of your car.</p></div>
+            <input type="text" style="display: none;" id="p1q4">
+        </div>
+        <div class="listeningOptionWindow">
+            <p><b>5.</b> When can you drive in Manila?</p>
+            <div id="p1q5a1" ontouchstart onclick="p1q5a1()" class="listeningOption"><p class="letter">A.</p><p>It depends on the number on your number plate.</p></div>
+            <div id="p1q5a2" ontouchstart onclick="p1q5a2()" class="listeningOption"><p class="letter">B.</p><p>If you can drive on Monday, you cannot drive on Tuesday.</p></div>
+            <div id="p1q5a3" ontouchstart onclick="p1q5a3()" class="listeningOption"><p class="letter">C.</p><p>It depends on the colour of your number plate.</p></div>
+            <input type="text" style="display: none;" id="p1q5">
+        </div>
+        <div class="listeningOptionWindow">
+            <p><b>6.</b> In Thailand, you mustn't drive without a shirt ...</p>
+            <div id="p1q6a1" ontouchstart onclick="p1q6a1()" class="listeningOption"><p class="letter">A.</p><p>because it's not decent.</p></div>
+            <div id="p1q6a2" ontouchstart onclick="p1q6a2()" class="listeningOption"><p class="letter">B.</p><p>unless it's very hot.</p></div>
+            <div id="p1q6a3" ontouchstart onclick="p1q6a3()" class="listeningOption"><p class="letter">C.</p><p>unless your air conditioning is not working.</p></div>
+            <input type="text" style="display: none;" id="p1q6">
+        </div>
+    </div>
+    <div id="listeningPart2">
+        <h1>Part 2</h1>
+        <p style="font-weight: 800;">7 points, 1 per item.</p>
+        <p>You will hear a text about food and diet. For questions <b>1-7</b>, choose the correct option. You will hear the recording twice. You now have <b>one minute</b> to read the task.</p>
+        <div class="audioPlayback">
+            <span id="timePlayed2">0:00</span>
+                <div id="progressBg2">
+                    <div id="playProgress2"></div>
+                </div>
+            <span id="soundDuration2">8:48</span>
+        </div>
+        <audio id="audio2" src="listening/listening2.mp3"></audio>
+        <div class="listeningOptionWindow">
+            <p><b>1.</b> The girl who tries the burger ...</p>
+            <div id="p2q1a1" ontouchstart onclick="p2q1a1()" class="listeningOption"><p class="letter">A.</p><p>thinks it's OK.</p></div>
+            <div id="p2q1a2" ontouchstart onclick="p2q1a2()" class="listeningOption"><p class="letter">B.</p><p>thinks it's fantastic.</p></div>
+            <div id="p2q1a3" ontouchstart onclick="p2q1a3()" class="listeningOption"><p class="letter">C.</p><p>has some friends who would love it.</p></div>
+            <input type="text" style="display: none;" id="p2q1">
+        </div>
+        <div class="listeningOptionWindow">
+            <p><b>2.</b> The manufacturers of the insects ...</p>
+            <div id="p2q2a1" ontouchstart onclick="p2q2a1()" class="listeningOption"><p class="letter">A.</p><p>use insects that come from dead animals.</p></div>
+            <div id="p2q2a2" ontouchstart onclick="p2q2a2()" class="listeningOption"><p class="letter">B.</p><p>have recently started breeding insects.</p></div>
+            <div id="p2q2a3" ontouchstart onclick="p2q2a3()" class="listeningOption"><p class="letter">C.</p><p>produce insects that are used by different industries.</p></div>
+            <input type="text" style="display: none;" id="p2q2">
+        </div>
+        <div class="listeningOptionWindow">
+            <p><b>3.</b> Which sentence is true?</p>
+            <div id="p2q3a1" ontouchstart onclick="p2q3a1()" class="listeningOption"><p class="letter">A.</p><p>Insect food is not very popular among Europeans.</p></div>
+            <div id="p2q3a2" ontouchstart onclick="p2q3a2()" class="listeningOption"><p class="letter">B.</p><p>Very few people around the world eat insects.</p></div>
+            <div id="p2q3a3" ontouchstart onclick="p2q3a3()" class="listeningOption"><p class="letter">C.</p><p>Around 2 million people in Europe eat insects every day.</p></div>
+            <input type="text" style="display: none;" id="p2q3">
+        </div>
+        <div class="listeningOptionWindow">
+            <p><b>4.</b> The larvae ...</p>
+            <div id="p2q4a1" ontouchstart onclick="p2q4a1()" class="listeningOption"><p class="letter">A.</p><p>need a lot of water.</p></div>
+            <div id="p2q4a2" ontouchstart onclick="p2q4a2()" class="listeningOption"><p class="letter">B.</p><p>contain 70% protein.</p></div>
+            <div id="p2q4a3" ontouchstart onclick="p2q4a3()" class="listeningOption"><p class="letter">C.</p><p>are frozen before being sold.</p></div>
+            <input type="text" style="display: none;" id="p2q4">
+        </div>
+        <div class="listeningOptionWindow">
+            <p><b>5.</b> The founders of the company ...</p>
+            <div id="p2q5a1" ontouchstart onclick="p2q5a1()" class="listeningOption"><p class="letter">A.</p><p>employ a lot of people.</p></div>
+            <div id="p2q5a2" ontouchstart onclick="p2q5a2()" class="listeningOption"><p class="letter">B.</p><p>learned about eating insects during a trip.</p></div>
+            <div id="p2q5a3" ontouchstart onclick="p2q5a3()" class="listeningOption"><p class="letter">C.</p><p>earn 10,000 euros a month selling insects.</p></div>
+            <input type="text" style="display: none;" id="p2q5">
+        </div>
+        <div class="listeningOptionWindow">
+            <p><b>6.</b> Their friends and family ...</p>
+            <div id="p2q6a1" ontouchstart onclick="p2q6a1()" class="listeningOption"><p class="letter">A.</p><p>didn't think their business was a good idea.</p></div>
+            <div id="p2q6a2" ontouchstart onclick="p2q6a2()" class="listeningOption"><p class="letter">B.</p><p>thought their idea was cool.</p></div>
+            <div id="p2q6a3" ontouchstart onclick="p2q6a3()" class="listeningOption"><p class="letter">C.</p><p>wanted to try the burgers immediately.</p></div>
+            <input type="text" style="display: none;" id="p2q6">
+        </div>
+         <div class="listeningOptionWindow">
+            <p><b>7.</b> In Germany, ...</p>
+            <div id="p2q7a1" ontouchstart onclick="p2q7a1()" class="listeningOption"><p class="letter">A.</p><p>there are a few restaurants that sell these burgers.</p></div>
+            <div id="p2q7a2" ontouchstart onclick="p2q7a2()" class="listeningOption"><p class="letter">B.</p><p>these hamburgers cost between 12 and 17 euros.</p></div>
+            <div id="p2q7a3" ontouchstart onclick="p2q7a3()" class="listeningOption"><p class="letter">C.</p><p>it's still illegal to sell these burgers.</p></div>
+            <input type="text" style="display: none;" id="p2q7">
+        </div>
+    </div>
+    <div id="listeningPart3">
+        <h1>Part 3</h1>
+        <p style="font-weight: 800;">7 points, 1 per item.</p>
+        <p>You will hear a text about an underground city in Turkey. For questions <b>1-7</b>, choose the correct option. You will hear the recording twice. You now have <b>one minute</b> to read the task.</p>
+        <div class="audioPlayback">
+            <span id="timePlayed3">0:00</span>
+                <div id="progressBg3">
+                    <div id="playProgress3"></div>
+                </div>
+            <span id="soundDuration3">4:42</span>
+        </div>
+        <audio id="audio3" src="listening/listening3.mp3"></audio>
+        <div class="listeningOptionWindow">
+            <p><b>1.</b> The system of tunnels and caves in the Cappadocia region was first discovered 1,000 years ago.</p>
+            <div id="p3q1a1" ontouchstart onclick="p3q1a1()" class="listeningOption"><p class="letter">A.</p><p>True</p></div>
+            <div id="p3q1a2" ontouchstart onclick="p3q1a2()" class="listeningOption"><p class="letter">B.</p><p>False</p></div>
+            <input type="text" style="display: none;" id="p3q1">
+        </div>
+        <div class="listeningOptionWindow">
+            <p><b>2.</b> The city was discovered after a man's home was set on fire.</p>
+            <div id="p3q2a1" ontouchstart onclick="p3q2a1()" class="listeningOption"><p class="letter">A.</p><p>True</p></div>
+            <div id="p3q2a2" ontouchstart onclick="p3q2a2()" class="listeningOption"><p class="letter">B.</p><p>False</p></div>
+            <input type="text" style="display: none;" id="p3q2">
+        </div>
+        <div class="listeningOptionWindow">
+            <p><b>3.</b> The hidden city of Derinkuyu has 18 floors underground.</p>
+            <div id="p3q3a1" ontouchstart onclick="p3q3a1()" class="listeningOption"><p class="letter">A.</p><p>True</p></div>
+            <div id="p3q3a2" ontouchstart onclick="p3q3a2()" class="listeningOption"><p class="letter">B.</p><p>False</p></div>
+            <input type="text" style="display: none;" id="p3q3">
+        </div>
+        <div class="listeningOptionWindow">
+            <p><b>4.</b> The city was discovered by some explorers examining an excavation.</p>
+            <div id="p3q4a1" ontouchstart onclick="p3q4a1()" class="listeningOption"><p class="letter">A.</p><p>True</p></div>
+            <div id="p3q4a2" ontouchstart onclick="p3q4a2()" class="listeningOption"><p class="letter">B.</p><p>False</p></div>
+            <input type="text" style="display: none;" id="p3q4">
+        </div>
+        <div class="listeningOptionWindow">
+            <p><b>5.</b> The city was created during the Byzantine era to be the home of the people in the area.</p>
+            <div id="p3q5a1" ontouchstart onclick="p3q5a1()" class="listeningOption"><p class="letter">A.</p><p>True</p></div>
+            <div id="p3q5a2" ontouchstart onclick="p3q5a2()" class="listeningOption"><p class="letter">B.</p><p>False</p></div>
+            <input type="text" style="display: none;" id="p3q5">
+        </div>
+        <div class="listeningOptionWindow">
+            <p><b>6.</b> They had animals and schools in this city.</p>
+            <div id="p3q6a1" ontouchstart onclick="p3q6a1()" class="listeningOption"><p class="letter">A.</p><p>True</p></div>
+            <div id="p3q6a2" ontouchstart onclick="p3q6a2()" class="listeningOption"><p class="letter">B.</p><p>False</p></div>
+            <input type="text" style="display: none;" id="p3q6">
+        </div>
+        <div class="listeningOptionWindow">
+            <p><b>7.</b> There was enough space for 20,000 people.</p>
+            <div id="p3q7a1" ontouchstart onclick="p3q7a1()" class="listeningOption"><p class="letter">A.</p><p>True</p></div>
+            <div id="p3q7a2" ontouchstart onclick="p3q7a2()" class="listeningOption"><p class="letter">B.</p><p>False</p></div>
+            <input type="text" style="display: none;" id="p3q7">
+        </div>
+    </div>
+    <div id="speakingInfo">
+        <h1>SPEAKING COMPREHENSION TEST</h1>
+        <p style="font-weight: 800;">Duration: 30 minutes, 20 points</p>
+        <p>You will have to prepare a <b>3-4 minute</b> monologue.</p>
+        <p>You have <b>25 minutes</b> to prepare it.</p>
+        <p>Your speech recorded and graded by your teacher.</p>
+        <p>You may use the plan which can be accessed using the toolbar at the bottom of the screen.</p>
+        <p>You may (and should) take notes on the draft given.</p>
+        <p>When preparing your speech, be aware of the grading criteria which can be accessed using the toolbar at the bottom of the screen.</p>
+        <p style="font-weight: 800;">Once the time for the task expires, you will be immediately moved on to say your speech.</p>
+        <p class="clickContinueToContinue">To continue, click <span class="continueSpan">Continue <i class="fa-solid fa-arrow-right-long"></i></span></p>
+    </div>
+    <div id="speakingWindow">
+        <h1>Monologue</h1>
+        <p style="font-weight: 800;">20 points, 3-4 minutes, 25 minutes for preparation</p>
+        <p style="font-weight: 800;">Topic: Moving away from home</p>
+        <p>Talk on the topic by doing the tasks below the pictures.</p>
+        <img src="speaking/img1.png" alt="img1"><img src="speaking/img2.png" alt="img2">
+        <p>• Describe the pictures by discussing their similarities and differences in relation to the topic.</p>
+        <p>• Suggest several reasons why young people want to move away from their parents' homes and share an apartment with their friends.</p>
+        <p>• Give your opinion on how living independently teaches various skills and develops one's personality.</p>
+        <div id="speechPlanBg" onclick="openClosePlan()">
+            <div id="speechPlan">
+                <img src="speaking/plan.jpg" alt="speech plan">
+            </div>
+        </div>
+        <div id="gradingCriteriaBg" onclick="openCloseGrading()">
+            <div id="gradingCriteria">
+                <img src="speaking/grading.jpg" alt="grading criteria">
+            </div>
+        </div>
+    </div>
+    <div id="speechWindow">
+        <audio id="audioSpeaking" src="speaking/speaking.mp3"></audio>
+        <audio id="audioEnd" src="speaking/end.mp3"></audio>
+        <h1>Monologue</h1>
+        <p style="font-weight: 800;">20 points, 3-4 minutes</p>
+        <p style="font-weight: 800;">Topic: Moving away from home</p>
+        <p>Talk on the topic by doing the tasks below the pictures.</p>
+        <img src="speaking/img1.png" alt="img1"><img src="speaking/img2.png" alt="img2">
+        <p>• Describe the pictures by discussing their similarities and differences in relation to the topic.</p>
+        <p>• Suggest several reasons why young people want to move away from their parents' homes and share an apartment with their friends.</p>
+        <p>• Give your opinion on how living independently teaches various skills and develops one's personality.</p>
+        <p id="recordingSpeech" style="margin-top: 50px; display: none;"><i id="recordingIcon" class="fa-solid fa-compact-disc"></i> Recording your speech... <span style="font-weight: 800;" id="speechTime">0:00</span> / 4:00</p>
+        <p id="speechRecorded" style="margin-top: 50px; display: none;"><i class="fa-solid fa-compact-disc"></i> Speech recorded.</p>
+    </div>
+    <div id="results">
+        <h1>Results</h1>
+        <p>You received <span style="font-weight: 800;" id="totalPoints">00</span> points out of 20 (<span style="font-weight: 800;" id="totalPercentage">00 %</span>) in the listening test.</p>
+        <p>The results of your speaking task will be provided to you by your teacher.</p>
+        <p class="clickContinueToContinue">To review your results, click <span class="continueSpan">Continue <i class="fa-solid fa-arrow-right-long"></i></span></p>
+    </div>
+    <div id="overview">
+        <h1>Overview</h1>
+        <p><span style="font-weight: 800;" id="totalPoints2">00</span> / 20 (<span style="font-weight: 800;" id="totalPercentage2">00 %</span>)</p>
+
+
+
+        <p style="font-size: 25px; font-weight: 600;">Part 1</p>
+        <div class="resultsOptionWindow">
+            <p><b>1.</b> When is running out of fuel on a German motorway allowed?</p>
+            <div id="p1q1a1r" ontouchstart class="resultsOption" style="border-color: green; color: green;"><p class="letter">A.</p><p>Never.</p></div>
+            <div id="p1q1a2r" ontouchstart class="resultsOption"><p class="letter">B.</p><p>Only when it's an emergency.</p></div>
+            <div id="p1q1a3r" ontouchstart class="resultsOption"><p class="letter">C.</p><p>Only when you can prevent traffic congestion or an accident.</p></div>
+            <input type="text" style="display: none;" id="p1q1">
+        </div>
+        <div class="resultsOptionWindow">
+            <p><b>2.</b> What must you do before taking your car in Denmark?</p>
+            <div id="p1q2a1r" ontouchstart class="resultsOption"><p class="letter">A.</p><p>Check that the children are sitting safely.</p></div>
+            <div id="p1q2a2r" ontouchstart class="resultsOption"><p class="letter">B.</p><p>Check that your children are using their seats.</p></div>
+            <div id="p1q2a3r" ontouchstart class="resultsOption" style="border-color: green; color: green;"><p class="letter">C.</p><p>Check that there are no kids near your car.</p></div>
+            <input type="text" style="display: none;" id="p1q2">
+        </div>
+        <div class="resultsOptionWindow">
+            <p><b>3.</b> What is true in Spain?</p>
+            <div id="p1q3a1r" ontouchstart class="resultsOption"><p class="letter">A.</p><p>You can't wear sandals unless coming from the beach.</p></div>
+            <div id="p1q3a2r" ontouchstart class="resultsOption" style="border-color: green; color: green;"><p class="letter">B.</p><p>You must always wear safe footwear.</p></div>
+            <div id="p1q3a3r" ontouchstart class="resultsOption"><p class="letter">C.</p><p>You can wear comfortable shoes or no shoes at all.</p></div>
+            <input type="text" style="display: none;" id="p1q3">
+        </div>
+        <div class="resultsOptionWindow">
+            <p><b>4.</b> What does the video imply about the law in Alaska?</p>
+            <div id="p1q4a1r" ontouchstart class="resultsOption"><p class="letter">A.</p><p>You cannot carry a pet unless it's tied.</p></div>
+            <div id="p1q4a2r" ontouchstart class="resultsOption"><p class="letter">B.</p><p>You can't let your dog climb onto the roof of your car.</p></div>
+            <div id="p1q4a3r" ontouchstart class="resultsOption" style="border-color: green; color: green;"><p class="letter">C.</p><p>You mustn't carry your pet on the roof of your car.</p></div>
+            <input type="text" style="display: none;" id="p1q4">
+        </div>
+        <div class="resultsOptionWindow">
+            <p><b>5.</b> When can you drive in Manila?</p>
+            <div id="p1q5a1r" ontouchstart class="resultsOption" style="border-color: green; color: green;"><p class="letter">A.</p><p>It depends on the number on your number plate.</p></div>
+            <div id="p1q5a2r" ontouchstart class="resultsOption"><p class="letter">B.</p><p>If you can drive on Monday, you cannot drive on Tuesday.</p></div>
+            <div id="p1q5a3r" ontouchstart class="resultsOption"><p class="letter">C.</p><p>It depends on the colour of your number plate.</p></div>
+            <input type="text" style="display: none;" id="p1q5">
+        </div>
+        <div class="resultsOptionWindow">
+            <p><b>6.</b> In Thailand, you mustn't drive without a shirt ...</p>
+            <div id="p1q6a1r" ontouchstart class="resultsOption" style="border-color: green; color: green;"><p class="letter">A.</p><p>because it's not decent.</p></div>
+            <div id="p1q6a2r" ontouchstart class="resultsOption"><p class="letter">B.</p><p>unless it's very hot.</p></div>
+            <div id="p1q6a3r" ontouchstart class="resultsOption"><p class="letter">C.</p><p>unless your air conditioning is not working.</p></div>
+            <input type="text" style="display: none;" id="p1q6">
+        </div>
+
+
+        <p style="font-size: 25px; font-weight: 600; margin-top: 50px;">Part 2</p>
+        <div class="resultsOptionWindow">
+            <p><b>1.</b> The girl who tries the burger ...</p>
+            <div id="p2q1a1r" ontouchstart class="resultsOption" style="border-color: green; color: green;"><p class="letter">A.</p><p>thinks it's OK.</p></div>
+            <div id="p2q1a2r" ontouchstart class="resultsOption"><p class="letter">B.</p><p>thinks it's fantastic.</p></div>
+            <div id="p2q1a3r" ontouchstart class="resultsOption"><p class="letter">C.</p><p>has some friends who would love it.</p></div>
+            <input type="text" style="display: none;" id="p2q1">
+        </div>
+        <div class="resultsOptionWindow">
+            <p><b>2.</b> The manufacturers of the insects ...</p>
+            <div id="p2q2a1r" ontouchstart class="resultsOption"><p class="letter">A.</p><p>use insects that come from dead animals.</p></div>
+            <div id="p2q2a2r" ontouchstart class="resultsOption"><p class="letter">B.</p><p>have recently started breeding insects.</p></div>
+            <div id="p2q2a3r" ontouchstart class="resultsOption" style="border-color: green; color: green;"><p class="letter">C.</p><p>produce insects that are used by different industries.</p></div>
+            <input type="text" style="display: none;" id="p2q2">
+        </div>
+        <div class="resultsOptionWindow">
+            <p><b>3.</b> Which sentence is true?</p>
+            <div id="p2q3a1r" ontouchstart class="resultsOption" style="border-color: green; color: green;"><p class="letter">A.</p><p>Insect food is not very popular among Europeans.</p></div>
+            <div id="p2q3a2r" ontouchstart class="resultsOption"><p class="letter">B.</p><p>Very few people around the world eat insects.</p></div>
+            <div id="p2q3a3r" ontouchstart class="resultsOption"><p class="letter">C.</p><p>Around 2 million people in Europe eat insects every day.</p></div>
+            <input type="text" style="display: none;" id="p2q3">
+        </div>
+        <div class="resultsOptionWindow">
+            <p><b>4.</b> The larvae ...</p>
+            <div id="p2q4a1r" ontouchstart class="resultsOption"><p class="letter">A.</p><p>need a lot of water.</p></div>
+            <div id="p2q4a2r" ontouchstart class="resultsOption"><p class="letter">B.</p><p>contain 70% protein.</p></div>
+            <div id="p2q4a3r" ontouchstart class="resultsOption" style="border-color: green; color: green;"><p class="letter">C.</p><p>are frozen before being sold.</p></div>
+            <input type="text" style="display: none;" id="p2q4">
+        </div>
+        <div class="resultsOptionWindow">
+            <p><b>5.</b> The founders of the company ...</p>
+            <div id="p2q5a1r" ontouchstart class="resultsOption"><p class="letter">A.</p><p>employ a lot of people.</p></div>
+            <div id="p2q5a2r" ontouchstart class="resultsOption" style="border-color: green; color: green;"><p class="letter">B.</p><p>learned about eating insects during a trip.</p></div>
+            <div id="p2q5a3r" ontouchstart class="resultsOption"><p class="letter">C.</p><p>earn 10,000 euros a month selling insects.</p></div>
+            <input type="text" style="display: none;" id="p2q5">
+        </div>
+        <div class="resultsOptionWindow">
+            <p><b>6.</b> Their friends and family ...</p>
+            <div id="p2q6a1r" ontouchstart class="resultsOption" style="border-color: green; color: green;"><p class="letter">A.</p><p>didn't think their business was a good idea.</p></div>
+            <div id="p2q6a2r" ontouchstart class="resultsOption"><p class="letter">B.</p><p>thought their idea was cool.</p></div>
+            <div id="p2q6a3r" ontouchstart class="resultsOption"><p class="letter">C.</p><p>wanted to try the burgers immediately.</p></div>
+            <input type="text" style="display: none;" id="p2q6">
+        </div>
+         <div class="resultsOptionWindow">
+            <p><b>7.</b> In Germany, ...</p>
+            <div id="p2q7a1r" ontouchstart class="resultsOption"><p class="letter">A.</p><p>there are a few restaurants that sell these burgers.</p></div>
+            <div id="p2q7a2r" ontouchstart class="resultsOption"><p class="letter">B.</p><p>these hamburgers cost between 12 and 17 euros.</p></div>
+            <div id="p2q7a3r" ontouchstart class="resultsOption" style="border-color: green; color: green;"><p class="letter">C.</p><p>it's still illegal to sell these burgers.</p></div>
+            <input type="text" style="display: none;" id="p2q7">
+        </div>
+
+
+        <p style="font-size: 25px; font-weight: 600; margin-top: 50px;">Part 3</p>
+        <div class="resultsOptionWindow">
+            <p><b>1.</b> The system of tunnels and caves in the Cappadocia region was first discovered 1,000 years ago.</p>
+            <div id="p3q1a1r" ontouchstart class="resultsOption"><p class="letter">A.</p><p>True</p></div>
+            <div id="p3q1a2r" ontouchstart class="resultsOption" style="border-color: green; color: green;"><p class="letter">B.</p><p>False</p></div>
+            <input type="text" style="display: none;" id="p3q1">
+        </div>
+        <div class="resultsOptionWindow">
+            <p><b>2.</b> The city was discovered after a man's home was set on fire.</p>
+            <div id="p3q2a1r" ontouchstart class="resultsOption"><p class="letter">A.</p><p>True</p></div>
+            <div id="p3q2a2r" ontouchstart class="resultsOption" style="border-color: green; color: green;"><p class="letter">B.</p><p>False</p></div>
+            <input type="text" style="display: none;" id="p3q2">
+        </div>
+        <div class="resultsOptionWindow">
+            <p><b>3.</b> The hidden city of Derinkuyu has 18 floors underground.</p>
+            <div id="p3q3a1r" ontouchstart class="resultsOption" style="border-color: green; color: green;"><p class="letter">A.</p><p>True</p></div>
+            <div id="p3q3a2r" ontouchstart class="resultsOption"><p class="letter">B.</p><p>False</p></div>
+            <input type="text" style="display: none;" id="p3q3">
+        </div>
+        <div class="resultsOptionWindow">
+            <p><b>4.</b> The city was discovered by some explorers examining an excavation.</p>
+            <div id="p3q4a1r" ontouchstart class="resultsOption"><p class="letter">A.</p><p>True</p></div>
+            <div id="p3q4a2r" ontouchstart class="resultsOption" style="border-color: green; color: green;"><p class="letter">B.</p><p>False</p></div>
+            <input type="text" style="display: none;" id="p3q4">
+        </div>
+        <div class="resultsOptionWindow">
+            <p><b>5.</b> The city was created during the Byzantine era to be the home of the people in the area.</p>
+            <div id="p3q5a1r" ontouchstart class="resultsOption"><p class="letter">A.</p><p>True</p></div>
+            <div id="p3q5a2r" ontouchstart class="resultsOption" style="border-color: green; color: green;"><p class="letter">B.</p><p>False</p></div>
+            <input type="text" style="display: none;" id="p3q5">
+        </div>
+        <div class="resultsOptionWindow">
+            <p><b>6.</b> They had animals and schools in this city.</p>
+            <div id="p3q6a1r" ontouchstart class="resultsOption" style="border-color: green; color: green;"><p class="letter">A.</p><p>True</p></div>
+            <div id="p3q6a2r" ontouchstart class="resultsOption"><p class="letter">B.</p><p>False</p></div>
+            <input type="text" style="display: none;" id="p3q6">
+        </div>
+        <div class="resultsOptionWindow">
+            <p><b>7.</b> There was enough space for 20,000 people.</p>
+            <div id="p3q7a1r" ontouchstart class="resultsOption" style="border-color: green; color: green;"><p class="letter">A.</p><p>True</p></div>
+            <div id="p3q7a2r" ontouchstart class="resultsOption"><p class="letter">B.</p><p>False</p></div>
+            <input type="text" style="display: none;" id="p3q7">
+        </div>
+    </div>
+
+    <script src="https://kit.fontawesome.com/a11707644f.js" crossorigin="anonymous"></script>
+    <script src="script.js"></script>
+</body>
+</html>
