@@ -248,7 +248,7 @@ function startListening(){
         document.getElementById('loading2').style.opacity = '1';
         document.getElementById('loader2').style.animation = 'spin 0.8s linear infinite';
         document.getElementById('continue4').style.display = 'none';
-        const startingMinutes = 30;
+        const startingMinutes = 25.6;
         let time = startingMinutes * 60; //minutes * 60 seconds
         let refreshIntervalId = setInterval(updateCountdown, 1000); //update every 1 second
 
