@@ -17,7 +17,17 @@ body{
     height: 100vh;
 }
 ::-webkit-scrollbar {
-    width: 0;
+    width: 5px;
+}
+::-webkit-scrollbar-track {
+  background: #202020;
+}
+::-webkit-scrollbar-thumb {
+  background: #F5F5DC;
+  border-radius: 25px;
+}
+::-webkit-scrollbar-thumb:hover {
+  opacity: 0.7;
 }
 #loading{
     width: 100%;
