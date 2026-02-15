@@ -163,6 +163,20 @@ nav{
 nav h1{
     font-size: 20px;
 }
+#saving{
+    position: absolute;
+    left: 700px;
+    top: 17.5px;
+    display: none;
+    color: darkgrey;
+}
+#notSaved{
+    position: absolute;
+    left: 700px;
+    top: 17.5px;
+    display: none;
+    color: red;
+}
 #timeListening{
     position: absolute;
     right: 200px;

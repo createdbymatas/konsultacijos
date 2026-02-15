@@ -200,6 +200,13 @@ function begin(){
         puslapis.msRequestFullscreen();
     }
 
+    document.getElementById('saving').style.display = 'block';
+    document.getElementById('notSaved').style.display = 'none';
+    setTimeout(() => {
+        document.getElementById('saving').style.display = 'none';
+        document.getElementById('notSaved').style.display = 'block';
+    }, 3000);
+
     document.getElementById('loading2').style.display = 'flex';
     document.getElementById('continue3').style.pointerEvents = 'none';
     setTimeout(() => {
@@ -1449,8 +1456,6 @@ function toOverview(){
     setTimeout(() => {
         document.getElementById('results').style.display = 'none';
         document.getElementById('overview').style.display = 'block';
-        checkResults();
-        checkWrongResults();
     }, 1000);
     setTimeout(() => {
         document.getElementById('loading2').style.opacity = '0';
