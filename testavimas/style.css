@@ -1,0 +1,233 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Ancizar Sans", sans-serif;
+    -webkit-tap-highlight-color: transparent;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -o-user-select: none;
+    user-select: none;
+}
+body{
+    background-color: #202020;
+    overflow: hidden;
+    width: 100vw;
+    height: 100vh;
+}
+::-webkit-scrollbar {
+    width: 0;
+}
+#loading{
+    width: 100%;
+    height: 100%;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 30;
+    background-color: #202020;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: none;
+    opacity: 1;
+    cursor: wait;
+    transition: none;
+    transition: 0.2s;
+}
+#loading2{
+    width: 100%;
+    height: 100%;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 15;
+    background-color: #202020;
+    display: none;
+    justify-content: center;
+    align-items: center;
+    transition: none;
+    opacity: 0;
+    cursor: wait;
+    transition: none;
+    transition: 0.2s;
+}
+#loader{
+    width: 50px;
+    height: 50px;
+    border: 7px solid #606060;
+    border-top-color: #F5F5DC;
+    border-radius: 100%;
+    animation: spin 0.8s linear infinite;
+    transition: none;
+}
+#loader2{
+    width: 50px;
+    height: 50px;
+    border: 7px solid #606060;
+    border-top-color: #F5F5DC;
+    border-radius: 100%;
+    animation: spin 0.8s linear infinite;
+    transition: none;
+}
+@keyframes spin {
+    0%{
+        transform: rotate(0);
+    }
+    100%{
+        transform: rotate(360deg);
+    }
+}
+b{
+    font-weight: 800;
+}
+#ikeliama{
+    color: #F5F5DC;
+    position: absolute;
+    font-size: 20px;
+    margin-top: 120px;
+    transition: none;
+}
+#ikeliama2{
+    color: #F5F5DC;
+    position: absolute;
+    font-size: 20px;
+    margin-top: 120px;
+    transition: none;
+}
+
+#fullScreenWarning{
+    width: 100%;
+    height: 100%;
+    display: none;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 21;
+    background-color: #202020;
+}
+.ban{
+    color: red;
+    font-size: 70px;
+}
+#fullScreenWarning h2{
+    font-weight: 600;
+    font-size: 30px;
+    margin-top: 15px;
+    color: #F5F5DC;
+
+}
+#fullScreenWarning p{
+    font-size: 20px;
+    color: #F5F5DC;
+    margin-top: 5px;
+}
+#fullScreenWarning button{
+    margin-top: 15px;
+}
+
+nav{
+    width: 100%;
+    height: auto;
+    color: #F5F5DC;
+    padding: 15px;
+    padding-right: 170px;
+    border-bottom: 1px solid #F5F5DC;
+    background-color: #202020;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 22;
+}
+nav h1{
+    font-size: 20px;
+}
+#user{
+    position: absolute;
+    right: 15px;
+    top: 17.5px;
+    transition: 0.3s;
+    font-weight: 400;
+    font-size: 17px;
+}
+#chooseTest{
+    color: #F5F5DC;
+    font-size: 20px;
+    margin-top: 70px;
+    margin-left: 15px;
+    margin-bottom: 15px;
+}
+.testOption{
+    color: #F5F5DC;
+    background-color: #323232;
+    padding: 15px;
+    border-radius: 25px;
+    width: 300px;
+    cursor: pointer;
+    margin-left: 15px;
+    transition: 0.3s;
+    display: inline-block;
+}
+.testOption:hover{
+    opacity: 0.7;
+}
+.testOption:active{
+    opacity: 0.2;
+}
+.testOption h2{
+    font-size: 25px;
+}
+.testOption p {
+    font-size: 17px;
+}
+
+section{
+    width: 100%;
+    height: 55px;
+    color: #F5F5DC;
+    border-top: 1px solid #F5F5DC;
+    background-color: #202020;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    z-index: 20;
+    padding-left: 15px;
+    padding-right: 15px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+button{
+    width: auto;
+    height: auto;
+    padding: 10px;
+    padding-left: 15px;
+    padding-right: 15px;
+    background-color: #F5F5DC;
+    color: #202020;
+    font-size: 17px;
+    border-radius: 25px;
+    border: none;
+    transition: 0.3s;
+    cursor: pointer;
+}
+button:hover{
+    opacity: 0.7;
+    transform: scale(1.05);
+}
+button:active{
+    opacity: 0.2;
+}
+
