@@ -10,7 +10,140 @@ function loaded(){
 
 
 
+if (document.addEventListener)
+{
+    document.addEventListener('fullscreenchange', exitHandler, false);
+    document.addEventListener('mozfullscreenchange', exitHandler, false);
+    document.addEventListener('MSFullscreenChange', exitHandler, false);
+    document.addEventListener('webkitfullscreenchange', exitHandler, false);
+}
 
+function exitHandler()
+{
+    if (!document.webkitIsFullScreen && !document.mozFullScreen && !document.msFullscreenElement)
+    {
+        document.getElementById("fullScreenWarning").style.display = "flex";
+        setTimeout(() => {
+            if (document.getElementById("fullScreenWarning").style.display === "flex" && document.getElementById("warningTime").innerHTML === "10 sekundžių")
+            {
+                document.getElementById("warningTime").innerHTML = "9 sekundžių";
+            }
+            else{
+
+            }
+        }, 1000);
+        setTimeout(() => {
+            if (document.getElementById("fullScreenWarning").style.display === "flex" && document.getElementById("warningTime").innerHTML === "9 sekundžių")
+            {
+                document.getElementById("warningTime").innerHTML = "8 sekundžių";
+            }
+            else{
+
+            }
+        }, 2000);
+        setTimeout(() => {
+            if (document.getElementById("fullScreenWarning").style.display === "flex" && document.getElementById("warningTime").innerHTML === "8 sekundžių")
+            {
+        document.getElementById("warningTime").innerHTML = "7 sekundžių";
+            }
+            else{
+
+            }
+        }, 3000);
+        setTimeout(() => {
+            if (document.getElementById("fullScreenWarning").style.display === "flex" && document.getElementById("warningTime").innerHTML === "7 sekundžių")
+                {
+                document.getElementById("warningTime").innerHTML = "6 sekundžių";
+            }
+            else{
+
+            }
+        }, 4000);
+        setTimeout(() => {
+            if (document.getElementById("fullScreenWarning").style.display === "flex" && document.getElementById("warningTime").innerHTML === "6 sekundžių")
+            {
+                document.getElementById("warningTime").innerHTML = "5 sekundžių";
+            }
+            else{
+
+            }
+        }, 5000);
+        setTimeout(() => {
+            if (document.getElementById("fullScreenWarning").style.display === "flex" && document.getElementById("warningTime").innerHTML === "5 sekundžių")
+            {
+                document.getElementById("warningTime").innerHTML = "4 sekundžių";
+            }
+            else{
+
+            }
+        }, 6000);
+        setTimeout(() => {
+            if (document.getElementById("fullScreenWarning").style.display === "flex" && document.getElementById("warningTime").innerHTML === "4 sekundžių")
+            {
+                document.getElementById("warningTime").innerHTML = "3 sekundžių";
+            }
+            else{
+
+            }
+        }, 7000);
+        setTimeout(() => {
+            if (document.getElementById("fullScreenWarning").style.display === "flex" && document.getElementById("warningTime").innerHTML === "3 sekundžių")
+            {
+                document.getElementById("warningTime").innerHTML = "2 sekundžių";
+            }
+            else{
+
+            }
+        }, 8000);
+        setTimeout(() => {
+            if (document.getElementById("fullScreenWarning").style.display === "flex" && document.getElementById("warningTime").innerHTML === "2 sekundžių")
+            {
+                document.getElementById("warningTime").innerHTML = "1 sekundės";
+            }
+            else{
+
+            }
+        }, 9000);
+        setTimeout(() => {
+            if (document.getElementById("fullScreenWarning").style.display === "flex" && document.getElementById("warningTime").innerHTML === "1 sekundės")
+            {
+                document.getElementById("warningTime").innerHTML = "0 sekundžių";
+            }
+            else{
+
+            }
+        }, 10000);
+        setTimeout(() => {
+            if (document.getElementById("fullScreenWarning").style.display === "flex" && document.getElementById("warningTime").innerHTML === "0 sekundžių")
+            {
+                document.getElementById("fullScreenWarning").style.display = "none";
+                document.getElementById("warningTime").innerHTML = "10 sekundžių";
+                finish();
+                backToFullscreen();
+            }
+            else{
+
+            }
+        }, 11000);
+    }
+}
+function backToFullscreen(){
+    let puslapis = document.documentElement;
+
+    if (puslapis.requestFullscreen) {
+        puslapis.requestFullscreen();
+    } else if (puslapis.webkitRequestFullscreen) { /* Safari */
+        puslapis.webkitRequestFullscreen();
+    } else if (puslapis.msRequestFullscreen) { /* IE11 */
+        puslapis.msRequestFullscreen();
+    }
+    setTimeout(() => {
+        document.getElementById("fullScreenWarning").style.display = "none";
+    }, 100);
+    setTimeout(() => {
+        document.getElementById("warningTime").innerHTML = "10 sekundžių";
+    }, 110);
+}
 
 
 
