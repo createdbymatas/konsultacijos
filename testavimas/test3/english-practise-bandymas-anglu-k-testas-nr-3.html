@@ -1,0 +1,833 @@
+<!DOCTYPE html>
+<html lang="lt">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>© FINBONK testavimo aplinka | „English practise B1 | Bandymas - anglų k. (testas nr. 3)“</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Ancizar+Sans:ital,wght@0,100..1000;1,100..1000&display=swap" rel="stylesheet">
+    <meta property="og:image" content="https://raw.githubusercontent.com/createdbymatas/finbonk/refs/heads/main/thumbnail.jpg">
+    <meta property="og:image:type" content="image/jpg">
+    <meta property="og:image:width" content="500">
+    <meta property="og:image:height" content="500">
+    <meta property="og:title" content="© FINBONK">
+    <meta property="og:description" content="Created by Matas">
+    <link rel="apple-touch-icon" href="thumbnail.jpg">
+    <link rel="shortcut icon" type="image/png" href="favicon.ico">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body onload="loaded()">
+    <div id="loading">
+        <div id="loader"></div>
+        <p id="ikeliama">Įkeliama</p>
+    </div>
+    <div id="loading2">
+        <div id="loader2"></div>
+        <p id="ikeliama2">Įkeliama</p>
+    </div>
+
+    <div id="fullScreenWarning">
+        <i class="fa-solid fa-ban ban"></i>
+        <h2>Sistemos pažeidimas</h2>
+        <p><i>Išjungtas pilno ekrano režimas.</i></p>
+        <p>Negrįžus į pilno ekrano režimą, patikrinimas bus nutrauktas po <b id="warningTime">10 sekundžių</b>.</p>
+        <button onclick="backToFullscreen()">Grįžti į pilno ekrano režimą <i class="fa-solid fa-chevron-right"></i></button>
+    </div>
+    <div id="lostConnectionWarning">
+        <i class="fa-solid fa-link excl"></i>
+        <h2>Sistemos klaida</h2>
+        <p><i>Nutrūko ryšys su testavimo sistema.</i></p>
+        <p>Bandome atstatyti ryšį, prašome palaukti...</p>
+        <p style="margin-bottom: 15px; color: red;">Neatnaujink šio lango.</p>
+        <div id="loader3"></div>
+    </div>
+
+    <nav>
+        <h1>© FINBONK testavimo aplinka | „English practise B1 | Bandymas - anglų k. (testas nr. 3)“</h1>
+        <p id="saving"><i class="fa-solid fa-cloud-arrow-up"></i> saugojama debesyje...</p>
+        <p id="notSaved"><i class="fa-regular fa-rectangle-xmark"></i> debesyje neišsaugota</p>
+        <p id="timeListening"><i class="fa-regular fa-clock"></i> <span style="font-weight: 800;" id="timeRemainingListening">00:00</span></p>
+        <p id="timeReading"><i class="fa-regular fa-clock"></i> <span style="font-weight: 800;" id="timeRemainingReading">00:00</span></p>
+        <h1 id="user"><i class="fa-regular fa-circle-user"></i> Ieva Kasparavičiūtė</h1>
+    </nav>
+    <section>
+        <button id="dummyBtn" style="opacity: 0; pointer-events: none;" ontouchstart></button>
+        <button id="continue1" onclick="start()" ontouchstart>Tęsti <i class="fa-solid fa-arrow-right-long"></i></button>
+        <button style="display: none;" id="continueFullScreen" onclick="fullScreenInfo()" ontouchstart><i class="fa-regular fa-circle-check"></i> Gerai</button>
+        <button style="display: none;" id="continue2" onclick="toImportantInfo()" ontouchstart>Continue <i class="fa-solid fa-arrow-right-long"></i></button>
+        <button style="display: none;" id="continue3" onclick="begin()" ontouchstart>Begin <i class="fa-solid fa-arrow-right-long"></i></button>
+        <button style="display: none;" id="continue4" onclick="startListening()" ontouchstart>Continue <i class="fa-solid fa-arrow-right-long"></i></button>
+        <button style="display: none;" id="continue5" onclick="startReading()" ontouchstart>Continue <i class="fa-solid fa-arrow-right-long"></i></button>
+        <button style="display: none;" id="continue6" onclick="toOverview()" ontouchstart>Tęsti <i class="fa-solid fa-arrow-right-long"></i></button>
+
+        <button style="display: none;" id="backToPart1Btn" onclick="RbackToPart1()" ontouchstart><i class="fa-solid fa-arrow-left-long"></i> Back to Part 1</button>
+        <button style="display: none;" id="backToPart2Btn" onclick="RbackToPart2()" ontouchstart><i class="fa-solid fa-arrow-left-long"></i> Back to Part 2</button>
+        <button style="display: none;" id="goToPart2Btn" onclick="RgoToPart2()" ontouchstart>Go to Part 2 <i class="fa-solid fa-arrow-right-long"></i></button>
+        <button style="display: none;" id="goToPart3Btn" onclick="RgoToPart3()" ontouchstart>Go to Part 3 <i class="fa-solid fa-arrow-right-long"></i></button>
+        <button style="display: none;" id="submitBtn" onclick="submit()" ontouchstart>Submit <i class="fa-regular fa-paper-plane"></i></button>
+    </section>
+
+    <div id="start">
+        <h1>© FINBONK testavimo aplinka</h1>
+        <p>Labas, Ieva Kasparavičiūtė !</p>
+        <p>Norėdama(s) pradėti testą <i>„English practise B1 | Bandymas - anglų k. (testas nr. 3)“</i>, spausk <span class="continueSpan">Tęsti <i class="fa-solid fa-arrow-right-long"></i></span></p>
+    </div>
+    <div id="fullScreenInfo">
+        <h1><i class="fa-solid fa-arrow-pointer"></i> SVARBU</h1>
+        <p>Patikrinimas turi būti atliekamas pilno ekrano režime. Išeiti iš pilno ekrano režimo patikrinimo metu <b>draudžiama</b>.</p>
+        <p>Jei sutinki ir nori tęsti, spausk <span class="continueSpan"><i class="fa-regular fa-circle-check"></i> Gerai</span></p>
+    </div>
+    <div id="infoWindow">
+        <h1>English practise B1 | Bandymas - anglų k. (testas nr. 3)</h1>
+        <p style="margin-bottom: 5px;">The test consists of two parts:</p>
+        <p style="margin-bottom: 5px;">• listening task (25 minutes)</p>
+        <p>• reading task (35 minutes)</p>
+        <p>The total duration of the test is <b>60 minutes</b>. After the time expires, you will no longer be able to complete the tasks.</p>
+        <p>The total number of points for the test tasks is <b>40</b>.</p>
+        <p class="clickContinueToContinue">To continue, click <span class="continueSpan">Continue <i class="fa-solid fa-arrow-right-long"></i></span></p>
+    </div>
+    <div id="infoWindow2">
+        <h1>IMPORTANT INFORMATION</h1>
+        <p style="font-weight: 800;">Please read all the information provided here carefully, as you will not be allowed to return to this window.</p>
+        <p style="color: red;">Do not refresh this window as the progress and results of this test are not saved.</p>
+        <p>Some tasks may not fit in the computer window, so review the task using the vertical scroll bar or your computer mouse.</p>
+        <p>The remaining test time will always be displayed in the upper right corner of the screen, next to your name.</p>
+        <p>The following tools may be used during the test: a draft (provided by the teacher), a pen, a pencil, an eraser, highlighters, water bottle.</p>
+        <p>During the test, the use of smart devices (including mobile phones) and other external devices is <b>prohibited</b>.</p>
+        <p>During the test, if necessary, you may go to the toilet for no more than 5 minutes, but the remaining time is not interrupted. The teacher must be informed about the exit, and will note this information in the execution protocol.</p>
+        <p>The system records violations. If the number of possible violations exceeds the limit, the <b>test may be terminated</b>.</p>
+        <p style="font-weight: 800;">GOOD LUCK !</p>
+        <p class="clickContinueToContinue">To begin, click <span class="continueSpan">Begin <i class="fa-solid fa-arrow-right-long"></i></span></p>
+    </div>
+    <div id="listeningInfo">
+        <h1>LISTENING COMPREHENSION TEST</h1>
+        <p style="font-weight: 800;">Duration: 25 minutes, 20 points</p>
+        <p style="font-weight: 800;">You will be automatically moved to next tasks and submission after time expires and you will not be able to return to the previous task.</p>
+        <p>You will hear all the recordings twice. Each recording will start automatically.</p>
+        <p>You will not be able to stop or pause the recording.</p>
+        <p style="font-weight: 800;">Once the task is completed, you will be immediately moved on to the next one.</p>
+        <p class="clickContinueToContinue">To continue, click <span class="continueSpan">Continue <i class="fa-solid fa-arrow-right-long"></i></span></p>
+    </div>
+    <div id="listeningPart1">
+        <h1>Part 1</h1>
+        <p style="font-weight: 800;">8 points, 1 per item.</p>
+        <p>Listen to four people talking about things they did and now regret. For questions <b>1–8</b>, choose the correct answer (A, B, or C). You will hear the recording twice. You now have <b>one minute</b> to read the task.</p>
+        <div class="audioPlayback">
+            <i class="fa-regular fa-file-audio"></i>
+            <span id="timePlayed1">0:00</span>
+                <div id="progressBg1">
+                    <div id="playProgress1"></div>
+                </div>
+            <span id="soundDuration1">10:01</span>
+        </div>
+        <audio id="audio1" src="listening/listening1.mp3"></audio>
+        <div class="listeningOptionWindow">
+            <p><b>1.</b> Which of these things did Emma do?</p>
+            <div id="p1q1a1" ontouchstart onclick="p1q1a1()" class="listeningOption"><p class="letter">A.</p><p>Leave home early</p></div>
+            <div id="p1q1a2" ontouchstart onclick="p1q1a2()" class="listeningOption"><p class="letter">B.</p><p>Take a train</p></div>
+            <div id="p1q1a3" ontouchstart onclick="p1q1a3()" class="listeningOption"><p class="letter">C.</p><p>Make a good impression with her interviewer</p></div>
+            <input type="text" style="display: none;" id="p1q1">
+        </div>
+        <div class="listeningOptionWindow">
+            <p><b>2.</b> Which of these things did Emma NOT do?</p>
+            <div id="p1q2a1" ontouchstart onclick="p1q2a1()" class="listeningOption"><p class="letter">A.</p><p>Book a taxi</p></div>
+            <div id="p1q2a2" ontouchstart onclick="p1q2a2()" class="listeningOption"><p class="letter">B.</p><p>Pack her things in the morning</p></div>
+            <div id="p1q2a3" ontouchstart onclick="p1q2a3()" class="listeningOption"><p class="letter">C.</p><p>Reschedule the interview</p></div>
+            <input type="text" style="display: none;" id="p1q2">
+        </div>
+        <div class="listeningOptionWindow">
+            <p><b>3.</b> Which of these things did Tyler do?</p>
+            <div id="p1q3a1" ontouchstart onclick="p1q3a1()" class="listeningOption"><p class="letter">A.</p><p>Listen to his friend</p></div>
+            <div id="p1q3a2" ontouchstart onclick="p1q3a2()" class="listeningOption"><p class="letter">B.</p><p>Raise his voice</p></div>
+            <div id="p1q3a3" ontouchstart onclick="p1q3a3()" class="listeningOption"><p class="letter">C.</p><p>Take a step back</p></div>
+            <input type="text" style="display: none;" id="p1q3">
+        </div>
+        <div class="listeningOptionWindow">
+            <p><b>4.</b> Which of these things did Tyler NOT do?</p>
+            <div id="p1q4a1" ontouchstart onclick="p1q4a1()" class="listeningOption"><p class="letter">A.</p><p>Misunderstand his friend</p></div>
+            <div id="p1q4a2" ontouchstart onclick="p1q4a2()" class="listeningOption"><p class="letter">B.</p><p>Have patience</p></div>
+            <div id="p1q4a3" ontouchstart onclick="p1q4a3()" class="listeningOption"><p class="letter">C.</p><p>Apologise several times</p></div>
+            <input type="text" style="display: none;" id="p1q4">
+        </div>
+        <div class="listeningOptionWindow">
+            <p><b>5.</b> Which of these things did James do?</p>
+            <div id="p1q5a1" ontouchstart onclick="p1q5a1()" class="listeningOption"><p class="letter">A.</p><p>See that her colleague was struggling</p></div>
+            <div id="p1q5a2" ontouchstart onclick="p1q5a2()" class="listeningOption"><p class="letter">B.</p><p>Ask his colleague is she needed support</p></div>
+            <div id="p1q5a3" ontouchstart onclick="p1q5a3()" class="listeningOption"><p class="letter">C.</p><p>Learn something from helping her</p></div>
+            <input type="text" style="display: none;" id="p1q5">
+        </div>
+        <div class="listeningOptionWindow">
+            <p><b>6.</b> Which of these things did James NOT do?</p>
+            <div id="p1q6a1" ontouchstart onclick="p1q6a1()" class="listeningOption"><p class="letter">A.</p><p>Ignore his colleague</p></div>
+            <div id="p1q6a2" ontouchstart onclick="p1q6a2()" class="listeningOption"><p class="letter">B.</p><p>Think someone would help her</p></div>
+            <div id="p1q6a3" ontouchstart onclick="p1q6a3()" class="listeningOption"><p class="letter">C.</p><p>Speak to her</p></div>
+            <input type="text" style="display: none;" id="p1q6">
+        </div>
+        <div class="listeningOptionWindow">
+            <p><b>7.</b> Which of these things did Maya do?</p>
+            <div id="p1q7a1" ontouchstart onclick="p1q7a1()" class="listeningOption"><p class="letter">A.</p><p>Stay home</p></div>
+            <div id="p1q7a2" ontouchstart onclick="p1q7a2()" class="listeningOption"><p class="letter">B.</p><p>Prioritize her family</p></div>
+            <div id="p1q7a3" ontouchstart onclick="p1q7a3()" class="listeningOption"><p class="letter">C.</p><p>Go there for a couple of hours</p></div>
+            <input type="text" style="display: none;" id="p1q7">
+        </div>
+        <div class="listeningOptionWindow">
+            <p><b>8.</b> Which of these things did Maya NOT do?</p>
+            <div id="p1q8a1" ontouchstart onclick="p1q8a1()" class="listeningOption"><p class="letter">A.</p><p>Get some rest</p></div>
+            <div id="p1q8a2" ontouchstart onclick="p1q8a2()" class="listeningOption"><p class="letter">B.</p><p>Have regrets</p></div>
+            <div id="p1q8a3" ontouchstart onclick="p1q8a3()" class="listeningOption"><p class="letter">C.</p><p>Make time for the event</p></div>
+            <input type="text" style="display: none;" id="p1q8">
+        </div>
+    </div>
+    <div id="listeningPart2">
+        <h1>Part 2</h1>
+        <p style="font-weight: 800;">5 points, 1 per item.</p>
+        <p>Listen about the ecocapsule, a new sustainable invention. For questions <b>1–5</b>, decide if the statements are true or false. You will hear the recording twice. You now have <b>40 seconds</b> to read the task.</p>
+        <div class="audioPlayback">
+            <i class="fa-regular fa-file-audio"></i>
+            <span id="timePlayed2">0:00</span>
+                <div id="progressBg2">
+                    <div id="playProgress2"></div>
+                </div>
+            <span id="soundDuration2">4:56</span>
+        </div>
+        <audio id="audio2" src="listening/listening2.mp3"></audio>
+        <div class="listeningOptionWindow">
+            <p><b>1.</b> The Ecocapsule was designed to be a self-sustaining permanent home.</p>
+            <div id="p2q1a1" ontouchstart onclick="p2q1a1()" class="listeningOption"><p class="letter">A.</p><p>True</p></div>
+            <div id="p2q1a2" ontouchstart onclick="p2q1a2()" class="listeningOption"><p class="letter">B.</p><p>False</p></div>
+            <input type="text" style="display: none;" id="p2q1">
+        </div>
+        <div class="listeningOptionWindow">
+            <p><b>2.</b> The Ecocapsule pretends to be as small as possible, but letting the owners have enough space for their things.</p>
+            <div id="p2q2a1" ontouchstart onclick="p2q2a1()" class="listeningOption"><p class="letter">A.</p><p>True</p></div>
+            <div id="p2q2a2" ontouchstart onclick="p2q2a2()" class="listeningOption"><p class="letter">B.</p><p>False</p></div>
+            <input type="text" style="display: none;" id="p2q2">
+        </div>
+        <div class="listeningOptionWindow">
+            <p><b>3.</b> The Ecocapsule offers enough energy for human necessities, although may not be enough when the weather is not suitable.</p>
+            <div id="p2q3a1" ontouchstart onclick="p2q3a1()" class="listeningOption"><p class="letter">A.</p><p>True</p></div>
+            <div id="p2q3a2" ontouchstart onclick="p2q3a2()" class="listeningOption"><p class="letter">B.</p><p>False</p></div>
+            <input type="text" style="display: none;" id="p2q3">
+        </div>
+        <div class="listeningOptionWindow">
+            <p><b>4.</b> The round shape of the Ecocapsule makes collecting water easier.</p>
+            <div id="p2q4a1" ontouchstart onclick="p2q4a1()" class="listeningOption"><p class="letter">A.</p><p>True</p></div>
+            <div id="p2q4a2" ontouchstart onclick="p2q4a2()" class="listeningOption"><p class="letter">B.</p><p>False</p></div>
+            <input type="text" style="display: none;" id="p2q4">
+        </div>
+        <div class="listeningOptionWindow">
+            <p><b>5.</b> The Ecocapsule can be transported cheaply all around the world.</p>
+            <div id="p2q5a1" ontouchstart onclick="p2q5a1()" class="listeningOption"><p class="letter">A.</p><p>True</p></div>
+            <div id="p2q5a2" ontouchstart onclick="p2q5a2()" class="listeningOption"><p class="letter">B.</p><p>False</p></div>
+            <input type="text" style="display: none;" id="p2q5">
+        </div>
+    </div>
+    <div id="listeningPart3">
+        <h1>Part 3</h1>
+        <p style="font-weight: 800;">7 points, 1 per item.</p>
+        <p>Listen to a radio interview with a forensic scientist. For questions <b>1–7</b>, choose the correct answer. You will hear the recording twice. You now have <b>one minute</b> to read the task.</p>
+        <div class="audioPlayback">
+            <i class="fa-regular fa-file-audio"></i>
+            <span id="timePlayed3">0:00</span>
+                <div id="progressBg3">
+                    <div id="playProgress3"></div>
+                </div>
+            <span id="soundDuration3">9:15</span>
+        </div>
+        <audio id="audio3" src="listening/listening3.mp3"></audio>
+        <div class="listeningOptionWindow">
+            <p><b>1.</b> What happened in the case Dr. Carter described?</p>
+            <div id="p3q1a1" ontouchstart onclick="p3q1a1()" class="listeningOption"><p class="letter">A.</p><p>Someone wanted to rob and kill the victim.</p></div>
+            <div id="p3q1a2" ontouchstart onclick="p3q1a2()" class="listeningOption"><p class="letter">B.</p><p>The perpetrator tried to rob the victim but failed.</p></div>
+            <div id="p3q1a3" ontouchstart onclick="p3q1a3()" class="listeningOption"><p class="letter">C.</p><p>The perpetrator didn't try to rob the victim.</p></div>
+            <input type="text" style="display: none;" id="p3q1">
+        </div>
+        <div class="listeningOptionWindow">
+            <p><b>2.</b> What did the killer do on the night of the murder?</p>
+            <div id="p3q2a1" ontouchstart onclick="p3q2a1()" class="listeningOption"><p class="letter">A.</p><p>He only took worthless items.</p></div>
+            <div id="p3q2a2" ontouchstart onclick="p3q2a2()" class="listeningOption"><p class="letter">B.</p><p>He pretended to be a burglar.</p></div>
+            <div id="p3q2a3" ontouchstart onclick="p3q2a3()" class="listeningOption"><p class="letter">C.</p><p>He didn't find any valuable items.</p></div>
+            <input type="text" style="display: none;" id="p3q2">
+        </div>
+        <div class="listeningOptionWindow">
+            <p><b>3.</b> What did they do during the investigation?</p>
+            <div id="p3q3a1" ontouchstart onclick="p3q3a1()" class="listeningOption"><p class="letter">A.</p><p>They started by eliminating possible suspects.</p></div>
+            <div id="p3q3a2" ontouchstart onclick="p3q3a2()" class="listeningOption"><p class="letter">B.</p><p>They conducted DNA tests on everyone close to the victim.</p></div>
+            <div id="p3q3a3" ontouchstart onclick="p3q3a3()" class="listeningOption"><p class="letter">C.</p><p>They tried to find witnesses in the neighbourhood.</p></div>
+            <input type="text" style="display: none;" id="p3q3">
+        </div>
+        <div class="listeningOptionWindow">
+            <p><b>4.</b> What led the investigators to think the suspect was a hired hitman?</p>
+            <div id="p3q4a1" ontouchstart onclick="p3q4a1()" class="listeningOption"><p class="letter">A.</p><p>Security cameras.</p></div>
+            <div id="p3q4a2" ontouchstart onclick="p3q4a2()" class="listeningOption"><p class="letter">B.</p><p>The autopsy.</p></div>
+            <div id="p3q4a3" ontouchstart onclick="p3q4a3()" class="listeningOption"><p class="letter">C.</p><p>Phone records.</p></div>
+            <input type="text" style="display: none;" id="p3q4">
+        </div>
+        <div class="listeningOptionWindow">
+            <p><b>5.</b> What helped investigators identify the suspect?</p>
+            <div id="p3q5a1" ontouchstart onclick="p3q5a1()" class="listeningOption"><p class="letter">A.</p><p>The victim's wife's phone records.</p></div>
+            <div id="p3q5a2" ontouchstart onclick="p3q5a2()" class="listeningOption"><p class="letter">B.</p><p>The security cameras in the neighborhood.</p></div>
+            <div id="p3q5a3" ontouchstart onclick="p3q5a3()" class="listeningOption"><p class="letter">C.</p><p>Fingerprints found in the house.</p></div>
+            <input type="text" style="display: none;" id="p3q5">
+        </div>
+        <div class="listeningOptionWindow">
+            <p><b>6.</b> Which is true about the trial?</p>
+            <div id="p3q6a1" ontouchstart onclick="p3q6a1()" class="listeningOption"><p class="letter">A.</p><p>The killer and the victim's wife were sentenced to 25 years in prison.</p></div>
+            <div id="p3q6a2" ontouchstart onclick="p3q6a2()" class="listeningOption"><p class="letter">B.</p><p>The killer will spend the rest of his life in prison.</p></div>
+            <div id="p3q6a3" ontouchstart onclick="p3q6a3()" class="listeningOption"><p class="letter">C.</p><p>The wife's sentence was reduced because of a lack of evidence.</p></div>
+            <input type="text" style="display: none;" id="p3q6">
+        </div>
+        <div class="listeningOptionWindow">
+            <p><b>7.</b> What was the killer's main mistake?</p>
+            <div id="p3q7a1" ontouchstart onclick="p3q7a1()" class="listeningOption"><p class="letter">A.</p><p>He didn't steal anything.</p></div>
+            <div id="p3q7a2" ontouchstart onclick="p3q7a2()" class="listeningOption"><p class="letter">B.</p><p>He used a gun.</p></div>
+            <div id="p3q7a3" ontouchstart onclick="p3q7a3()" class="listeningOption"><p class="letter">C.</p><p>He parked his car in front of the house.</p></div>
+            <input type="text" style="display: none;" id="p3q7">
+        </div>
+    </div>
+    <div id="readingInfo">
+        <h1>READING COMPREHENSION TEST</h1>
+        <p style="font-weight: 800;">Duration: 35 minutes, 20 points</p>
+        <p style="font-weight: 800;">After submitting your answers, you will not be able to go back to correct or change them, so only click the <span class="continueSpan">Submit <i class="fa-regular fa-paper-plane"></i></span> button once you're sure you've completed the tasks.</p>
+        <p>You will be able to go back and forth between parts using the buttons <span class="continueSpan"><i class="fa-solid fa-arrow-left-long"></i> Back to Part #</span> and <span class="continueSpan">Go to Part # <i class="fa-solid fa-arrow-right-long"></i></span> in the toolbar at the bottom of the screen.</p>
+        <p>You can start with the part of your choice.</p>
+        <p>You will be able to navigate between the text and the questions separately.</p>
+        <p>Once the time expires, you will not be able to correct or change your answers.</p>
+        <p class="clickContinueToContinue">To continue, click <span class="continueSpan">Continue <i class="fa-solid fa-arrow-right-long"></i></span></p>
+    </div>
+    <div id="readingPart1">
+        <div class="readingPartText">
+            <h1>Part 1</h1>
+            <p style="font-weight: 800;">7 points, 1 per item.</p>
+            <p>Read a text about home design and answer the questions. For questions <b>1–7</b>, choose the correct answer.</p>
+            <p style="margin-top: 20px; font-weight: 700;">Welcome to the home of the future</p>
+            <p>The 2009 British Homes Awards challenged the industry to design a house that can adapt to different life stages.</p>
+            <p>The participants were asked to rethink the construction and design of individual homes, so that they were easily adaptable to less mobile inhabitants, and also to create communities in which ageing occupants could continue to enjoy shared amenities.</p>
+            <p>The top design also had to be attractive to its potential buyers, because the competition was put to the public vote.</p>
+            <p>The winner, gaining 12,000 votes from Mail on Sunday readers, was the strikingly modern SunnySideUp, designed by Kosi Architects. Here are its three main features:</p>
+            <p style="font-weight: 600; font-style: italic;">1. Upside Down House</p>
+            <p>The architects took as a starting point the accepted norm for a house – rows of houses facing onto streets crammed with cars, with living rooms on the ground floor and bedrooms above. Then they scrapped it.</p>
+            <p>They ended up with the living room, dining room and kitchen on the top floor where they can benefit from the light and views, and maximise energy efficiency. And they put the bedrooms on the ground floor where the garden aspect gives inhabitants increased privacy, and a cool temperature is maintained throughout the day. The two floors are linked by wide, gentle gradient stairs, which are designed to allow for a stair lift to be fitted if necessary as owners age.</p>
+            <p style="font-weight: 600; font-style: italic;">2. Concealed Parking Spaces</p>
+            <p>But the feature that, according to Warren Rosing, one of the Kosi architects responsible for the design, was particularly popular with the public, is actually the parking.</p>
+            <p>In a SunnySideUp development no one has to look out onto a street full of cars, or worry about their kids being run over, because the terrace zone at the first floor level link all the homes and is a car-free zone.</p>
+            <p>Vehicles are tucked away on the lower floor, leaving safe and pleasant spaces outside the houses for people to meet, and kids to play.</p>
+            <p>A lift takes people directly from garage to living area, so that all residents, including the elderly and those with heavy shopping, can move comfortably between the floors. The natural feel of the front area is enhanced by the planters that are placed outside the kitchens at the front to encourage residents to grow vegetables and flowers where they can be seen.</p>
+            <p>The idea is that not only would they look pretty, but they would be a talking point, encouraging interaction between residents on the terrace area outside.</p>
+            <p style="font-weight: 600; font-style: italic;">3. Flexible Spaces</p>
+            <p>But it’s the fact that the space is designed to adapt to the changing needs, including the fluctuating income of its owners, that makes it a thought-provoking, as well as a winning, design.</p>
+            <p>The lower-floor bedrooms have separate outdoor access so they can be easily let. The idea is that owners can get some extra money to pay for their mortgages during the first years. And later in the future, those bedrooms can be used as a granny flat, or an office, and can easily be converted into a separate one-bed flat if your kids won’t leave home.</p>
+            <p>And if more space is required, as well as the usual loft that can be converted, there is potential for a gallery floor to be inserted in the living room.</p>
+            <p style="font-weight: 600; font-style: italic;">4. Where can you get one?</p>
+            <p>At the moment the SunnySideUp house is still just a set of drawings. But Warren Rosing says, “We are hoping to have it built.”</p>
+            <p>The organisers are in talks with builders, but due to  the economic climate it may take longer than we would like.”Weʼre sure it will be worth the wait” they say.</p>
+            <p style="font-size: 15px; text-align: right; font-style: italic;">From Pruebas de Certificación de Idiomas 2010. Escuelas Oficiales de Idiomas del Principado de Asturias</p>
+        </div>
+        <div class="readingPartQuestions">
+            <div class="readingOptionWindow">
+                <p><b>1.</b> According to the article, The British Homes Awards challenged architects to design a house ...</p>
+                <div id="Rp1q1a1" ontouchstart onclick="Rp1q1a1()" class="readingOption"><p class="letter">A.</p><p>for disabled people</p></div>
+                <div id="Rp1q1a2" ontouchstart onclick="Rp1q1a2()" class="readingOption"><p class="letter">B.</p><p>for ageing inhabitants</p></div>
+                <div id="Rp1q1a3" ontouchstart onclick="Rp1q1a3()" class="readingOption"><p class="letter">C.</p><p>that could adapt to all ages</p></div>
+                <div id="Rp1q1a4" ontouchstart onclick="Rp1q1a4()" class="readingOption"><p class="letter">D.</p><p>for young families with children</p></div>
+                <input type="text" style="display: none;" id="Rp1q1">
+            </div>
+            <div class="readingOptionWindow">
+                <p><b>2.</b> According to the article, in the winning property, bedrooms are downstairs to ...</p>
+                <div id="Rp1q2a1" ontouchstart onclick="Rp1q2a1()" class="readingOption"><p class="letter">A.</p><p>benefit from the view</p></div>
+                <div id="Rp1q2a2" ontouchstart onclick="Rp1q2a2()" class="readingOption"><p class="letter">B.</p><p>have easier access to the house</p></div>
+                <div id="Rp1q2a3" ontouchstart onclick="Rp1q2a3()" class="readingOption"><p class="letter">C.</p><p>have more privacy in the living room</p></div>
+                <div id="Rp1q2a4" ontouchstart onclick="Rp1q2a4()" class="readingOption"><p class="letter">D.</p><p>keep the same pleasant atmosphere the whole day</p></div>
+                <input type="text" style="display: none;" id="Rp1q2">
+            </div>
+            <div class="readingOptionWindow">
+                <p><b>3.</b> According to the article, the parking spaces in this house design are ...</p>
+                <div id="Rp1q3a1" ontouchstart onclick="Rp1q3a1()" class="readingOption"><p class="letter">A.</p><p>on the first floor</p></div>
+                <div id="Rp1q3a2" ontouchstart onclick="Rp1q3a2()" class="readingOption"><p class="letter">B.</p><p>on the ground floor</p></div>
+                <div id="Rp1q3a3" ontouchstart onclick="Rp1q3a3()" class="readingOption"><p class="letter">C.</p><p>in a separate building</p></div>
+                <div id="Rp1q3a4" ontouchstart onclick="Rp1q3a4()" class="readingOption"><p class="letter">D.</p><p>in the street</p></div>
+                <input type="text" style="display: none;" id="Rp1q3">
+            </div>
+            <div class="readingOptionWindow">
+                <p><b>4.</b> According to the article, in the SunnySideUp house the ground floor ...</p>
+                <div id="Rp1q4a1" ontouchstart onclick="Rp1q4a1()" class="readingOption"><p class="letter">A.</p><p>can be rented</p></div>
+                <div id="Rp1q4a2" ontouchstart onclick="Rp1q4a2()" class="readingOption"><p class="letter">B.</p><p>can be sold separately</p></div>
+                <div id="Rp1q4a3" ontouchstart onclick="Rp1q4a3()" class="readingOption"><p class="letter">C.</p><p>is only used to store cars</p></div>
+                <div id="Rp1q4a4" ontouchstart onclick="Rp1q4a4()" class="readingOption"><p class="letter">D.</p><p>has a room for grandparents</p></div>
+                <input type="text" style="display: none;" id="Rp1q4">
+            </div>
+            <div class="readingOptionWindow">
+                <p><b>5.</b> We learn from the article that ...</p>
+                <div id="Rp1q5a1" ontouchstart onclick="Rp1q5a1()" class="readingOption"><p class="letter">A.</p><p>children can play safely outside the house</p></div>
+                <div id="Rp1q5a2" ontouchstart onclick="Rp1q5a2()" class="readingOption"><p class="letter">B.</p><p>the houses overlook a street crammed with cars</p></div>
+                <div id="Rp1q5a3" ontouchstart onclick="Rp1q5a3()" class="readingOption"><p class="letter">C.</p><p>the back garden is the main talking point for the inhabitants</p></div>
+                <div id="Rp1q5a4" ontouchstart onclick="Rp1q5a4()" class="readingOption"><p class="letter">D.</p><p>bunnies are of less advanced intelectual abilities</p></div>
+                <input type="text" style="display: none;" id="Rp1q5">
+            </div>
+            <div class="readingOptionWindow">
+                <p><b>6.</b> According to the article, the house has been designed ...</p>
+                <div id="Rp1q6a1" ontouchstart onclick="Rp1q6a1()" class="readingOption"><p class="letter">A.</p><p>to be rented</p></div>
+                <div id="Rp1q6a2" ontouchstart onclick="Rp1q6a2()" class="readingOption"><p class="letter">B.</p><p>to be shared if necessary</p></div>
+                <div id="Rp1q6a3" ontouchstart onclick="Rp1q6a3()" class="readingOption"><p class="letter">C.</p><p>for families with a small income</p></div>
+                <div id="Rp1q6a4" ontouchstart onclick="Rp1q6a4()" class="readingOption"><p class="letter">D.</p><p>for ants who annoy bunnies</p></div>
+                <input type="text" style="display: none;" id="Rp1q6">
+            </div>
+            <div class="readingOptionWindow">
+                <p><b>7.</b> According to the article, the SunnySideUp development ...</p>
+                <div id="Rp1q7a1" ontouchstart onclick="Rp1q7a1()" class="readingOption"><p class="letter">A.</p><p>is being built</p></div>
+                <div id="Rp1q7a2" ontouchstart onclick="Rp1q7a2()" class="readingOption"><p class="letter">B.</p><p>will never be built</p></div>
+                <div id="Rp1q7a3" ontouchstart onclick="Rp1q7a3()" class="readingOption"><p class="letter">C.</p><p>will hopefully be built</p></div>
+                <div id="Rp1q7a4" ontouchstart onclick="Rp1q7a4()" class="readingOption"><p class="letter">D.</p><p>has been recently built</p></div>
+                <input type="text" style="display: none;" id="Rp1q7">
+            </div>
+        </div>
+    </div>
+    <div id="readingPart2">
+        <div class="readingPartText">
+            <h1>Part 2</h1>
+            <p style="font-weight: 800;">6 points, 1 per item.</p>
+            <p>Read a text about learning English. For questions <b>1–6</b>, choose the correct answer.</p>
+            <p style="margin-top: 20px; font-weight: 700;"><i>Learning English Forum. Your answer!</i></p>
+            <p style="font-weight: 600; font-style: italic;">Banjo_Boy asks:</p>
+            <p>I was in the USA on a language course last summer. It was a fantastic learning experience! People were so friendly and welcoming. I’m going on a British summer course this year. I heard that English people are more unfriendly and polite. Is that true? I’m worried about the language as well. I learned American English at school, and I’ve heard that British English is different. I’m worried that I’ll misunderstand everyone, make errors and appear impolite. Can anyone help?</p>
+            <p style="font-weight: 600; font-style: italic;">Sara_May replies:</p>
+            <p>Don’t worry about the language! It’s mostly the same. In terms of grammar, there are no differences at all. There are a few vocabulary differences though, like in the USA they say ‘subway’, ‘gas’ and ‘apartment’, while in Britain they say ‘underground’, ‘petrol’ and ‘flat’. But it won’t be a problem. You’ll understand those unfamiliar words from the context. What’s more, British people will understand you if you use American words. After all, they watch lots of American shows on television. The British accent is very different from the American one, but personally, I find it easier to understand.</p>
+            <p style="font-weight: 600; font-style: italic;">Paulo_Riviera_166 replies:</p>
+            <p>You won’t find the language confusing, but people’s behaviour is very different, in my opinion. Americans are more informal and open. They talk about anything – their money, their weight, their health. They are enthusiastic and friendly, and it’s easy to get to know them. British people aren’t like that. They don’t like to talk about their personal lives until they know you well, and they think it is respectful to give you privacy. As a result, it isn’t easy to make friends with British people. They are friendly and polite, but they often remain rather distant.</p>
+            <p style="font-weight: 600; font-style: italic;">Nellie_111 replies:</p>
+            <p>Don’t worry about making social errors in Britain. People are so polite that if you do something wrong, they won’t comment! I agree with Paulo_Riviera_166 in some ways. British people are more distant, but they aren’t more formal, in my opinion. For example, in the States, kids sometimes call their dads ‘Sir’, but British people never do that! In America, success is important, so people will often tell you how great they are. In Britain, it’s considered rude to boast about your achievements. If you do, people may tease you or gossip about you. Also, British people hate being complimented. If you say something nice about them, they often look embarrassed and don’t know what to say!</p>
+            <p style="font-weight: 600; font-style: italic;">Bubbles replies:</p>
+            <p>I don’t know where Sara_May was staying in the UK, but I was in the north of the country on a school trip a couple of years ago. We all stayed with host families, and the only person I could understand was the mother of the family. I couldn’t understand anyone else, even after three weeks! The people didn’t sound anything like the people I had heard in my course books at school, and I learned British English! I guess people sound different in different areas of the country. All I can say is, good luck, and if you don’t understand someone, ask them to write down what they are trying to say!</p>
+        </div>
+        <div class="readingPartQuestions">
+            <div class="readingOptionWindow">
+                <p><b>1.</b> Which sentence best summarises Banjo_Boy’s situation?</p>
+                <div id="Rp2q1a1" ontouchstart onclick="Rp2q1a1()" class="readingOption"><p class="letter">A.</p><p>He is worried about making mistakes in his language and behaviour when he goes to Britain.</p></div>
+                <div id="Rp2q1a2" ontouchstart onclick="Rp2q1a2()" class="readingOption"><p class="letter">B.</p><p>He is worried that his trip to America won’t be as fun as last year’s trip to Britain.</p></div>
+                <div id="Rp2q1a3" ontouchstart onclick="Rp2q1a3()" class="readingOption"><p class="letter">C.</p><p>He wants to know whether it is more useful to learn American English or British English.</p></div>
+                <div id="Rp2q1a4" ontouchstart onclick="Rp2q1a4()" class="readingOption"><p class="letter">D.</p><p>He wants to learn how to speak well and be polite to his American and British guests.</p></div>
+                <input type="text" style="display: none;" id="Rp2q1">
+            </div>
+            <div class="readingOptionWindow">
+                <p><b>2.</b> What is Sara_May’s advice?</p>
+                <div id="Rp2q2a1" ontouchstart onclick="Rp2q2a1()" class="readingOption"><p class="letter">A.</p><p>Neither the vocabulary nor the accent differences are hard to understand.</p></div>
+                <div id="Rp2q2a2" ontouchstart onclick="Rp2q2a2()" class="readingOption"><p class="letter">B.</p><p>The vocabulary differences are hard to understand, but the British accent is easy to understand.</p></div>
+                <div id="Rp2q2a3" ontouchstart onclick="Rp2q2a3()" class="readingOption"><p class="letter">C.</p><p>The vocabulary differences are easy to understand, but the British accent is hard to understand.</p></div>
+                <div id="Rp2q2a4" ontouchstart onclick="Rp2q2a4()" class="readingOption"><p class="letter">D.</p><p>Both the vocabulary and the accent differences are hard to understand.</p></div>
+                <input type="text" style="display: none;" id="Rp2q2">
+            </div>
+            <div class="readingOptionWindow">
+                <p><b>3.</b> According to Paulo_Riviera_166, British people are ...</p>
+                <div id="Rp2q3a1" ontouchstart onclick="Rp2q3a1()" class="readingOption"><p class="letter">A.</p><p>formal and unfriendly.</p></div>
+                <div id="Rp2q3a2" ontouchstart onclick="Rp2q3a2()" class="readingOption"><p class="letter">B.</p><p>enthusiastic and personal.</p></div>
+                <div id="Rp2q3a3" ontouchstart onclick="Rp2q3a3()" class="readingOption"><p class="letter">C.</p><p>friendly and open.</p></div>
+                <div id="Rp2q3a4" ontouchstart onclick="Rp2q3a4()" class="readingOption"><p class="letter">D.</p><p>respectful and distant.</p></div>
+                <input type="text" style="display: none;" id="Rp2q3">
+            </div>
+            <div class="readingOptionWindow">
+                <p><b>4.</b> According to Nellie_111, Americans are ... than British people.</p>
+                <div id="Rp2q4a1" ontouchstart onclick="Rp2q4a1()" class="readingOption"><p class="letter">A.</p><p>less likely to comment if you make a social error</p></div>
+                <div id="Rp2q4a2" ontouchstart onclick="Rp2q4a2()" class="readingOption"><p class="letter">B.</p><p>less likely to talk about their achievements</p></div>
+                <div id="Rp2q4a3" ontouchstart onclick="Rp2q4a3()" class="readingOption"><p class="letter">C.</p><p>more likely to call their parents by a formal title</p></div>
+                <div id="Rp2q4a4" ontouchstart onclick="Rp2q4a4()" class="readingOption"><p class="letter">D.</p><p>more likely to feel embarrassed by a compliment</p></div>
+                <input type="text" style="display: none;" id="Rp2q4">
+            </div>
+            <div class="readingOptionWindow">
+                <p><b>5.</b> Why does Bubbles disagree with Sara_May?</p>
+                <div id="Rp2q5a1" ontouchstart onclick="Rp2q5a1()" class="readingOption"><p class="letter">A.</p><p>She thinks it’s hard to understand British vocabulary.</p></div>
+                <div id="Rp2q5a2" ontouchstart onclick="Rp2q5a2()" class="readingOption"><p class="letter">B.</p><p>She thinks the British accent is difficult to understand.</p></div>
+                <div id="Rp2q5a3" ontouchstart onclick="Rp2q5a3()" class="readingOption"><p class="letter">C.</p><p>She thinks British grammar is different from American grammar.</p></div>
+                <div id="Rp2q5a4" ontouchstart onclick="Rp2q5a4()" class="readingOption"><p class="letter">D.</p><p>She thinks British people won’t understand American English.</p></div>
+                <input type="text" style="display: none;" id="Rp2q5">
+            </div>
+            <div class="readingOptionWindow">
+                <p><b>6.</b> Which of the four people responded to the question: “I heard that English people are more unfriendly and polite. Is that true?”</p>
+                <div id="Rp2q6a1" ontouchstart onclick="Rp2q6a1()" class="readingOption"><p class="letter">A.</p><p>Paulo_Riviera_166 only.</p></div>
+                <div id="Rp2q6a2" ontouchstart onclick="Rp2q6a2()" class="readingOption"><p class="letter">B.</p><p>Paulo_Riviera_166 and Nellie_111.</p></div>
+                <div id="Rp2q6a3" ontouchstart onclick="Rp2q6a3()" class="readingOption"><p class="letter">C.</p><p>Paulo_Riviera_166, Nellie_111 and Bubbles.</p></div>
+                <div id="Rp2q6a4" ontouchstart onclick="Rp2q6a4()" class="readingOption"><p class="letter">D.</p><p>All of them.</p></div>
+                <input type="text" style="display: none;" id="Rp2q6">
+            </div>
+        </div>
+    </div>
+    <div id="readingPart3">
+        <div class="readingPartText">
+            <h1>Part 3</h1>
+            <p style="font-weight: 800;">7 points, 1 per item.</p>
+            <p>Read a text about cheating in sports. For questions <b>1–7</b>, choose the correct answer.</p>
+            <p style="margin-top: 20px; font-weight: 700;"><i>Cheating in sports</i></p>
+            <p>Anyone who loves sports will agree that cheating is bad. For example, it was simply wrong for Spain to enter people who were not actually disabled into the 2000 Sydney Paralympics basketball team. But sometimes, it is hard to draw a line between what is cheating and what is not. Many sports encourage players to be ‘sporting’, that is, to play honestly and accept when they lose. However, in sports, the prizes for winning are great, so it is natural for people to use different ways to win a game. Sometimes players cheat or bend the rules to get an advantage in a game.</p>
+            <p>Gamesmanship is when you try to win a game by bending the rules or using dubious tactics. For example, when British Team cyclist Philip Hindes had a bad start in a team race in the 2012 Olympics, he didn’t want to let his team down, and since he knew that if a rider fell early, the race would be restarted, he crashed his bike on purpose. Britain went on to win gold.</p>
+            <p>Other examples of gamesmanship are when players fake injuries or waste time. This might give them a chance for a short rest, or it could annoy their opponent and affect their concentration. For example, at the 2016 Rio Olympics, badminton player Carolina Marins screamed and shouted every time her opponent made a mistake. This affected her opponent’s feelings, and people thought she behaved rudely. However, she won the gold medal without breaking any rules.</p>
+            <p>When there is a grey area, it is the referee or umpire’s job to decide whether cheating is taking place. However, players can take advantage of this situation because referees aren’t perfect and can’t see everything. For example, in cricket, if the ball hits a batter’s legs, he is out, and most batters know when they are out, so they should leave the field immediately. However, few cricketers are sporting. They wait until the umpire tells them to go because they want to stay in the game, and the umpire might not see what happened. This isn’t considered cheating.</p>
+            <p>However, there’s no denying that Diego Maradona cheated in the 1986 World Cup quarter-finals between England and Argentina. In that particular match, Maradona infamously scored a goal using his hand. The referee, who missed the incident, awarded the goal, and unsurprisingly, Maradona didn’t question the decision. But the game of football, however, isn’t always so forgiving of those who bend the rules, as Brazilian player Rivaldo knows. In the 2002 World Cup, he faked an injury during a match. Unlike Maradona, Rivaldo wasn’t so lucky; he was caught out and was later fined, proving that the outcomes of such actions are not always in the player’s favour.</p>
+            <p>Sometimes, players might even try to lose on purpose. At the 2012 London Olympics, four women’s badminton doubles teams from China, Indonesia and South Korea purposely played badly. They all wanted to lose because it would lead to an easier place in the tournament. Although none of the players broke any badminton rules, they were all disqualified for their poor sportsmanship.</p>
+            <p>Where there are games, people will always try different ways to win. But is bending the rules the same as cheating? Or does it just make the game more interesting because sports competitions are not only about physical skills but also about clever strategies?</p>
+        </div>
+        <div class="readingPartQuestions">
+            <div class="readingOptionWindow">
+                <p><b>1.</b> According to the passage, the 2000 Sydney Paralympics basketball team ...</p>
+                <div id="Rp3q1a1" ontouchstart onclick="Rp3q1a1()" class="readingOption"><p class="letter">A.</p><p>won the gold medal despite cheating.</p></div>
+                <div id="Rp3q1a2" ontouchstart onclick="Rp3q1a2()" class="readingOption"><p class="letter">B.</p><p>were in a grey area.</p></div>
+                <div id="Rp3q1a3" ontouchstart onclick="Rp3q1a3()" class="readingOption"><p class="letter">C.</p><p>were rightly accused of cheating.</p></div>
+                <div id="Rp3q1a4" ontouchstart onclick="Rp3q1a4()" class="readingOption"><p class="letter">D.</p><p>were accused of cheating when they did not.</p></div>
+                <input type="text" style="display: none;" id="Rp3q1">
+            </div>
+            <div class="readingOptionWindow">
+                <p><b>2.</b> British Team cyclist Philip Hindes ...</p>
+                <div id="Rp3q2a1" ontouchstart onclick="Rp3q2a1()" class="readingOption"><p class="letter">A.</p><p>lost a medal because he cheated.</p></div>
+                <div id="Rp3q2a2" ontouchstart onclick="Rp3q2a2()" class="readingOption"><p class="letter">B.</p><p>used gamesmanship to win a medal.</p></div>
+                <div id="Rp3q2a3" ontouchstart onclick="Rp3q2a3()" class="readingOption"><p class="letter">C.</p><p>won a medal despite cheating.</p></div>
+                <div id="Rp3q2a4" ontouchstart onclick="Rp3q2a4()" class="readingOption"><p class="letter">D.</p><p>lost a medal because of gamesmanship.</p></div>
+                <input type="text" style="display: none;" id="Rp3q2">
+            </div>
+            <div class="readingOptionWindow">
+                <p><b>3.</b> Badminton player Carolina Marins ...</p>
+                <div id="Rp3q3a1" ontouchstart onclick="Rp3q3a1()" class="readingOption"><p class="letter">A.</p><p>used gamesmanship to win a game.</p></div>
+                <div id="Rp3q3a2" ontouchstart onclick="Rp3q3a2()" class="readingOption"><p class="letter">B.</p><p>used gamesmanship, but lost a game.</p></div>
+                <div id="Rp3q3a3" ontouchstart onclick="Rp3q3a3()" class="readingOption"><p class="letter">C.</p><p>cheated and won a game.</p></div>
+                <div id="Rp3q3a4" ontouchstart onclick="Rp3q3a4()" class="readingOption"><p class="letter">D.</p><p>did not cheat, but was disqualified.</p></div>
+                <input type="text" style="display: none;" id="Rp3q3">
+            </div>
+            <div class="readingOptionWindow">
+                <p><b>4.</b> Cricketers who leave the field when they feel the ball touch their legs ...</p>
+                <div id="Rp3q4a1" ontouchstart onclick="Rp3q4a1()" class="readingOption"><p class="letter">A.</p><p>are breaking the rules.</p></div>
+                <div id="Rp3q4a2" ontouchstart onclick="Rp3q4a2()" class="readingOption"><p class="letter">B.</p><p>are rare.</p></div>
+                <div id="Rp3q4a3" ontouchstart onclick="Rp3q4a3()" class="readingOption"><p class="letter">C.</p><p>are using gamesmanship.</p></div>
+                <div id="Rp3q4a4" ontouchstart onclick="Rp3q4a4()" class="readingOption"><p class="letter">D.</p><p>are following the rules.</p></div>
+                <input type="text" style="display: none;" id="Rp3q4">
+            </div>
+            <div class="readingOptionWindow">
+                <p><b>5.</b> Diego Maradona is mentioned because he ...</p>
+                <div id="Rp3q5a1" ontouchstart onclick="Rp3q5a1()" class="readingOption"><p class="letter">A.</p><p>took advantage of a referee’s mistake.</p></div>
+                <div id="Rp3q5a2" ontouchstart onclick="Rp3q5a2()" class="readingOption"><p class="letter">B.</p><p>challenged a referee’s decision.</p></div>
+                <div id="Rp3q5a3" ontouchstart onclick="Rp3q5a3()" class="readingOption"><p class="letter">C.</p><p>persuaded a referee to make a decision.</p></div>
+                <div id="Rp3q5a4" ontouchstart onclick="Rp3q5a4()" class="readingOption"><p class="letter">D.</p><p>was punished for his gamesmanship.</p></div>
+                <input type="text" style="display: none;" id="Rp3q5">
+            </div>
+            <div class="readingOptionWindow">
+                <p><b>6.</b> Rivaldo ...</p>
+                <div id="Rp3q6a1" ontouchstart onclick="Rp3q6a1()" class="readingOption"><p class="letter">A.</p><p>didn’t realise he was breaking a rule.</p></div>
+                <div id="Rp3q6a2" ontouchstart onclick="Rp3q6a2()" class="readingOption"><p class="letter">B.</p><p>exaggerated an injury.</p></div>
+                <div id="Rp3q6a3" ontouchstart onclick="Rp3q6a3()" class="readingOption"><p class="letter">C.</p><p>was punished for bending the rules.</p></div>
+                <div id="Rp3q6a4" ontouchstart onclick="Rp3q6a4()" class="readingOption"><p class="letter">D.</p><p>was accused of cheating when he did not.</p></div>
+                <input type="text" style="display: none;" id="Rp3q6">
+            </div>
+            <div class="readingOptionWindow">
+                <p><b>7.</b> The four badminton teams were disqualified ...</p>
+                <div id="Rp3q7a1" ontouchstart onclick="Rp3q7a1()" class="readingOption"><p class="letter">A.</p><p>despite not cheating.</p></div>
+                <div id="Rp3q7a2" ontouchstart onclick="Rp3q7a2()" class="readingOption"><p class="letter">B.</p><p>because they cheated.</p></div>
+                <div id="Rp3q7a3" ontouchstart onclick="Rp3q7a3()" class="readingOption"><p class="letter">C.</p><p>because they were sporting.</p></div>
+                <div id="Rp3q7a4" ontouchstart onclick="Rp3q7a4()" class="readingOption"><p class="letter">D.</p><p>after winning their games.</p></div>
+                <input type="text" style="display: none;" id="Rp3q7">
+            </div>
+        </div>
+    </div>
+    <div id="submitPopup">
+        <div>
+            <h1><i class="fa-regular fa-paper-plane"></i> Pateikti atsakymus</h1>
+            <p>Ar tikrai nori pateikti savo atsakymus vertinimui? Pateikus atsakymų pakeisti nebegalėsi.</p>
+            <button ontouchstart onclick="finish()">Pateikti vertinimui</button>
+            <button ontouchstart onclick="cancelSubmit()">Dar peržiūrėti</button>
+        </div>
+    </div>
+    <div id="results">
+        <h1>Rezultatai</h1>
+        <p>Surinkai <span style="font-weight: 800;" id="listeningPoints">00</span> taškų (-us) iš 20 (<span style="font-weight: 800;" id="listeningPercentage">00 %</span>) testo „Listening“ užduotyse.</p>
+        <p>Surinkai <span style="font-weight: 800;" id="readingPoints">00</span> taškų (-us) iš 20 (<span style="font-weight: 800;" id="readingPercentage">00 %</span>) testo „Reading“ užduotyse.</p>
+        <p>Surinkai <span style="font-weight: 800;" id="totalPoints">00</span> taškų (-us) iš 40 (<span style="font-weight: 800;" id="totalPercentage">00 %</span>) iš viso.</p>
+        <p class="clickContinueToContinue">Norėdama(s) peržiūrėti rezultatus, spausk <span class="continueSpan">Tęsti <i class="fa-solid fa-arrow-right-long"></i></span></p>
+    </div>
+    <div id="overview">
+        <h1>Apžvalga</h1>
+        <p>Viso <span style="font-weight: 800;" id="totalPoints2">00</span> / 40 (<span style="font-weight: 800;" id="totalPercentage2">00 %</span>)</p>
+
+
+
+        <p style="font-size: 25px; font-weight: 800; margin-top: 50px;">„Listening“ testo užduotys</p>
+        <p><span style="font-weight: 800;" id="listeningPoints2">00</span> / 20 (<span style="font-weight: 800;" id="listeningPercentage2">00 %</span>)</p>
+        <p style="font-size: 25px; font-weight: 600; margin-top: 20px;">Part 1</p>
+        <div class="resultsOptionWindow">
+            <p><b>1.</b> Which of these things did Emma do?</p>
+            <div id="p1q1a1r" class="resultsOption"><p class="letter">A.</p><p>Leave home early</p></div>
+            <div id="p1q1a2r" class="resultsOption" style="border-color: green; color: green;"><p class="letter">B.</p><p>Take a train</p></div>
+            <div id="p1q1a3r" class="resultsOption"><p class="letter">C.</p><p>Make a good impression with her interviewer</p></div>
+        </div>
+        <div class="resultsOptionWindow">
+            <p><b>2.</b> Which of these things did Emma NOT do?</p>
+            <div id="p1q2a1r" class="resultsOption" style="border-color: green; color: green;"><p class="letter">A.</p><p>Book a taxi</p></div>
+            <div id="p1q2a2r" class="resultsOption"><p class="letter">B.</p><p>Pack her things in the morning</p></div>
+            <div id="p1q2a3r" class="resultsOption"><p class="letter">C.</p><p>Reschedule the interview</p></div>
+        </div>
+        <div class="resultsOptionWindow">
+            <p><b>3.</b> Which of these things did Tyler do?</p>
+            <div id="p1q3a1r" class="resultsOption"><p class="letter">A.</p><p>Listen to his friend</p></div>
+            <div id="p1q3a2r" class="resultsOption" style="border-color: green; color: green;"><p class="letter">B.</p><p>Raise his voice</p></div>
+            <div id="p1q3a3r" class="resultsOption"><p class="letter">C.</p><p>Take a step back</p></div>
+        </div>
+        <div class="resultsOptionWindow">
+            <p><b>4.</b> Which of these things did Tyler NOT do?</p>
+            <div id="p1q4a1r" class="resultsOption"><p class="letter">A.</p><p>Misunderstand his friend</p></div>
+            <div id="p1q4a2r" class="resultsOption" style="border-color: green; color: green;"><p class="letter">B.</p><p>Have patience</p></div>
+            <div id="p1q4a3r" class="resultsOption"><p class="letter">C.</p><p>Apologise several times</p></div>
+        </div>
+        <div class="resultsOptionWindow">
+            <p><b>5.</b> Which of these things did James do?</p>
+            <div id="p1q5a1r" class="resultsOption" style="border-color: green; color: green;"><p class="letter">A.</p><p>See that her colleague was struggling</p></div>
+            <div id="p1q5a2r" class="resultsOption"><p class="letter">B.</p><p>Ask his colleague is she needed support</p></div>
+            <div id="p1q5a3r" class="resultsOption"><p class="letter">C.</p><p>Learn something from helping her</p></div>
+        </div>
+        <div class="resultsOptionWindow">
+            <p><b>6.</b> Which of these things did James NOT do?</p>
+            <div id="p1q6a1r" class="resultsOption"><p class="letter">A.</p><p>Ignore his colleague</p></div>
+            <div id="p1q6a2r" class="resultsOption"><p class="letter">B.</p><p>Think someone would help her</p></div>
+            <div id="p1q6a3r" class="resultsOption" style="border-color: green; color: green;"><p class="letter">C.</p><p>Speak to her</p></div>
+        </div>
+        <div class="resultsOptionWindow">
+            <p><b>7.</b> Which of these things did Maya do?</p>
+            <div id="p1q7a1r" class="resultsOption" style="border-color: green; color: green;"><p class="letter">A.</p><p>Stay home</p></div>
+            <div id="p1q7a2r" class="resultsOption"><p class="letter">B.</p><p>Prioritize her family</p></div>
+            <div id="p1q7a3r" class="resultsOption"><p class="letter">C.</p><p>Go there for a couple of hours</p></div>
+        </div>
+        <div class="resultsOptionWindow">
+            <p><b>8.</b> Which of these things did Maya NOT do?</p>
+            <div id="p1q8a1r" class="resultsOption"><p class="letter">A.</p><p>Get some rest</p></div>
+            <div id="p1q8a2r" class="resultsOption"><p class="letter">B.</p><p>Have regrets</p></div>
+            <div id="p1q8a3r" class="resultsOption" style="border-color: green; color: green;"><p class="letter">C.</p><p>Make time for the event</p></div>
+        </div>
+
+
+
+        <p style="font-size: 25px; font-weight: 600; margin-top: 50px;">Part 2</p>
+        <div class="resultsOptionWindow">
+            <p><b>1.</b> The Ecocapsule was designed to be a self-sustaining permanent home.</p>
+            <div id="p2q1a1r" class="resultsOption"><p class="letter">A.</p><p>True</p></div>
+            <div id="p2q1a2r" class="resultsOption" style="border-color: green; color: green;"><p class="letter">B.</p><p>False</p></div>
+        </div>
+        <div class="resultsOptionWindow">
+            <p><b>2.</b> The Ecocapsule pretends to be as small as possible, but letting the owners have enough space for their things.</p>
+            <div id="p2q2a1r" class="resultsOption" style="border-color: green; color: green;"><p class="letter">A.</p><p>True</p></div>
+            <div id="p2q2a2r" class="resultsOption"><p class="letter">B.</p><p>False</p></div>
+        </div>
+        <div class="resultsOptionWindow">
+            <p><b>3.</b> The Ecocapsule offers enough energy for human necessities, although may not be enough when the weather is not suitable.</p>
+            <div id="p2q3a1r" class="resultsOption"><p class="letter">A.</p><p>True</p></div>
+            <div id="p2q3a2r" class="resultsOption" style="border-color: green; color: green;"><p class="letter">B.</p><p>False</p></div>
+        </div>
+        <div class="resultsOptionWindow">
+            <p><b>4.</b> The round shape of the Ecocapsule makes collecting water easier.</p>
+            <div id="p2q4a1r" class="resultsOption" style="border-color: green; color: green;"><p class="letter">A.</p><p>True</p></div>
+            <div id="p2q4a2r" class="resultsOption"><p class="letter">B.</p><p>False</p></div>
+        </div>
+        <div class="resultsOptionWindow">
+            <p><b>5.</b> The Ecocapsule can be transported cheaply all around the world.</p>
+            <div id="p2q5a1r" class="resultsOption" style="border-color: green; color: green;"><p class="letter">A.</p><p>True</p></div>
+            <div id="p2q5a2r" class="resultsOption"><p class="letter">B.</p><p>False</p></div>
+        </div>
+
+
+
+        <p style="font-size: 25px; font-weight: 600; margin-top: 50px;">Part 3</p>
+        <div class="resultsOptionWindow">
+            <p><b>1.</b> What happened in the case Dr. Carter described?</p>
+            <div id="p3q1a1r" class="resultsOption"><p class="letter">A.</p><p>Someone wanted to rob and kill the victim.</p></div>
+            <div id="p3q1a2r" class="resultsOption"><p class="letter">B.</p><p>The perpetrator tried to rob the victim but failed.</p></div>
+            <div id="p3q1a3r" class="resultsOption" style="border-color: green; color: green;"><p class="letter">C.</p><p>The perpetrator didn't try to rob the victim.</p></div>
+        </div>
+        <div class="resultsOptionWindow">
+            <p><b>2.</b> What did the killer do on the night of the murder?</p>
+            <div id="p3q2a1r" class="resultsOption"><p class="letter">A.</p><p>He only took worthless items.</p></div>
+            <div id="p3q2a2r" class="resultsOption" style="border-color: green; color: green;"><p class="letter">B.</p><p>He pretended to be a burglar.</p></div>
+            <div id="p3q2a3r" class="resultsOption"><p class="letter">C.</p><p>He didn't find any valuable items.</p></div>
+        </div>
+        <div class="resultsOptionWindow">
+            <p><b>3.</b> What did they do during the investigation?</p>
+            <div id="p3q3a1r" class="resultsOption" style="border-color: green; color: green;"><p class="letter">A.</p><p>They started by eliminating possible suspects.</p></div>
+            <div id="p3q3a2r" class="resultsOption"><p class="letter">B.</p><p>They conducted DNA tests on everyone close to the victim.</p></div>
+            <div id="p3q3a3r" class="resultsOption"><p class="letter">C.</p><p>They tried to find witnesses in the neighbourhood.</p></div>
+        </div>
+        <div class="resultsOptionWindow">
+            <p><b>4.</b> What led the investigators to think the suspect was a hired hitman?</p>
+            <div id="p3q4a1r" class="resultsOption"><p class="letter">A.</p><p>Security cameras.</p></div>
+            <div id="p3q4a2r" class="resultsOption" style="border-color: green; color: green;"><p class="letter">B.</p><p>The autopsy.</p></div>
+            <div id="p3q4a3r" class="resultsOption"><p class="letter">C.</p><p>Phone records.</p></div>
+        </div>
+        <div class="resultsOptionWindow">
+            <p><b>5.</b> What helped investigators identify the suspect?</p>
+            <div id="p3q5a1r" class="resultsOption" style="border-color: green; color: green;"><p class="letter">A.</p><p>The victim's wife's phone records.</p></div>
+            <div id="p3q5a2r" class="resultsOption"><p class="letter">B.</p><p>The security cameras in the neighborhood.</p></div>
+            <div id="p3q5a3r" class="resultsOption"><p class="letter">C.</p><p>Fingerprints found in the house..</p></div>
+        </div>
+        <div class="resultsOptionWindow">
+            <p><b>6.</b> Which is true about the trial?</p>
+            <div id="p3q6a1r" class="resultsOption"><p class="letter">A.</p><p>The killer and the victim's wife were sentenced to 25 years in prison..</p></div>
+            <div id="p3q6a2r" class="resultsOption" style="border-color: green; color: green;"><p class="letter">B.</p><p>The killer will spend the rest of his life in prison.</p></div>
+            <div id="p3q6a3r" class="resultsOption"><p class="letter">C.</p><p>The wife's sentence was reduced because of a lack of evidence.</p></div>
+        </div>
+        <div class="resultsOptionWindow">
+            <p><b>7.</b> What was the killer's main mistake?</p>
+            <div id="p3q7a1r" class="resultsOption" style="border-color: green; color: green;"><p class="letter">A.</p><p>He didn't steal anything.</p></div>
+            <div id="p3q7a2r" class="resultsOption"><p class="letter">B.</p><p>He used a gun.</p></div>
+            <div id="p3q7a3r" class="resultsOption"><p class="letter">C.</p><p>He parked his car in front of the house.</p></div>
+        </div>
+
+
+
+        <p style="font-size: 25px; font-weight: 800; margin-top: 100px;">„Reading“ testo užduotys</p>
+        <p><span style="font-weight: 800;" id="readingPoints2">00</span> / 20 (<span style="font-weight: 800;" id="readingPercentage2">00 %</span>)</p>
+        <p style="font-size: 25px; font-weight: 600; margin-top: 20px;">Part 1</p>
+        <div class="resultsOptionWindow">
+            <p><b>1.</b> According to the article, The British Homes Awards challenged architects to design a house ...</p>
+            <div id="Rp1q1a1r" class="resultsOption"><p class="letter">A.</p><p>for disabled people</p></div>
+            <div id="Rp1q1a2r" class="resultsOption"><p class="letter">B.</p><p>for ageing inhabitants</p></div>
+            <div id="Rp1q1a3r" class="resultsOption" style="border-color: green; color: green;"><p class="letter">C.</p><p>that could adapt to all ages</p></div>
+            <div id="Rp1q1a4r" class="resultsOption"><p class="letter">D.</p><p>for young families with children</p></div>
+        </div>
+        <div class="resultsOptionWindow">
+            <p><b>2.</b> According to the article, in the winning property, bedrooms are downstairs to ...</p>
+            <div id="Rp1q2a1r" class="resultsOption"><p class="letter">A.</p><p>benefit from the view</p></div>
+            <div id="Rp1q2a2r" class="resultsOption"><p class="letter">B.</p><p>have easier access to the house</p></div>
+            <div id="Rp1q2a3r" class="resultsOption"><p class="letter">C.</p><p>have more privacy in the living room</p></div>
+            <div id="Rp1q2a4r" class="resultsOption" style="border-color: green; color: green;"><p class="letter">D.</p><p>keep the same pleasant atmosphere the whole day</p></div>
+        </div>
+        <div class="resultsOptionWindow">
+            <p><b>3.</b> According to the article, the parking spaces in this house design are ...</p>
+            <div id="Rp1q3a1r" class="resultsOption"><p class="letter">A.</p><p>on the first floor</p></div>
+            <div id="Rp1q3a2r" class="resultsOption" style="border-color: green; color: green;"><p class="letter">B.</p><p>on the ground floor</p></div>
+            <div id="Rp1q3a3r" class="resultsOption"><p class="letter">C.</p><p>in a separate building</p></div>
+            <div id="Rp1q3a4r" class="resultsOption"><p class="letter">D.</p><p>in the street</p></div>
+        </div>
+        <div class="resultsOptionWindow">
+            <p><b>4.</b> According to the article, in the SunnySideUp house the ground floor ...</p>
+            <div id="Rp1q4a1r" class="resultsOption" style="border-color: green; color: green;"><p class="letter">A.</p><p>can be rented</p></div>
+            <div id="Rp1q4a2r" class="resultsOption"><p class="letter">B.</p><p>can be sold separately</p></div>
+            <div id="Rp1q4a3r" class="resultsOption"><p class="letter">C.</p><p>is only used to store cars</p></div>
+            <div id="Rp1q4a4r" class="resultsOption"><p class="letter">D.</p><p>has a room for grandparents</p></div>
+        </div>
+        <div class="resultsOptionWindow">
+            <p><b>5.</b> We learn from the article that ...</p>
+            <div id="Rp1q5a1r" class="resultsOption" style="border-color: green; color: green;"><p class="letter">A.</p><p>children can play safely outside the house</p></div>
+            <div id="Rp1q5a2r" class="resultsOption"><p class="letter">B.</p><p>the houses overlook a street crammed with cars</p></div>
+            <div id="Rp1q5a3r" class="resultsOption"><p class="letter">C.</p><p>the back garden is the main talking point for the inhabitants</p></div>
+            <div id="Rp1q5a4r" class="resultsOption"><p class="letter">D.</p><p>bunnies are of less advanced intelectual abilities</p></div>
+        </div>
+        <div class="resultsOptionWindow">
+            <p><b>6.</b> According to the article, the house has been designed ...</p>
+            <div id="Rp1q6a1r" class="resultsOption"><p class="letter">A.</p><p>to be rented</p></div>
+            <div id="Rp1q6a2r" class="resultsOption" style="border-color: green; color: green;"><p class="letter">B.</p><p>to be shared if necessary</p></div>
+            <div id="Rp1q6a3r" class="resultsOption"><p class="letter">C.</p><p>for families with a small income</p></div>
+            <div id="Rp1q6a4r" class="resultsOption"><p class="letter">D.</p><p>for ants who annoy bunnies</p></div>
+        </div>
+        <div class="resultsOptionWindow">
+            <p><b>7.</b> According to the article, the SunnySideUp development ...</p>
+            <div id="Rp1q7a1r" class="resultsOption"><p class="letter">A.</p><p>is being built</p></div>
+            <div id="Rp1q7a2r" class="resultsOption"><p class="letter">B.</p><p>will never be built</p></div>
+            <div id="Rp1q7a3r" class="resultsOption" style="border-color: green; color: green;"><p class="letter">C.</p><p>will hopefully be built</p></div>
+            <div id="Rp1q7a4r" class="resultsOption"><p class="letter">D.</p><p>has been recently built</p></div>
+        </div>
+
+
+
+        <p style="font-size: 25px; font-weight: 600; margin-top: 50px;">Part 2</p>
+        <div class="resultsOptionWindow">
+            <p><b>1.</b> Which sentence best summarises Banjo_Boy’s situation?</p>
+            <div id="Rp2q1a1r" class="resultsOption" style="border-color: green; color: green;"><p class="letter">A.</p><p>He is worried about making mistakes in his language and behaviour when he goes to Britain.</p></div>
+            <div id="Rp2q1a2r" class="resultsOption"><p class="letter">B.</p><p>He is worried that his trip to America won’t be as fun as last year’s trip to Britain.</p></div>
+            <div id="Rp2q1a3r" class="resultsOption"><p class="letter">C.</p><p>He wants to know whether it is more useful to learn American English or British English.</p></div>
+            <div id="Rp2q1a4r" class="resultsOption"><p class="letter">D.</p><p>He wants to learn how to speak well and be polite to his American and British guests.</p></div>
+        </div>
+        <div class="resultsOptionWindow">
+            <p><b>2.</b> What is Sara_May’s advice?</p>
+            <div id="Rp2q2a1r" class="resultsOption" style="border-color: green; color: green;"><p class="letter">A.</p><p>Neither the vocabulary nor the accent differences are hard to understand.</p></div>
+            <div id="Rp2q2a2r" class="resultsOption"><p class="letter">B.</p><p>The vocabulary differences are hard to understand, but the British accent is easy to understand.</p></div>
+            <div id="Rp2q2a3r" class="resultsOption"><p class="letter">C.</p><p>The vocabulary differences are easy to understand, but the British accent is hard to understand.</p></div>
+            <div id="Rp2q2a4r" class="resultsOption"><p class="letter">D.</p><p>Both the vocabulary and the accent differences are hard to understand.</p></div>
+        </div>
+        <div class="resultsOptionWindow">
+            <p><b>3.</b> According to Paulo_Riviera_166, British people are ...</p>
+            <div id="Rp2q3a1r" class="resultsOption"><p class="letter">A.</p><p>formal and unfriendly.</p></div>
+            <div id="Rp2q3a2r" class="resultsOption"><p class="letter">B.</p><p>enthusiastic and personal.</p></div>
+            <div id="Rp2q3a3r" class="resultsOption"><p class="letter">C.</p><p>friendly and open.</p></div>
+            <div id="Rp2q3a4r" class="resultsOption" style="border-color: green; color: green;"><p class="letter">D.</p><p>respectful and distant.</p></div>
+        </div>
+        <div class="resultsOptionWindow">
+            <p><b>4.</b> According to Nellie_111, Americans are ... than British people.</p>
+            <div id="Rp2q4a1r" class="resultsOption"><p class="letter">A.</p><p>less likely to comment if you make a social error</p></div>
+            <div id="Rp2q4a2r" class="resultsOption"><p class="letter">B.</p><p>less likely to talk about their achievements</p></div>
+            <div id="Rp2q4a3r" class="resultsOption" style="border-color: green; color: green;"><p class="letter">C.</p><p>more likely to call their parents by a formal title</p></div>
+            <div id="Rp2q4a4r" class="resultsOption"><p class="letter">D.</p><p>more likely to feel embarrassed by a compliment</p></div>
+        </div>
+        <div class="resultsOptionWindow">
+            <p><b>5.</b> Why does Bubbles disagree with Sara_May?</p>
+            <div id="Rp2q5a1r" class="resultsOption"><p class="letter">A.</p><p>She thinks it’s hard to understand British vocabulary.</p></div>
+            <div id="Rp2q5a2r" class="resultsOption" style="border-color: green; color: green;"><p class="letter">B.</p><p>She thinks the British accent is difficult to understand.</p></div>
+            <div id="Rp2q5a3r" class="resultsOption"><p class="letter">C.</p><p>She thinks British grammar is different from American grammar.</p></div>
+            <div id="Rp2q5a4r" class="resultsOption"><p class="letter">D.</p><p>She thinks British people won’t understand American English.</p></div>
+        </div>
+        <div class="resultsOptionWindow">
+            <p><b>6.</b> Which of the four people responded to the question: “I heard that English people are more unfriendly and polite. Is that true?”</p>
+            <div id="Rp2q6a1r" class="resultsOption"><p class="letter">A.</p><p>Paulo_Riviera_166 only.</p></div>
+            <div id="Rp2q6a2r" class="resultsOption" style="border-color: green; color: green;"><p class="letter">B.</p><p>Paulo_Riviera_166 and Nellie_111.</p></div>
+            <div id="Rp2q6a3r" class="resultsOption"><p class="letter">C.</p><p>Paulo_Riviera_166, Nellie_111 and Bubbles.</p></div>
+            <div id="Rp2q6a4r" class="resultsOption"><p class="letter">D.</p><p>All of them.</p></div>
+        </div>
+
+
+
+        <p style="font-size: 25px; font-weight: 600; margin-top: 50px;">Part 3</p>
+        <div class="resultsOptionWindow">
+            <p><b>1.</b> According to the passage, the 2000 Sydney Paralympics basketball team ...</p>
+            <div id="Rp3q1a1r" class="resultsOption"><p class="letter">A.</p><p>won the gold medal despite cheating.</p></div>
+            <div id="Rp3q1a2r" class="resultsOption"><p class="letter">B.</p><p>were in a grey area.</p></div>
+            <div id="Rp3q1a3r" class="resultsOption" style="border-color: green; color: green;"><p class="letter">C.</p><p>were rightly accused of cheating.</p></div>
+            <div id="Rp3q1a4r" class="resultsOption"><p class="letter">D.</p><p>were accused of cheating when they did not.</p></div>
+        </div>
+        <div class="resultsOptionWindow">
+            <p><b>2.</b> British Team cyclist Philip Hindes ...</p>
+            <div id="Rp3q2a1r" class="resultsOption"><p class="letter">A.</p><p>lost a medal because he cheated.</p></div>
+            <div id="Rp3q2a2r" class="resultsOption" style="border-color: green; color: green;"><p class="letter">B.</p><p>used gamesmanship to win a medal.</p></div>
+            <div id="Rp3q2a3r" class="resultsOption"><p class="letter">C.</p><p>won a medal despite cheating.</p></div>
+            <div id="Rp3q2a4r" class="resultsOption"><p class="letter">D.</p><p>lost a medal because of gamesmanship.</p></div>
+        </div>
+        <div class="resultsOptionWindow">
+            <p><b>3.</b> Badminton player Carolina Marins ...</p>
+            <div id="Rp3q3a1r" class="resultsOption" style="border-color: green; color: green;"><p class="letter">A.</p><p>used gamesmanship to win a game.</p></div>
+            <div id="Rp3q3a2r" class="resultsOption"><p class="letter">B.</p><p>used gamesmanship, but lost a game.</p></div>
+            <div id="Rp3q3a3r" class="resultsOption"><p class="letter">C.</p><p>cheated and won a game.</p></div>
+            <div id="Rp3q3a4r" class="resultsOption"><p class="letter">D.</p><p>did not cheat, but was disqualified.</p></div>
+        </div>
+        <div class="resultsOptionWindow">
+            <p><b>4.</b> Cricketers who leave the field when they feel the ball touch their legs ...</p>
+            <div id="Rp3q4a1r" class="resultsOption"><p class="letter">A.</p><p>are breaking the rules.</p></div>
+            <div id="Rp3q4a2r" class="resultsOption" style="border-color: green; color: green;"><p class="letter">B.</p><p>are rare.</p></div>
+            <div id="Rp3q4a3r" class="resultsOption"><p class="letter">C.</p><p>are using gamesmanship.</p></div>
+            <div id="Rp3q4a4r" class="resultsOption"><p class="letter">D.</p><p>are following the rules.</p></div>
+        </div>
+        <div class="resultsOptionWindow">
+            <p><b>5.</b> Diego Maradona is mentioned because he ...</p>
+            <div id="Rp3q5a1r" class="resultsOption" style="border-color: green; color: green;"><p class="letter">A.</p><p>took advantage of a referee’s mistake.</p></div>
+            <div id="Rp3q5a2r" class="resultsOption"><p class="letter">B.</p><p>challenged a referee’s decision</p></div>
+            <div id="Rp3q5a3r" class="resultsOption"><p class="letter">C.</p><p>persuaded a referee to make a decision.</p></div>
+            <div id="Rp3q5a4r" class="resultsOption"><p class="letter">D.</p><p>was punished for his gamesmanship.</p></div>
+        </div>
+        <div class="resultsOptionWindow">
+            <p><b>6.</b> Rivaldo ...</p>
+            <div id="Rp3q6a1r" class="resultsOption"><p class="letter">A.</p><p>didn’t realise he was breaking a rule.</p></div>
+            <div id="Rp3q6a2r" class="resultsOption"><p class="letter">B.</p><p>exaggerated an injury</p></div>
+            <div id="Rp3q6a3r" class="resultsOption" style="border-color: green; color: green;"><p class="letter">C.</p><p>was punished for bending the rules.</p></div>
+            <div id="Rp3q6a4r" class="resultsOption"><p class="letter">D.</p><p>was accused of cheating when he did not.</p></div>
+        </div>
+        <div class="resultsOptionWindow">
+            <p><b>7.</b> The four badminton teams were disqualified ...</p>
+            <div id="Rp3q7a1r" class="resultsOption" style="border-color: green; color: green;"><p class="letter">A.</p><p>despite not cheating.</p></div>
+            <div id="Rp3q7a2r" class="resultsOption"><p class="letter">B.</p><p>because they cheated.</p></div>
+            <div id="Rp3q7a3r" class="resultsOption"><p class="letter">C.</p><p>because they were sporting.</p></div>
+            <div id="Rp3q7a4r" class="resultsOption"><p class="letter">D.</p><p>after winning their games.</p></div>
+        </div>
+    </div>
+
+    <script src="https://kit.fontawesome.com/a11707644f.js" crossorigin="anonymous"></script>
+    <script src="script.js"></script>
+</body>
+</html>
