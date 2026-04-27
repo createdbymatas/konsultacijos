@@ -27,3 +27,13 @@ function test2(){
         location.replace("test2/english-practise-bandymas-anglu-k-testas-nr-2.html")
     }, 1000);
 }
+function test3(){
+    document.getElementById('loading').style.display = 'flex';
+    setTimeout(() => {
+        document.getElementById('loading').style.opacity = '1';
+        document.getElementById('loader').style.animation = 'spin 0.8s linear infinite';
+    }, 10);
+    setTimeout(() => {
+        location.replace("test3/english-practise-bandymas-anglu-k-testas-nr-3.html")
+    }, 1000);
+}
