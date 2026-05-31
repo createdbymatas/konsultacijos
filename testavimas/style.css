@@ -166,7 +166,14 @@ nav h1{
     font-size: 20px;
     margin-top: 70px;
     margin-left: 15px;
-    margin-bottom: 15px;
+    margin-bottom: 30px;
+}
+.text{
+    color: #F5F5DC;
+    font-size: 20px;
+    margin-top: 20px;
+    margin-left: 15px;
+    margin-bottom: 10px;
 }
 .testOption{
     color: #F5F5DC;
@@ -232,3 +239,62 @@ button:active{
     opacity: 0.2;
 }
 
+
+
+
+
+#loginWindow{
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    color: #F5F5DC;
+}
+
+#loginWindow h1{
+    font-size: 35px;
+}
+#loginWindow h2{
+    font-size: 25px;
+    margin-top: 15px;
+    margin-bottom: 20px;
+}
+
+#loginWindow p{
+    font-size: 18px;
+    margin-top: 10px;
+    margin-bottom: 5px;
+}
+
+::placeholder {
+  color: #202020;
+  opacity: 1;
+}
+
+::-ms-input-placeholder {
+  color: #202020;
+}
+
+input{
+    width: 200px;
+    height: 35px;
+    border-radius: 25px;
+    border: none;
+    padding: 10px;
+    font-size: 17px;
+    background-color: #F5F5DC;
+    color: #202020;
+}
+
+#loginWindow button{
+    margin-top: 20px;
+    width: 200px;
+}
+
+#status{
+    margin-top: 10px;
+    opacity: 0;
+    transition: 0.2s;
+}

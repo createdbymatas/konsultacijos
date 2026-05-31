@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>© FINBONK testavimo aplinka | Prisijungimas</title>
+    <title>© FINBONK testavimo aplinka | Testo pasirinkimas</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Ancizar+Sans:ital,wght@0,100..1000;1,100..1000&display=swap" rel="stylesheet">
@@ -25,18 +25,23 @@
 
     <nav>
         <h1>© FINBONK testavimo aplinka</h1>
-        <h1 id="user"><i class="fa-regular fa-circle-user"></i> laukiama prisijungimo...</h1>
+        <h1 id="user"><i class="fa-regular fa-circle-user"></i> Ieva Kasparavičiūtė</h1>
     </nav>
 
-    <div id="loginWindow">
-        <h1>© FINBONK testavimo aplinka</h1>
-        <h2>Prisijungimas</h2>
-        <p><i class="fa-regular fa-address-card"></i> Naudotojo vardas</p>
-        <input id="username" type="text" autocomplete="off" placeholder="Rašyk čia">
-        <p><i class="fa-solid fa-key"></i> Slaptažodis</p>
-        <input id="password" type="password" autocomplete="off" placeholder="Rašyk čia">
-        <button id="loginBtn" ontouchstart onclick="login()"><i class="fa-solid fa-arrow-right-to-bracket"></i> Prisijungti</button>
-        <p id="status">status</p>
+    <p id="chooseTest">Pasirinkite testą, kurį norite atlikti:</p>
+    <p style="font-weight: 800;" class="text">Šiuo metu paskirtas testas:</p>
+    <div class="testOption" ontouchstart onclick="test3()">
+        <h2>English practise B1</h2>
+        <p>Bandymas - anglų k. (testas nr. 3)</p>
+    </div>
+    <p class="text">Anksčiau atlikti testai:</p>
+    <div class="testOption" ontouchstart onclick="test1()">
+        <h2>English practise</h2>
+        <p>Bandymas - anglų k. (testas nr. 1)</p>
+    </div>
+    <div class="testOption" ontouchstart onclick="test2()">
+        <h2>English practise</h2>
+        <p>Bandymas - anglų k. (testas nr. 2)</p>
     </div>
 
     <script src="https://kit.fontawesome.com/a11707644f.js" crossorigin="anonymous"></script>
