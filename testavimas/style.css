@@ -291,10 +291,50 @@ input{
 #loginWindow button{
     margin-top: 20px;
     width: 200px;
+    transition: 0.2s;
+}
+
+input:focus{
+    outline: none;
+    border: none;
+}
+
+#password {
+    /* text-security:disc; */
+    -webkit-text-security: disc;
+    -mox-text-security: disc;
+}
+#eye{
+    color: #F5F5DC;
+    position: absolute;
+    margin-top: 118px;
+    margin-left: 230px;
 }
 
 #status{
     margin-top: 10px;
     opacity: 0;
     transition: 0.2s;
+}
+
+#loader3{
+    width: 30px;
+    height: 30px;
+    border: 5px solid #606060;
+    border-top-color: #F5F5DC;
+    border-radius: 100%;
+    animation: spin 0.8s linear infinite;
+    transition: 0.2s;
+    position: absolute;
+    margin-top: 234px;
+    display: none;
+    opacity: 0;
+}
+@keyframes spin {
+    0%{
+        transform: rotate(0);
+    }
+    100%{
+        transform: rotate(360deg);
+    }
 }

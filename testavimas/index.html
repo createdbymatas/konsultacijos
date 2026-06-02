@@ -25,7 +25,7 @@
 
     <nav>
         <h1>© FINBONK testavimo aplinka</h1>
-        <h1 id="user"><i class="fa-regular fa-circle-user"></i> laukiama prisijungimo...</h1>
+        <h1 id="user"><i class="fa-regular fa-circle-user"></i> Neprisijungta</h1>
     </nav>
 
     <div id="loginWindow">
@@ -34,12 +34,39 @@
         <p><i class="fa-regular fa-address-card"></i> Naudotojo vardas</p>
         <input id="username" type="text" autocomplete="off" placeholder="Rašyk čia">
         <p><i class="fa-solid fa-key"></i> Slaptažodis</p>
-        <input id="password" type="password" autocomplete="off" placeholder="Rašyk čia">
+        <input id="password" type="text" autocomplete="off" placeholder="Rašyk čia">
+        <i class="fa-regular fa-eye" id="eye" onclick="showPass()"></i>
         <button id="loginBtn" ontouchstart onclick="login()"><i class="fa-solid fa-arrow-right-to-bracket"></i> Prisijungti</button>
+        <div id="loader3"></div>
         <p id="status">status</p>
+        <input type="text" value="1" id="inp" style="display: none;">
     </div>
 
     <script src="https://kit.fontawesome.com/a11707644f.js" crossorigin="anonymous"></script>
     <script src="script.js"></script>
+    <script>
+        document.body.onkeydown = function(e){
+            if (e.keyCode === 13 && e.target === document.getElementById("username") || e.keyCode === 13 && e.target === document.getElementById("password")) {
+                e.preventDefault();
+                login();
+            }
+        }
+        function showPass(){
+            if(document.getElementById("inp").value == "1"){
+                document.getElementById("password").style.webkitTextSecurity = "none";
+                document.getElementById("password").style.moxTextSecurity = "none";
+                document.getElementById("eye").classList.add("fa-eye-slash");
+                document.getElementById("eye").classList.remove("fa-eye");
+                document.getElementById("inp").value = "0";
+            }
+            else{
+                document.getElementById("password").style.webkitTextSecurity = "disc";
+                document.getElementById("password").style.moxTextSecurity = "disc";
+                document.getElementById("eye").classList.remove("fa-eye-slash");
+                document.getElementById("eye").classList.add("fa-eye");
+                document.getElementById("inp").value = "1";
+            }
+        }
+    </script>
 </body>
 </html>

@@ -47,12 +47,19 @@ function login(){
     document.getElementById('status').innerHTML = 'Tikrinami prisijungimo duomenys...';
     document.getElementById('status').style.opacity = '1';
     document.getElementById('status').style.color = '#F5F5DC';
+    document.getElementById('loginBtn').style.opacity = '0';
+    setTimeout(() => {
+        document.getElementById('loader3').style.display = 'block';
+    }, 100);
+    setTimeout(() => {
+        document.getElementById('loader3').style.opacity = '1';
+    }, 110);
 
     setTimeout(() => {
         if(document.getElementById("username").value == "RfykyCvo" && document.getElementById("password").value == "g3P$7iF%"){
             document.getElementById('status').innerHTML = 'Prisijungiama...';
             setTimeout(() => {
-                location.replace("selection.html")
+                location.replace("selection.html");
             }, 2000);
         }
         else if(document.getElementById("username").value == ""){
@@ -62,8 +69,11 @@ function login(){
             document.getElementById('status').style.transition = 'none';
             document.getElementById('status').style.color = 'red';
             document.getElementById('status').innerHTML = 'Neįvestas prisijungimo vardas';
+            document.getElementById('loader3').style.opacity = '0';
             setTimeout(() => {
                 document.getElementById('status').style.transition = '0.2s';
+                document.getElementById('loader3').style.display = 'none';
+                document.getElementById('loginBtn').style.opacity = '1';
             }, 100);
         }
         else if(document.getElementById("password").value == ""){
@@ -73,8 +83,11 @@ function login(){
             document.getElementById('status').style.transition = 'none';
             document.getElementById('status').style.color = 'red';
             document.getElementById('status').innerHTML = 'Neįvestas slaptažodis';
+            document.getElementById('loader3').style.opacity = '0';
             setTimeout(() => {
                 document.getElementById('status').style.transition = '0.2s';
+                document.getElementById('loader3').style.display = 'none';
+                document.getElementById('loginBtn').style.opacity = '1';
             }, 100);
         }
         else{
@@ -84,8 +97,11 @@ function login(){
             document.getElementById('status').style.transition = 'none';
             document.getElementById('status').style.color = 'red';
             document.getElementById('status').innerHTML = 'Neteisingi prisijungimo duomenys';
+            document.getElementById('loader3').style.opacity = '0';
             setTimeout(() => {
                 document.getElementById('status').style.transition = '0.2s';
+                document.getElementById('loader3').style.display = 'none';
+                document.getElementById('loginBtn').style.opacity = '1';
             }, 100);
         }
     }, 3000);
