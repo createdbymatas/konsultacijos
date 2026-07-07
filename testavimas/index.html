@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>© FINBONK testavimo aplinka | Prisijungimas</title>
+    <title>© FINBONK testavimo aplinka · Prisijungimas</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Ancizar+Sans:ital,wght@0,100..1000;1,100..1000&display=swap" rel="stylesheet">
@@ -30,10 +30,10 @@
 
     <div id="loginWindow">
         <h1>© FINBONK testavimo aplinka</h1>
-        <h2>Prisijungimas</h2>
-        <p><i class="fa-regular fa-address-card"></i> Naudotojo vardas</p>
+        <h2>Prisijungimas prie patikrinimo</h2>
+        <p style="font-size: 20px;"><i class="fa-regular fa-address-card"></i> Naudotojo vardas</p>
         <input id="username" type="text" autocomplete="off" placeholder="Rašyk čia">
-        <p><i class="fa-solid fa-key"></i> Slaptažodis</p>
+        <p style="font-size: 20px; margin-top: 20px;"><i class="fa-solid fa-key"></i> Slaptažodis</p>
         <input id="password" type="text" autocomplete="off" placeholder="Rašyk čia">
         <i class="fa-regular fa-eye" id="eye" onclick="showPass()"></i>
         <button id="loginBtn" ontouchstart onclick="login()"><i class="fa-solid fa-arrow-right-to-bracket"></i> Prisijungti</button>
@@ -41,6 +41,8 @@
         <p id="status">status</p>
         <input type="text" value="1" id="inp" style="display: none;">
     </div>
+
+    <p id="copyright">&copy; 2025-26 · Pupulio testavimo sistema · Visos teisės saugomos</p>
 
     <script src="https://kit.fontawesome.com/a11707644f.js" crossorigin="anonymous"></script>
     <script src="script.js"></script>

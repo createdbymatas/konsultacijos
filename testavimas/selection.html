@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>© FINBONK testavimo aplinka | Testo pasirinkimas</title>
+    <title>© FINBONK testavimo aplinka · Testo pasirinkimas</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Ancizar+Sans:ital,wght@0,100..1000;1,100..1000&display=swap" rel="stylesheet">
@@ -30,7 +30,11 @@
 
     <p id="chooseTest">Pasirink testą, kurį nori atlikti:</p>
     <p style="font-weight: 800;" class="text">Šiuo metu paskirti testai:</p>
-    <p style="color: #F5F5DC; margin-left: 15px; font-size: 17px;">Šiuo metu nėra paskirtų testų.</p>
+    <!-- <p style="color: #F5F5DC; margin-left: 15px; font-size: 17px;">Šiuo metu nėra paskirtų testų.</p> -->
+     <div class="testOption" ontouchstart onclick="testLt()">
+        <h2>Lietuvių kalba ir literatūra (A)</h2>
+        <p>Bandymas - pasiruošimas PUPP (testas nr. 1)</p>
+    </div>
 
     <p class="text">Anksčiau atlikti testai:</p>
     <div class="testOption" ontouchstart onclick="test1()">
@@ -45,6 +49,8 @@
         <h2>English practise B1</h2>
         <p>Bandymas - anglų k. (testas nr. 3)</p>
     </div>
+
+    <p id="copyright">&copy; 2025-26 · Pupulio testavimo sistema · Visos teisės saugomos</p>
 
     <script src="https://kit.fontawesome.com/a11707644f.js" crossorigin="anonymous"></script>
     <script src="script.js"></script>

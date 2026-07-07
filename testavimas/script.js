@@ -1,3 +1,11 @@
+// išjungti right-click
+document.addEventListener('contextmenu', (e) => e.preventDefault());
+
+// išjungti f12, ctrl+shift+i, ctrl+shift+j, ctrl+u (inspect tool)
+function ctrlShiftKey(e, keyCode) {
+    return e.ctrlKey && e.shiftKey && e.keyCode === keyCode.charCodeAt(0);
+}
+
 function loaded(){
     setTimeout(() => {
         document.getElementById('loading').style.opacity = '0';
@@ -38,6 +46,17 @@ function test3(){
     }, 1000);
 }
 
+function testLt(){
+    document.getElementById('loading').style.display = 'flex';
+    setTimeout(() => {
+        document.getElementById('loading').style.opacity = '1';
+        document.getElementById('loader').style.animation = 'spin 0.8s linear infinite';
+    }, 10);
+    setTimeout(() => {
+        location.replace("lietuviu-kalba-1/index.html")
+    }, 1000);
+}
+
 
 
 function login(){
@@ -45,6 +64,8 @@ function login(){
     document.getElementById('username').style.pointerEvents = 'none';
     document.getElementById('password').style.pointerEvents = 'none';
     document.getElementById('status').innerHTML = 'Tikrinami prisijungimo duomenys...';
+    document.getElementById('username').style.borderColor = '#F5F5DC';
+    document.getElementById('password').style.borderColor = '#F5F5DC';
     document.getElementById('status').style.opacity = '1';
     document.getElementById('status').style.color = '#F5F5DC';
     document.getElementById('loginBtn').style.opacity = '0';
@@ -67,8 +88,9 @@ function login(){
             document.getElementById('username').style.pointerEvents = 'all';
             document.getElementById('password').style.pointerEvents = 'all';
             document.getElementById('status').style.transition = 'none';
-            document.getElementById('status').style.color = 'red';
+            document.getElementById('status').style.color = 'darkorange';
             document.getElementById('status').innerHTML = 'Neįvestas prisijungimo vardas';
+            document.getElementById('username').style.borderColor = 'darkorange';
             document.getElementById('loader3').style.opacity = '0';
             setTimeout(() => {
                 document.getElementById('status').style.transition = '0.2s';
@@ -81,8 +103,9 @@ function login(){
             document.getElementById('username').style.pointerEvents = 'all';
             document.getElementById('password').style.pointerEvents = 'all';
             document.getElementById('status').style.transition = 'none';
-            document.getElementById('status').style.color = 'red';
+            document.getElementById('status').style.color = 'darkorange';
             document.getElementById('status').innerHTML = 'Neįvestas slaptažodis';
+            document.getElementById('password').style.borderColor = 'darkorange';
             document.getElementById('loader3').style.opacity = '0';
             setTimeout(() => {
                 document.getElementById('status').style.transition = '0.2s';
@@ -97,6 +120,8 @@ function login(){
             document.getElementById('status').style.transition = 'none';
             document.getElementById('status').style.color = 'red';
             document.getElementById('status').innerHTML = 'Neteisingi prisijungimo duomenys';
+            document.getElementById('username').style.borderColor = 'red';
+            document.getElementById('password').style.borderColor = 'red';
             document.getElementById('loader3').style.opacity = '0';
             setTimeout(() => {
                 document.getElementById('status').style.transition = '0.2s';
