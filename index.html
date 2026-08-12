@@ -18,7 +18,7 @@
             font-family: "Ancizar Sans", sans-serif;
         }
         body{
-            background-color: #202020;
+            background-color: #ebebeb;
             overflow: hidden;
         }
         textarea:focus, input:focus{
@@ -51,13 +51,13 @@
         #loadDiv p{
             margin: 0;
             font-size: 20px;
-            font-weight: 100;
+            font-weight: 400;
         }
         #loader{
             width: 50px;
             height: 50px;
-            border: 7px solid #606060;
-            border-top-color: #F5F5DC;
+            border: 7px solid #ffffff;
+            border-top-color: #6f4827;
             border-radius: 100%;
             animation: spin 0.8s linear infinite;
             transition: none;
@@ -95,7 +95,7 @@
             left: 0;
             right: 0;
             bottom: 0;
-            background-color: #202020;
+            background-color: #ebebeb;
             z-index: 10;
             padding-left: 15px;
             padding-right: 15px;
@@ -144,7 +144,7 @@
         }
         h1{
             font-size: 50px;
-            color: #F5F5DC;
+            color: #6f4827;
             -webkit-tap-highlight-color: transparent;
             -webkit-user-select: none;
             -khtml-user-select: none;
@@ -158,7 +158,7 @@
         }
         p{
             font-size: 20px;
-            color: #F5F5DC;
+            color: #202020;
             margin-top: 50px;
             -webkit-tap-highlight-color: transparent;
             -webkit-user-select: none;
@@ -174,11 +174,11 @@
         button{
             width: 200px;
             height: 50px;
-            background-color: #F5F5DC;
+            background-color: #202020;
             border: none;
             border-radius: 25px;
             font-size: 20px;
-            color: #202020;
+            color: #ebebeb;
             margin-top: 50px;
             cursor: pointer;
             transition: 0.2s;
@@ -206,8 +206,8 @@
             margin-top: 10px;
             color: #202020;
             text-align: left;
-            background-color: #F5F5DC;
-            border: 2px solid #F5F5DC;
+            background-color: #d7d7d7;
+            border: 2px solid #202020;
             transition: 0.2s;
             cursor: default;
         }
@@ -249,30 +249,42 @@
             color: red;
             position: absolute;
             font-size: 13px;
-            top: -6px;
+            top: 60px;
+            left: 15px;
             opacity: 0;
             transition: 0.2s;
+            padding-bottom: 2px;
+            background-color: #202020;
+            border-radius: 0 0 5px 5px;
         }
         #requiredField2{
             margin: 0;
             color: red;
             position: absolute;
             font-size: 13px;
-            top: -6px;
+            top: 60px;
+            left: 15px;
             opacity: 0;
             transition: 0.2s;
+            padding-bottom: 2px;
+            background-color: #202020;
+            border-radius: 0 0 5px 5px;
         }
         #requiredField3{
             margin: 0;
             color: red;
             position: absolute;
             font-size: 13px;
-            top: -6px;
+            top: 60px;
+            left: 15px;
             opacity: 0;
             transition: 0.2s;
+            padding-bottom: 2px;
+            background-color: #202020;
+            border-radius: 0 0 5px 5px;
         }
         #laikasDummy{
-            color: #F5F5DC;
+            color: #202020;
             width: 105px;
             text-align: right;
             margin-left: 190px;
@@ -296,7 +308,7 @@
             display: none;
         }
         #trukmeMax{
-            color: #F5F5DC;
+            color: #202020;
             width: 105px;
             text-align: right;
             margin-left: 190px;
@@ -310,10 +322,10 @@
             cursor: default;
         }
         #simbolSk{
-            color: #F5F5DC;
-            width: 105px;
+            color: #202020;
+            width: 125px;
             text-align: right;
-            margin-left: 190px;
+            margin-left: 173px;
             margin-top: 2px;
             -webkit-tap-highlight-color: transparent;
             -webkit-user-select: none;
@@ -323,22 +335,8 @@
             user-select: none;
             cursor: default;
         }
-        #simbolSkMax{
-            color: red;
-            width: 165px;
-            text-align: left;
-            position: absolute;
-            display: none;
-            margin-left: -125px;
-            margin-top: -18.5px;
-            -webkit-tap-highlight-color: transparent;
-            -webkit-user-select: none;
-            -khtml-user-select: none;
-            -moz-user-select: none;
-            -o-user-select: none;
-            user-select: none;
-            cursor: default;
-            bottom: 0px;
+        #symbolsExclamation{
+            opacity: 0;
         }
         form{
             position: absolute;
@@ -366,7 +364,7 @@
         <i class="fa-solid fa-rectangle-xmark" style="position: absolute; opacity: 0; user-select: none; cursor: default; top: 0;"></i>
         <div id="loadDiv">
             <div id="loader"></div>
-            <p>Įkeliama...</p>
+            <p>Įkeliama</p>
         </div>
     </div>
     <div id="error">
@@ -375,11 +373,11 @@
         <button ontouchstart onclick="registerAgain()" id="registerNewBtn">Bandyti registruotis iš naujo</button>
     </div>
     <div id="start">
-        <h1>FINBONK<br>Konsultacijos</h1>
+        <h1>&copy; FINBONK<br>Konsultacijos</h1>
         <button onclick="registration()" ontouchstart>Pradėti registraciją</button>
     </div>
     <div id="registration">
-        <h1 style="margin-top: 50px;">FINBONK<br>Konsultacijos</h1>
+        <h1 style="margin-top: 50px;">&copy; FINBONK<br>Konsultacijos</h1>
         <p>Konsultacijos laikas</p>
         <div id="laikoDiv">
             <p id="requiredField1">privaloma įvesti</p>
@@ -389,16 +387,15 @@
         <p>Konsultacijos trukmė</p>
         <div id="trukmesDiv">
             <p id="requiredField2">privaloma įvesti</p>
-            <input id="trukme" type="number" inputmode="numeric" min="1" max="100" pattern="[0-9\.]+" maxlength="2" placeholder="įveskite...">
+            <input id="trukme" type="number" inputmode="numeric" min="1" max="100" pattern="[0-9\.]+" maxlength="2" placeholder="įveskite ...">
             <p id="minText">min</p>
             <div id="trukmeMax">max.: 60 min</div>
         </div>
         <p>Konsultacijos priežastis</p>
         <div id="priezastiesDiv">
             <p id="requiredField3">privaloma įvesti</p>
-            <input id="priezastis" type="text" maxlength="30" placeholder="įveskite...">
-            <div id="simbolSk">simbolių <span id="simboliuSk">0</span> / 30</div>
-            <div id="simbolSkMax">pasiektas simbolių limitas</div>
+            <input id="priezastis" type="text" maxlength="30" placeholder="įveskite ...">
+            <div id="simbolSk"><i class="fa-solid fa-circle-exclamation" id="symbolsExclamation"></i> simbolių <span id="simboliuSk">0</span> / 30</div>
         </div>
         <button ontouchstart onclick="registruotis()" id="registerBtn">Registruotis</button>
     </div>
@@ -461,9 +458,11 @@
             let simboliai = inputSimboliai.value;
             simboliuSkaicius.textContent = simboliai.length;
             if (simboliuSkaicius.textContent == 30){
-                document.getElementById('simbolSkMax').style.display = 'block';
+                document.getElementById('simbolSk').style.color = 'red';
+                document.getElementById('symbolsExclamation').style.opacity = '1';
                 setTimeout(() => {
-                    document.getElementById('simbolSkMax').style.display = 'none';
+                    document.getElementById('simbolSk').style.color = '#202020';
+                    document.getElementById('symbolsExclamation').style.opacity = '0';
                 }, 500);
             }
             else{
@@ -520,11 +519,11 @@
             }, 4500);
         }
         function registruotis(){
-            document.getElementById('laikas').style.borderColor = '#F5F5DC';
+            document.getElementById('laikas').style.borderColor = '#202020';
             document.getElementById('requiredField1').style.opacity = '0';
-            document.getElementById('trukme').style.borderColor = '#F5F5DC';
+            document.getElementById('trukme').style.borderColor = '#202020';
             document.getElementById('requiredField2').style.opacity = '0';
-            document.getElementById('priezastis').style.borderColor = '#F5F5DC';
+            document.getElementById('priezastis').style.borderColor = '#202020';
             document.getElementById('requiredField3').style.opacity = '0';
 
             document.getElementById('registerBtn').style.pointerEvents = 'none';
